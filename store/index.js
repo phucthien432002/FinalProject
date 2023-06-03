@@ -1,8 +1,8 @@
 export const state = () => ({
   locales: [
     {
-      name: "Lao",
-      value: "la"
+      name: "VietNamese",
+      value: "vn"
     },
     {
       name: "English",

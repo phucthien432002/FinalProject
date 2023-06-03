@@ -4,10 +4,10 @@ Vue.use(VueI18n);
 export default ({ app, store }) => {
   app.i18n = new VueI18n({
     locale: app.$cookies.get("lang"),
-    fallbackLocale: "la",
+    fallbackLocale: "vn",
     messages: {
       en: require("~/locales/en.json"),
-      la: require("~/locales/la.json")
+      la: require("~/locales/vn.json")
     }
   });
   app.i18n.path = link => {
