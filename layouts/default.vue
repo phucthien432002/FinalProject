@@ -201,7 +201,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Domino Pizza Viet"
+      title: "Domino Pizza Viet Nam"
     };
   },
   computed: {

@@ -8,42 +8,34 @@
               <img src="../static/images/1.jpg" alt="" />
             </div>
           </div>
-          <a class="item" href="https://3kshop.vn/ifi-lan-isilencer/" target="_blank">
+          <a class="item" href="" target="_blank">
             <img src="../static/images/2.jpg" alt="" />
           </a>
-          <a class="item" href="https://3kshop.vn/ifi-go-bar/" target="_blank">
+          <a class="item" href="" target="_blank">
             <img src="../static/images/3.jpg" alt="" />
           </a>
-          <a class="item" href="https://3kshop.vn/ifi-go-link/" target="_blank">
+          <a class="item" href="" target="_blank">
             <img src="../static/images/4.jpg" alt="" />
           </a>
-          <a class="item" href="https://3kshop.vn/ifi-go-pod/" target="_blank">
+          <a class="item" href="" target="_blank">
             <img src="../static/images/5.jpg" alt="" />
           </a>
-          <a
-            class="item"
-            href="https://3kshop.vn/ifi-gioi-thieu-zen-dac-signature-va-zen-can-signature-phien-ban-dac-biet/"
-            target="_blank"
-          >
+          <a class="item" href="" target="_blank">
             <img src="../static/images/6.jpg" alt="" />
           </a>
-          <a class="item" href="https://3kshop.vn/ifi-neo-stream/" target="_blank">
+          <a class="item" href="" target="_blank">
             <img src="../static/images/7.jpg" alt="" />
           </a>
-          <a class="item" href="https://3kshop.vn/ifi-uno/" target="_blank">
+          <a class="item" href="" target="_blank">
             <img src="../static/images/8.jpg" alt="" />
           </a>
-          <a class="item" href="https://3kshop.vn/ifi-xdsd-gryphon/" target="_blank">
+          <a class="item" href="" target="_blank">
             <img src="../static/images/9.jpg" alt="" />
           </a>
-          <a class="item" href="https://3kshop.vn/ifi-zen-air-blue/" target="_blank">
+          <a class="item" href="" target="_blank">
             <img src="../static/images/10.jpg" alt="" />
           </a>
-          <a
-            class="item"
-            href="https://3kshop.vn/ifi-ican-phantom-headphone-amplifier-doc-dao-gia-3-700/"
-            target="_blank"
-          >    
+          <a class="item" href="" target="_blank">
             <img src="../static/images/11.jpg" alt="" />
           </a>
         </div>
@@ -175,6 +167,7 @@ export default {
   max-width: 100vw;
   object-fit: cover;
 }
+
 .img-placeholder {
   position: relative;
 }

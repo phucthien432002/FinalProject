@@ -2,7 +2,7 @@ import colors from "vuetify/es5/util/colors";
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  // ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -10,7 +10,7 @@ export default {
     title: "Shopping Website",
     meta: [
       { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" },
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" }
     ],
