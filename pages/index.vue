@@ -1,4 +1,5 @@
 <template>
+  <div  id="bestseller">
   <v-row justify="center" align="center">
     <div class="main1">
       <div id="slider">
@@ -60,9 +61,14 @@
       <div id="product"></div>
     </div>
   </v-row>
+  <bestseller></bestseller>
+</div>
+
 </template>
 <script>
+import bestseller from '../components/bestseller.vue'
 export default {
+  components:{ bestseller },
   name: "DefaultLayout",
   mounted() {
     const list = this.$el.querySelector("#slider .list");

@@ -7,7 +7,7 @@ export default ({ app, store }) => {
     fallbackLocale: "vn",
     messages: {
       en: require("~/locales/en.json"),
-      la: require("~/locales/vn.json")
+      vn: require("~/locales/vn.json")
     }
   });
   app.i18n.path = link => {

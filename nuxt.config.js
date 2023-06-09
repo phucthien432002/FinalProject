@@ -1,11 +1,13 @@
 import colors from "vuetify/es5/util/colors";
-
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   // ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    htmlAttrs: {
+			lang: "en"
+		},
     titleTemplate: "%s",
     title: "Shopping Website",
     meta: [
@@ -45,10 +47,14 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
+
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["~/plugins/i18n" , {src:"~/plugins/aos", ssr: false}],
+  plugins: [
+    "~/plugins/i18n" , 
+    {src:"~/plugins/aos", 
+    ssr: false},],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -76,7 +82,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: "en"
+      lang: "en , vn"
     }
   },
 
