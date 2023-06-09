@@ -27,7 +27,7 @@
             <img src="../static/images/7.jpg" alt="" />
           </a>
           <a class="item" href="" target="_blank">
-            <img src="../static/images/8.jpg" alt="" />
+            <img src="../static/images/8.png" alt="" />
           </a>
           <a class="item" href="" target="_blank">
             <img src="../static/images/9.jpg" alt="" />
