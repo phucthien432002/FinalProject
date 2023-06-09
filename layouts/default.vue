@@ -1,6 +1,7 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer style="max-height:100%;"
+    <v-navigation-drawer
+      style="max-height: 100%"
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
@@ -24,7 +25,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app style=" position: fixed;">
+    <v-app-bar :clipped-left="clipped" fixed app style="position: fixed">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon>mdi-{{ `chevron-${miniVariant ? "right" : "left"}` }}</v-icon>
@@ -44,6 +45,7 @@
               :key="index"
               @click="changeLange(item.value)"
             >
+              <img :src="item.flag" alt="Flag icon" class="px-2" />
               <v-list-item-title>{{ item.name }}</v-list-item-title>
             </v-list-item>
           </v-list-item-group>
@@ -63,9 +65,7 @@
       <v-list>
         <v-list-item @click.native="right = !right">
           <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
+            <v-icon light> mdi-repeat </v-icon>
           </v-list-item-action>
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
@@ -81,10 +81,15 @@
                 <a href="https://dominos.vn/blogs" target="_blank"> Blog</a>
               </li>
               <li>
-                <a href="https://dominos.vn/blogs/tuyen-dung" target="_blank"> Recruitment</a>
+                <a href="https://dominos.vn/blogs/tuyen-dung" target="_blank">
+                  Recruitment</a
+                >
               </li>
               <li>
-                <a href="https://dominos.vn/store-locations?store-id=1185" target="_blank">
+                <a
+                  href="https://dominos.vn/store-locations?store-id=1185"
+                  target="_blank"
+                >
                   Store List</a
                 >
               </li>
@@ -104,7 +109,12 @@
                 >
               </li>
               <li>
-                <a href="https://dominos.vn/promotion-listing?store-id=1185&device-enum=0" target="_blank"> Promotion</a>
+                <a
+                  href="https://dominos.vn/promotion-listing?store-id=1185&device-enum=0"
+                  target="_blank"
+                >
+                  Promotion</a
+                >
               </li>
             </ul>
           </div>
@@ -112,32 +122,22 @@
             <h1>Legal</h1>
             <ul>
               <li>
-                <a href=""  > Cookies</a>
+                <a href=""> Cookies</a>
               </li>
               <li>
-                <a href="">
-                  Privacy</a
-                >
+                <a href=""> Privacy</a>
               </li>
               <li>
-                <a href="">
-                  Sales and Returns</a
-                >
+                <a href=""> Sales and Returns</a>
               </li>
               <li>
-                <a href="">
-                  Sustainability Policy</a
-                >
+                <a href=""> Sustainability Policy</a>
               </li>
               <li>
-                <a href="">
-                  Terms and Conditions</a
-                >
+                <a href=""> Terms and Conditions</a>
               </li>
               <li>
-                <a href="">
-                  Warranty</a
-                >
+                <a href=""> Warranty</a>
               </li>
             </ul>
           </div>
@@ -145,22 +145,30 @@
             <h1>Social Media</h1>
             <ul>
               <li>
-                <a href="https://www.facebook.com/DominosPizzaVietnam/?brand_redir=207571100452" target="_blank"
+                <a
+                  href="https://www.facebook.com/DominosPizzaVietnam/?brand_redir=207571100452"
+                  target="_blank"
                   ><i class="fa-brands fa-facebook"></i> Facebook</a
                 >
               </li>
               <li>
-                <a href="https://www.instagram.com/dominospizza_vietnam/" target="_blank"
+                <a
+                  href="https://www.instagram.com/dominospizza_vietnam/"
+                  target="_blank"
                   ><i class="fa-brands fa-instagram"></i> Instagram</a
                 >
               </li>
               <li>
-                <a href="https://www.tiktok.com/@dominospizzavietnam" target="_blank"
+                <a
+                  href="https://www.tiktok.com/@dominospizzavietnam"
+                  target="_blank"
                   ><i class="fa-brands fa-tiktok"></i> Tiktok</a
                 >
               </li>
               <li>
-                <a href="https://www.youtube.com/@DominosPizzaVNOfficial" target="_blank"
+                <a
+                  href="https://www.youtube.com/@DominosPizzaVNOfficial"
+                  target="_blank"
                   ><i class="fa-brands fa-youtube"></i> Youtube</a
                 >
               </li>
@@ -168,7 +176,7 @@
           </div>
         </div>
         <div class="copy-right-container">
-          <span class="text-center align-center "> 
+          <span class="text-center align-center">
             © 2020 Domino’s Pizza Vietnam | Privacy Policy
           </span>
         </div>
@@ -190,30 +198,34 @@ export default {
         {
           icon: "mdi-apps",
           title: "Welcome",
-          to: "/"
+          to: "/",
         },
         {
           icon: "mdi-chart-bubble",
           title: "Inspire",
-          to: "/inspire"
-        }
+          to: "/inspire",
+        },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Domino Pizza Viet Nam"
+      title: "Domino Pizza Viet Nam",
     };
   },
   computed: {
-    ...mapGetters(["locales", "locale"])
+    ...mapGetters(["locales", "locale"]),
   },
   methods: {
     ...mapMutations(["SET_LANG"]),
     changeLange(value) {
       this.SET_LANG(value);
       this.$i18n.locale = value;
-    }
-  }
+    },
+    getFlagIcon(language) {
+      // Assuming the flag icons are placed in the "static/flags" directory
+      return `/flags/${language}.png`; // Replace "png" with the actual file extension of your flag icons
+    },
+  },
 };
 </script>
 <style>
@@ -226,35 +238,35 @@ export default {
     position: relative;
     bottom: 0;
   }
-  
+
   #footer {
     display: flex;
     flex-direction: column;
   }
-  
+
   .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     padding: 0 12vw;
   }
-  
+
   .item-footer {
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
   }
-  
+
   .item-footer h1 {
     margin-left: 10px;
     color: white;
   }
-  
+
   .item-footer li {
     list-style-type: ">";
     line-height: 32px;
   }
-  
+
   .item-footer li a {
     margin-left: 10px;
     font-size: 15px;
@@ -266,12 +278,12 @@ export default {
     align-items: center;
     gap: 10px;
   }
-  
+
   footer a:hover {
     color: black;
     transition: 0.3s;
   }
-  
+
   .copy-right-container {
     margin-top: 80px;
     background-color: #717980;
@@ -284,16 +296,16 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  
+
   .copy-right-container a {
     text-decoration: none;
     color: white;
   }
-  
+
   .dropbtn {
     display: none;
   }
-  
+
   #checkDropmenu {
     display: none;
   }
@@ -314,19 +326,18 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  
-  
+
   .item-footer {
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
   }
-  
+
   .item-footer h1 {
     margin-left: 10px;
     color: white;
   }
-  
+
   .item-footer li {
     list-style-type: ">";
     line-height: 32px;
@@ -342,12 +353,12 @@ export default {
     align-items: center;
     gap: 10px;
   }
-  
+
   footer a:hover {
     color: black;
     transition: 0.3s;
   }
-  
+
   .copy-right-container {
     margin-top: 20px;
     background-color: #717980;
@@ -360,16 +371,16 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  
+
   .copy-right-container a {
     text-decoration: none;
     color: white;
   }
-  
+
   .dropbtn {
     display: none;
   }
-  
+
   #checkDropmenu {
     display: none;
   }

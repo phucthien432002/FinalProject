@@ -2,14 +2,16 @@ export const state = () => ({
   locales: [
     {
       name: "VietNamese",
-      value: "vn"
+      value: "vn",
+      flag: require("../static/images/flags/vn.png")
     },
     {
       name: "English",
-      value: "en"
+      value: "en",
+      flag: require("../static/images/flags/usa.png")
     }
   ],
-  locale: "la"
+  locale: "en"
 });
 export const getters = {
   locale: state => state.locales,

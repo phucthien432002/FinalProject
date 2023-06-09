@@ -228,6 +228,7 @@ export default {
 
 .dots li.active {
   width: 30px;
-  background-color: #ff5c23;
+  background-color: #1976D2;
 }
+
 </style>
