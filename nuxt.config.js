@@ -33,7 +33,7 @@ export default {
     ],
     script: [
       {
-        src: 'https://kit.fontawesome.com/325c78919c.js',
+        src: 'https://kit.fontawesome.com/4447d7d060.js',
         crossorigin: 'anonymous'
       },
       { src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" },

@@ -46,7 +46,7 @@ import "aos/dist/aos.css";
 export default {
   methods: {
     menu() {
-      this.$nuxt.$options.router.push("/inspire");
+      this.$nuxt.$options.router.push("/menu");
     },
   },
   computed: {

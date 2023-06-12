@@ -57,9 +57,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <v-container>
         <Nuxt />
-      </v-container>
     </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
@@ -182,12 +180,15 @@
         </div>
       </div>
     </footer>
+    <scrollup />
   </v-app>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
+import scrollup from "../components/scrollup.vue";
 export default {
+  components: { scrollup },
   data() {
     return {
       selectedItem: 1,

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-container>
     <div
       :class="
         $vuetify.breakpoint.xs ? 'd-flex flex-column' : 'text-center d-flex'
@@ -21,6 +22,7 @@
     <div>
       <bestsellerimg></bestsellerimg>
     </div>
+  </v-container>
   </div>
 </template>
 
@@ -61,3 +63,4 @@ export default {
   border-bottom: 3px solid #e31837;
 }
 </style>
+
