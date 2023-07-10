@@ -25,12 +25,9 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app style="position: fixed">
+    <v-app-bar :clipped-left="clipped" fixed app style="position: fixed; height: 100px; background-color:#004666 !important">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? "right" : "left"}` }}</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
+     <nuxt-link to="/" class="logo"><img src="../static/images/icon.png" alt="Logo"></nuxt-link>
       <v-spacer />
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
@@ -51,10 +48,6 @@
           </v-list-item-group>
         </v-list>
       </v-menu>
-
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
     </v-app-bar>
     <v-main>
         <Nuxt />
@@ -230,9 +223,18 @@ export default {
 };
 </script>
 <style>
+.logo img {
+  display: block;
+  width:230px; 
+  height:50px;
+}
+.v-toolbar__content{
+  height: 100% !important;
+}
 @media screen and (min-width: 800px) {
+  }
   footer {
-    background-color: #7e878e;
+    background-color: #00628F;
     width: 100vw;
     padding-top: 64px;
     border-top: #ff5c23 solid 8px;
@@ -286,8 +288,9 @@ export default {
   }
 
   .copy-right-container {
+    border-top: 2px solid white;
     margin-top: 80px;
-    background-color: #717980;
+    background-color: #00628F;
     color: white;
     font-weight: 600;
     font-size: 16px;
@@ -310,11 +313,15 @@ export default {
   #checkDropmenu {
     display: none;
   }
-}
 
-@media only screen and (max-width: 1000px) {
+
+@media only screen and (max-width: 600px) {
+  .imgicon{
+    width:100px;
+    height:45px;
+  }
   footer {
-    background-color: #7e878e;
+    background-color: #00628F;
     width: 100vw;
     padding-top: 16px;
     border-top: #ff5c23 solid 8px;
@@ -385,5 +392,12 @@ export default {
   #checkDropmenu {
     display: none;
   }
+ .v-app-bar__nav-icon{
+  display: none;
+ }
+ .logo img {
+  content: url(../static/images/icon1.png);
+  width: 30px; /* Adjust the size as needed */
+}
 }
 </style>
