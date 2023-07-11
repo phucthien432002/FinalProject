@@ -11,6 +11,9 @@
     "pizza": "Pizza",
     "sides": "Sides",
     "dessert": "Dessert",
-    "drinks": "Drinks"
+    "drinks": "Drinks",
+    "salenav": "Promotions",
+    "menunav": "Menu",
+    "blog": "Blog"
   }
   

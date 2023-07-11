@@ -28,6 +28,19 @@
     <v-app-bar :clipped-left="clipped" fixed app style="position: fixed; height: 100px; background-color:#004666 !important">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
      <nuxt-link to="/" class="logo"><img src="../static/images/icon.png" alt="Logo"></nuxt-link>
+      <div class="navbar-collapse collapse">
+        <ul class="navbar-nav mx-auto text-center text-uppercase">
+          <li class="nav-item d-flex align-items-center">
+            <a href="" class="nav-link">{{$t('salenav')}}</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a href="" class="nav-link">{{$t('menunav')}}</a>
+          </li>
+          <li class="nav-item d-flex align-items-center">
+            <a href="" class="nav-link">{{$t('blog')}}</a>
+          </li>
+        </ul>
+      </div>
       <v-spacer />
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
@@ -223,6 +236,39 @@ export default {
 };
 </script>
 <style>
+.navbar-nav li a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 2.35rem 1rem !important;
+}
+.navbar-nav li a:hover{
+  color: white;
+  background-color: #0056b3;
+}
+.navbar-nav .nav-link {
+  padding-right: 0;
+  padding-left: 0;
+}
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.navbar-nav {
+  justify-content: center;
+  padding: 0 20px;
+  display: flex;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
 .logo img {
   display: block;
   width:230px; 
@@ -314,7 +360,11 @@ export default {
     display: none;
   }
 
-
+@media only screen and (max-width: 816px) {
+  .navbar-nav li a{
+    padding: 1.6rem 1rem !important;
+  }
+}
 @media only screen and (max-width: 600px) {
   .imgicon{
     width:100px;
