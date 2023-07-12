@@ -46,7 +46,7 @@ import "aos/dist/aos.css";
 export default {
   methods: {
     menu() {
-      this.$nuxt.$options.router.push("/menu");
+      this.$nuxt.$options.router.push("/product-listing");
     },
   },
   computed: {
@@ -100,4 +100,22 @@ export default {
   }
 }
 </style>
+<i18n>
+  {
+    "en":{
+      "menu1": "BANGKOK GREEN CURRY SHRIMP CHICKEN",
+      "menu2": "NEW YORK CHEESESTEAK",
+      "menu3": "SAUSAGE KID MANIA",
+      "menu4": "PIZZAMIN SEA",
+      "seemore": "See More"
+    },
+    "vn":{
+      "menu1": "PIZZA BANGKOK CÀ RI XANH TÔM GÀ - BANGKOK GREEN CURRY SHRIMP CHICKEN",
+      "menu2": "PIZZA BÒ BEEFSTEAK PHÔ MAI KIỂU NEW YORK - NEW YORK CHEESESTEAK",
+      "menu3": "PIZZA XÚC XÍCH XỐT PHÔ MAI - SAUSAGE KID MANIA",
+      "menu4": "PIZZA HẢI SẢN NHIỆT ĐỚI XỐT TIÊU - PIZZAMIN SEA",
+      "seemore": "Xem Thêm"
+    }
+  }
+</i18n>
  

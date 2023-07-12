@@ -63,4 +63,17 @@ export default {
   border-bottom: 3px solid #e31837;
 }
 </style>
-
+<i18n>
+  {
+    "en":{
+      "what": "Recommendation",
+      "sale": "Daily Promotions",
+      "bestseller": "Best Sellers"
+    },
+    "vn":{
+      "what": "Hôm Nay Ăn Gì?",
+      "sale": "Khuyến Mãi Mỗi Ngày",
+      "bestseller": "Best Sellers"
+    }
+  }
+</i18n>

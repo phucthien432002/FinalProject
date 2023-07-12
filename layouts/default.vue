@@ -65,16 +65,6 @@
     <v-main>
         <Nuxt />
     </v-main>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light> mdi-repeat </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
     <footer>
       <div id="footer">
         <div class="grid-container">
@@ -209,14 +199,13 @@ export default {
         },
         {
           icon: "mdi-chart-bubble",
-          title: "Inspire",
-          to: "/inspire",
+          title: "Menu",
+          to: "/product-listing",
         },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: "Domino Pizza Viet Nam",
     };
   },
   computed: {
@@ -225,8 +214,8 @@ export default {
   methods: {
     ...mapMutations(["SET_LANG"]),
     changeLange(value) {
-      this.SET_LANG(value);
-      this.$i18n.locale = value;
+      const path = this.switchLocalePath(value)
+      this.$router.push(path)
     },
     getFlagIcon(language) {
       // Assuming the flag icons are placed in the "static/flags" directory
@@ -451,3 +440,17 @@ export default {
 }
 }
 </style>
+<i18n>
+  {
+    "en":{
+      "salenav": "Promotions",
+      "menunav": "Menu",
+      "blog": "Blog"
+    },
+    "vn":{
+      "salenav": "Khuyến Mãi",
+      "menunav": "Thực Đơn",
+      "blog": "Blog"
+    }
+  }
+</i18n>
