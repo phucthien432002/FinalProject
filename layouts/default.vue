@@ -1,55 +1,45 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      style="max-height: 100%"
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
+    <v-app-bar
+      :clipped-left="clipped"
       fixed
       app
+      style="position: fixed; height: 100px; background-color: #c1a742 !important"
     >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app style="position: fixed; height: 100px; background-color:#004666 !important">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-     <nuxt-link to="/" class="logo"><img src="../static/images/icon.png" alt="Logo"></nuxt-link>
+      <nuxt-link to="/" class="logo"
+        ><img src="../static/images/icon4.png" alt="Logo"
+      /></nuxt-link>
       <div class="navbar-collapse collapse">
         <ul class="navbar-nav mx-auto text-center text-uppercase">
           <li class="nav-item d-flex align-items-center">
-            <a href="" class="nav-link">{{$t('salenav')}}</a>
+            <a href="" class="nav-link">{{ $t("salenav") }}</a>
           </li>
           <li class="nav-item d-flex align-items-center">
-            <a href="" class="nav-link">{{$t('menunav')}}</a>
+            <a href="/product-listing" class="nav-link">{{ $t("menunav") }}</a>
           </li>
           <li class="nav-item d-flex align-items-center">
-            <a href="" class="nav-link">{{$t('blog')}}</a>
+            <a href="" class="nav-link">{{ $t("blog") }}</a>
           </li>
         </ul>
       </div>
       <v-spacer />
+      <div class="mr-2">
+        <template>
+          <div class="d-flex justify-space-around">
+            <v-btn id="menu-activator" color="white">
+              <v-icon>mdi-cart</v-icon>
+            </v-btn>
+          </div>
+        </template>
+      </div>
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            <h5>Change language</h5>
+          <v-btn color="#ff5c23" dark v-bind="attrs" v-on="on">
+            <h5>Language</h5>
           </v-btn>
         </template>
         <v-list>
-          <v-list-item-group v-model="selectedItem" color="primary">
+          <v-list-item-group v-model="selectedItem" color="#ff5c23">
             <v-list-item
               v-for="(item, index) in locales"
               :key="index"
@@ -63,7 +53,7 @@
       </v-menu>
     </v-app-bar>
     <v-main>
-        <Nuxt />
+      <Nuxt />
     </v-main>
     <footer>
       <div id="footer">
@@ -93,9 +83,7 @@
             <h1>Products</h1>
             <ul>
               <li>
-                <a href="https://dominos.vn/product-listing" target="_blank">
-                  Menu</a
-                >
+                <a href="https://dominos.vn/product-listing" target="_blank"> Menu</a>
               </li>
               <li>
                 <a href="https://dominos.vn/voucher-default" target="_blank">
@@ -146,23 +134,17 @@
                 >
               </li>
               <li>
-                <a
-                  href="https://www.instagram.com/dominospizza_vietnam/"
-                  target="_blank"
+                <a href="https://www.instagram.com/dominospizza_vietnam/" target="_blank"
                   ><i class="fa-brands fa-instagram"></i> Instagram</a
                 >
               </li>
               <li>
-                <a
-                  href="https://www.tiktok.com/@dominospizzavietnam"
-                  target="_blank"
+                <a href="https://www.tiktok.com/@dominospizzavietnam" target="_blank"
                   ><i class="fa-brands fa-tiktok"></i> Tiktok</a
                 >
               </li>
               <li>
-                <a
-                  href="https://www.youtube.com/@DominosPizzaVNOfficial"
-                  target="_blank"
+                <a href="https://www.youtube.com/@DominosPizzaVNOfficial" target="_blank"
                   ><i class="fa-brands fa-youtube"></i> Youtube</a
                 >
               </li>
@@ -198,7 +180,7 @@ export default {
           to: "/",
         },
         {
-          icon: "mdi-chart-bubble",
+          icon: "mdi-cart",
           title: "Menu",
           to: "/product-listing",
         },
@@ -214,26 +196,51 @@ export default {
   methods: {
     ...mapMutations(["SET_LANG"]),
     changeLange(value) {
-      const path = this.switchLocalePath(value)
-      this.$router.push(path)
+      const path = this.switchLocalePath(value);
+      this.$router.push(path);
     },
     getFlagIcon(language) {
       // Assuming the flag icons are placed in the "static/flags" directory
       return `/flags/${language}.png`; // Replace "png" with the actual file extension of your flag icons
     },
+    removeFromCart(product) {
+      const shoppingCart = this.modelValue;
+      const productIndex = shoppingCart.findIndex((item) => item.uuid === product.uuid);
+      shoppingCart[productIndex].amount -= 1;
+
+      if (shoppingCart[productIndex].amount < 1) {
+        shoppingCart.splice(productIndex, 1);
+      }
+      this.$emit("update:modelValue", shoppingCart);
+    },
   },
 };
 </script>
 <style>
-.navbar-nav li a{
+#C1A742 .v-toolbar__content,
+.v-toolbar__extension {
+  padding: 4px 0px !important;
+}
+.v-application ul,
+.v-application ol {
+  padding-left: 0 !important;
+}
+.removeclass {
+  text-decoration: none;
+  border-radius: 4px !important;
+  padding: 4px;
+  background-color: black;
+  color: white !important;
+}
+.navbar-nav li a {
   text-decoration: none;
   color: white;
   font-weight: bold;
-  padding: 2.35rem 1rem !important;
+  padding: 2.35rem 4px !important;
 }
-.navbar-nav li a:hover{
+.navbar-nav li a:hover {
   color: white;
-  background-color: #0056b3;
+  background-color: #ff5c23;
 }
 .navbar-nav .nav-link {
   padding-right: 0;
@@ -241,13 +248,12 @@ export default {
 }
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 4px;
   cursor: pointer;
 }
 
 .navbar-nav {
   justify-content: center;
-  padding: 0 20px;
   display: flex;
   padding-left: 0;
   margin-bottom: 0;
@@ -260,107 +266,47 @@ export default {
 }
 .logo img {
   display: block;
-  width:230px; 
-  height:50px;
+  width: 230px;
+  height: 270px;
 }
-.v-toolbar__content{
+.v-toolbar__content {
   height: 100% !important;
 }
-@media screen and (min-width: 800px) {
-  }
-  footer {
-    background-color: #00628F;
-    width: 100vw;
-    padding-top: 64px;
-    border-top: #ff5c23 solid 8px;
-    position: relative;
-    bottom: 0;
-  }
-
-  #footer {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 0 12vw;
-  }
-
-  .item-footer {
-    padding: 10px 20px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .item-footer h1 {
-    margin-left: 10px;
-    color: white;
-  }
-
-  .item-footer li {
-    list-style-type: ">";
-    line-height: 32px;
-  }
-
-  .item-footer li a {
-    margin-left: 10px;
-    font-size: 15px;
-    text-decoration: none;
-    color: white;
-    border-bottom: black solid 1px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  footer a:hover {
-    color: black;
-    transition: 0.3s;
-  }
-
-  .copy-right-container {
-    border-top: 2px solid white;
-    margin-top: 80px;
-    background-color: #00628F;
-    color: white;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .copy-right-container a {
-    text-decoration: none;
-    color: white;
-  }
-
-  .dropbtn {
-    display: none;
-  }
-
-  #checkDropmenu {
-    display: none;
-  }
-
-@media only screen and (max-width: 816px) {
-  .navbar-nav li a{
-    padding: 1.6rem 1rem !important;
+@media screen and (min-width: 1200px) and (max-width: 2800px) {
+  .navbar-nav li a {
+    padding: 2.3rem 2.5rem !important;
   }
 }
-@media only screen and (max-width: 600px) {
-  .imgicon{
-    width:100px;
-    height:45px;
+@media screen and (min-width: 778px) {
+  .navbar-nav li a {
+    padding: 2.3rem 1.5rem !important;
+  }
+}
+
+@media only screen and (max-width: 616px) {
+  .v-btn__content {
+    font-size: 12px;
+  }
+  .navbar-nav li a {
+    font-size: 12px;
+  }
+  .nav-link {
+    padding: none !important;
+  }
+  .navbar-nav {
+    padding: none !important;
+  }
+  .navbar-nav li a {
+    padding: none !important;
+  }
+}
+@media only screen and (max-width: 777px) {
+  .imgicon {
+    width: 100px;
+    height: 45px;
   }
   footer {
-    background-color: #00628F;
+    background-color: #c1a742;
     width: 100vw;
     padding-top: 16px;
     border-top: #ff5c23 solid 8px;
@@ -431,13 +377,94 @@ export default {
   #checkDropmenu {
     display: none;
   }
- .v-app-bar__nav-icon{
-  display: none;
- }
- .logo img {
-  content: url(../static/images/icon1.png);
-  width: 30px; /* Adjust the size as needed */
+  .v-app-bar__nav-icon {
+    display: none;
+  }
+  .logo img {
+    content: url(../static/images/icon5.png);
+    width: 170px; /* Adjust the size as needed */
+    height: 100px;
+  }
 }
+footer {
+  background-color: #c1a742;
+  width: 100vw;
+  padding-top: 64px;
+  border-top: #ff5c23 solid 8px;
+  position: relative;
+  bottom: 0;
+}
+
+#footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 0 12vw;
+}
+
+.item-footer {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-footer h1 {
+  margin-left: 10px;
+  color: white;
+}
+
+.item-footer li {
+  list-style-type: ">";
+  line-height: 32px;
+}
+
+.item-footer li a {
+  margin-left: 10px;
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+  border-bottom: black solid 1px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+footer a:hover {
+  color: black;
+  transition: 0.3s;
+}
+
+.copy-right-container {
+  border-top: 2px solid white;
+  margin-top: 80px;
+  background-color: #c1a742;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.copy-right-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.dropbtn {
+  display: none;
+}
+
+#checkDropmenu {
+  display: none;
 }
 </style>
 <i18n>

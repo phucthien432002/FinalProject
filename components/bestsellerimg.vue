@@ -19,10 +19,7 @@
         >
           <div class="d-flex flex-column card-content">
             <v-card-text>
-              <h3
-                style="color: rgb(100, 255, 255)"
-                class="font-weight-bold text-center"
-              >
+              <h3 style="color: rgb(100, 255, 255)" class="font-weight-bold text-center">
                 {{ image.name }}
               </h3>
             </v-card-text>
@@ -32,15 +29,15 @@
     </v-row>
     <div class="justify-center align-center d-flex mt-6 py-4">
       <template>
-        <v-btn color="primary" dark @click="menu()">
+        <v-btn color="#ff5c23" dark @click="menu()">
           <h5>{{ $t("seemore") }}</h5>
         </v-btn>
       </template>
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 import AOS from "aos";
 import "aos/dist/aos.css";
 export default {
@@ -78,8 +75,8 @@ export default {
   },
 };
 </script>
-  
-  <style lang="scss" scoped>
+
+<style lang="scss" scoped>
 .card-img-transition {
   background-size: 600px !important;
   transition: background-size 2s, border 1s, background-position 2s;
@@ -118,4 +115,3 @@ export default {
     }
   }
 </i18n>
- 
