@@ -9,70 +9,152 @@
         <i class="fa-solid fa-pizza-slice"></i>
       </div>
       <v-container>
-      <div style="width: 100%; max-width: 100vw">
-        <ul class="dot-list py-2" style="width: 100%; max-width: 100vw">
-          <li>
-            <a href="">{{ $t("sale") }}</a>
-          </li>
-          <li>
-            <a class="px-5 py-1 bestsellerboder red--text" href="/product-listing/Pizza">{{ $t("pizza") }}</a>
-          </li>
-          <li>
-            <a href="/product-listing/Sides">{{ $t("sides") }}</a>
-          </li>
-          <li>
-            <a href="/product-listing/Deseert">{{ $t("dessert") }}</a>
-          </li>
-          <li>
-            <a href="/product-listing/Drinks">{{ $t("drinks") }}</a>
-          </li>
-        </ul>
-      </div>
-      <v-sheet>
-        <v-row class="mx-7 ma-7 ">
-          <v-hover v-for="(form, index) in forms" :key="index">
-            <template>
-              <v-card
-                data-aos="zoom-out-down"
-                data-aos-duration="900"
-                class="d-flex flex-column rounded-xl"
-                :class="$vuetify.breakpoint.smAndDown
-                  ? ' my-4 mx-auto'
-                  : ' mx-auto px-3 ma-7 px-6 '"
+        <div style="width: 100%; max-width: 100vw">
+          <ul class="dot-list py-2" style="width: 100%; max-width: 100vw">
+            <li>
+              <a href="">{{ $t("sale") }}</a>
+            </li>
+            <li>
+              <a
+                class="px-5 py-1 bestsellerboder red--text"
+                href="/product-listing/Pizza"
+                >{{ $t("pizza") }}</a
               >
-                <v-col class="justify-center">
-                  <v-img
-                    contain
-                    cover
-                    height="300px"
-                    :max-width="$vuetify.breakpoint.smAndDown ? '290px': '400px '"
-                    :src="form.imgs"
-                  />
-                </v-col>
-                <v-card-text class="d-flex flex-column text-center font-weight-bold">
-                  <h2 class="text-h5 black--text">
-                    {{ form.Name }}
-                  </h2>
-                  <h3>{{ form.Position }}</h3>
-                </v-card-text>
-              </v-card>
-            </template>
-          </v-hover>
-        </v-row>
-      </v-sheet>
-    </v-container>
+            </li>
+            <li>
+              <a href="/product-listing/Sides">{{ $t("sides") }}</a>
+            </li>
+            <li>
+              <a href="/product-listing/Deseert">{{ $t("dessert") }}</a>
+            </li>
+            <li>
+              <a href="/product-listing/Drinks">{{ $t("drinks") }}</a>
+            </li>
+          </ul>
+        </div>
+      </v-container>
     </v-row>
+    <div class="container">
+      <v-row style="margin: 0 !important; justify-content: center; align-items: center">
+        <div
+          v-for="(product, index) in products"
+          :key="'product-' + index"
+          class="px-1 py-1 flex-fit"
+        >
+          <div
+            class="card mb-3 justify-center text-center"
+            style="width: auto; border: 4px solid #fff6f6"
+          >
+            <img
+              :src="product.photoURL"
+              class="card-img-top"
+              style="min-width: auto; height: 150px"
+            />
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ product.name }}
+              </h5>
+              <p class="card-text">
+                {{ product.description }}
+              </p>
+              <div class="d-grid">
+                <button @click="addToCart(product)" class="btn1">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </v-row>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      products: [
+        {
+          name: this.$t("name"),
+          description: this.$t("description"),
+          price: "3",
+          photoURL: "images/1.jpg",
+        },
+        {
+          name: this.$t("name2"),
+          description: this.$t("description2"),
+          price: "3",
+          photoURL: "images/1.jpg",
+        },
+        {
+          name: this.$t("name3"),
+          description: this.$t("description3"),
+          price: "3",
+          photoURL: "images/1.jpg",
+        },
+        {
+          name: this.$t("name4"),
+          description: this.$t("description4"),
+          price: "3",
+          photoURL: "images/1.jpg",
+        },
+      ],
+      shoppingCart: [],
+    };
+  },
+  mounted() {
+    this.shoppingCart = JSON.parse(localStorage.getItem("shoppingCart") || "[]");
+  },
+  watch: {
+    shoppingCart: {
+      handler(newValue) {
+        localStorage.setItem("shoppingCart", JSON.stringify(newValue));
+      },
+      deep: true,
+    },
+  },
+  methods: {
+    addToCart(product) {
+      let exists = false;
+
+      for (const cartItem of this.shoppingCart) {
+        if (cartItem.uuid === product.uuid) {
+          cartItem.amount = cartItem.amount + 1;
+          exists = true;
+          break;
+        }
+      }
+      if (!exists) {
+        this.shoppingCart.push({
+          ...product,
+          amount: 1,
+        });
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
+.btn1 {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 12px 24px;
+  border: 0;
+  color: #fff;
+  background: #ff5000;
+  line-height: 1.15;
+  font-size: 16px;
+}
+.btn1:hover {
+  transition: all 0.1s ease;
+  box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
+}
 .bestsellerboder {
-    border-bottom: 3px solid #e31837;
-  }
+  border-bottom: 3px solid #e31837;
+}
 .dot-list {
   list-style-type: none;
   display: flex;
@@ -86,10 +168,11 @@ a {
 }
 
 @media screen and (min-width: 800px) {
-.dot-list{
+  .dot-list {
     width: 70% !important;
+  }
 }
-}
+
 @media only screen and (max-width: 600px) {
   .dot-list {
     list-style-type: none;
@@ -108,6 +191,14 @@ a {
 <i18n>
   {
     "en":{
+      "name":"1",
+      "name2":"2",
+      "name3":"3",
+      "name4":"4",
+      "description":"1",
+      "description2":"2",
+      "description3":"3",
+      "description4":"4",
       "sale": "Daily Promotions",
       "paradise": "The paradise of food is waiting for you! Come and enjoy the quintessence of dishes from professional chefs",
       "pizza": "Pizza",
@@ -116,6 +207,14 @@ a {
       "drinks": "Drinks"
     },
     "vn":{
+      "name":"1",
+      "name2":"2",
+      "name3":"3",
+      "name4":"4",
+      "description":"1",
+      "description2":"2",
+      "description3":"3",
+      "description4":"4",
       "sale": "Khuyến Mãi Mỗi Ngày",
       "paradise": "Thiên đường của những món ăn đang chờ đợi bạn! Hãy đến và thưởng thức những tinh hoa của các món ăn từ tay những đầu bếp chuyên nghiệp",
       "pizza": "Pizza",
