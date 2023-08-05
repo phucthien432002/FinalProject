@@ -1,4 +1,6 @@
 export const state = () => ({
+  products: [],
+  shoppingCart: [],
   locales: [
     {
       name: "VietNamese",
@@ -18,6 +20,9 @@ export const getters = {
   locales: state => state.locales
 };
 export const mutations = {
+  setProducts(state, products) {
+    state.products = products;
+  },
   // set language
   SET_LANG(state, locale) {
     state.locale = locale;

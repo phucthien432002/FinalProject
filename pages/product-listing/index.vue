@@ -65,36 +65,43 @@
         </div>
       </v-row>
     </div>
+    <shoppingCart />
   </div>
 </template>
 
 <script>
+import shoppingCart from "../../components/shoppingCart.vue";
 export default {
+  components: { shoppingCart },
   data() {
     return {
       products: [
         {
+          uuid: "1",
           name: this.$t("name"),
           description: this.$t("description"),
-          price: "3",
+          price: "1",
           photoURL: "images/1.jpg",
         },
         {
+          uuid: "2",
           name: this.$t("name2"),
           description: this.$t("description2"),
-          price: "3",
+          price: "2",
           photoURL: "images/1.jpg",
         },
         {
+          uuid: "3",
           name: this.$t("name3"),
           description: this.$t("description3"),
           price: "3",
           photoURL: "images/1.jpg",
         },
         {
+          uuid: "4",
           name: this.$t("name4"),
           description: this.$t("description4"),
-          price: "3",
+          price: "4",
           photoURL: "images/1.jpg",
         },
       ],
@@ -129,6 +136,7 @@ export default {
           amount: 1,
         });
       }
+      this.$store.commit("setProducts", this.products);
     },
   },
 };
