@@ -2,7 +2,9 @@
   <div class="text-center">
     <v-menu offset-y>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on"> Cart </v-btn>
+        <v-btn color="primary" dark v-bind="attrs" v-on="on">
+          <v-icon>mdi-cart</v-icon>
+        </v-btn>
       </template>
       <v-list class="justify-center align-center cart-container">
         <v-list-item class="d-flex flex-column">
@@ -33,7 +35,7 @@
                 "
               />
             </div>
-            <div class="d-grid">
+            <div class="d-grid btn1">
               <button @click="removeFromCart(product)">Remove</button>
             </div>
           </div>
@@ -55,6 +57,23 @@ export default {
 </script>
 
 <style>
+.btn1 {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 12px 24px;
+  border: 0;
+  color: #fff;
+  background: #ff5000;
+  line-height: 1.15;
+  font-size: 16px;
+}
+.btn1:hover {
+  transition: all 0.1s ease;
+  box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
+}
 .cart-container {
   width: 300px;
   height: 80vh;
