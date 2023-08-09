@@ -64,15 +64,14 @@
           </div>
         </div>
       </v-row>
+      <shoppingCart />
     </div>
-    <shoppingCart />
   </div>
 </template>
 
 <script>
-import shoppingCart from "../../components/shoppingCart.vue";
+import { mapMutations } from "vuex";
 export default {
-  components: { shoppingCart },
   data() {
     return {
       products: [
@@ -120,24 +119,7 @@ export default {
     },
   },
   methods: {
-    addToCart(product) {
-      let exists = false;
-
-      for (const cartItem of this.shoppingCart) {
-        if (cartItem.uuid === product.uuid) {
-          cartItem.amount = cartItem.amount + 1;
-          exists = true;
-          break;
-        }
-      }
-      if (!exists) {
-        this.shoppingCart.push({
-          ...product,
-          amount: 1,
-        });
-      }
-      this.$store.commit("setProducts", this.products);
-    },
+    ...mapMutations(["addToCart"]),
   },
 };
 </script>
