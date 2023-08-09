@@ -5,7 +5,7 @@
         <v-btn color="primary" dark v-bind="attrs" v-on="on"> Cart </v-btn>
       </template>
       <v-list width="300px" class="justify-center align-center">
-        <v-list-item>
+        <v-list-item class="d-flex flex-column">
           <div
             v-for="(product, index) in $store.state.shoppingCart"
             :key="'product-' + index"
@@ -45,7 +45,12 @@
 
 <script>
 export default {
-  methods: {},
+  methods: {
+    removeFromCart(product) {
+      // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
+      this.$store.commit("removeFromCart", product);
+    },
+  },
 };
 </script>
 
