@@ -24,13 +24,7 @@
       </div>
       <v-spacer />
       <div class="mr-2">
-        <template>
-          <div class="d-flex justify-space-around">
-            <v-btn id="menu-activator" color="white">
-              <v-icon>mdi-cart</v-icon>
-            </v-btn>
-          </div>
-        </template>
+        <shoppingCart />
       </div>
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">

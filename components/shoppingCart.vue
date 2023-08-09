@@ -4,7 +4,7 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="primary" dark v-bind="attrs" v-on="on"> Cart </v-btn>
       </template>
-      <v-list width="300px" class="justify-center align-center">
+      <v-list class="justify-center align-center cart-container">
         <v-list-item class="d-flex flex-column">
           <div
             v-for="(product, index) in $store.state.shoppingCart"
@@ -16,7 +16,7 @@
               justify-content: center;
               text-align: center;
             "
-            class="py-2 justify-center align-center"
+            class="py-2 justify-center align-center card-container"
           >
             <div>
               <h5 style="flex: none !important">{{ product.name }}</h5>
@@ -54,4 +54,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.cart-container {
+  width: 300px;
+  height: 80vh;
+  overflow-x: auto;
+}
+</style>

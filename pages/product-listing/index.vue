@@ -64,7 +64,6 @@
           </div>
         </div>
       </v-row>
-      <shoppingCart />
     </div>
   </div>
 </template>
