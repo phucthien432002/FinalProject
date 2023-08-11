@@ -6,6 +6,20 @@
           <v-icon>mdi-cart</v-icon>
         </v-btn>
       </template>
+      <v-list v-if="$store.state.shoppingCart.length === 0">
+        <v-list-item class="justify-center align-center">
+          <div>
+            <h5>Your cart is empty. Please add items to your cart.</h5>
+          </div>
+        </v-list-item>
+      </v-list>
+      <v-list v-else>
+        <v-list-item class="justify-center align-center">
+          <div>
+            <h5>Shopping Cart - $ {{ totalSum }}</h5>
+          </div>
+        </v-list-item>
+      </v-list>
       <v-list class="justify-center align-center cart-container">
         <v-list-item class="d-flex flex-column">
           <div
@@ -51,6 +65,15 @@ export default {
     removeFromCart(product) {
       // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
       this.$store.commit("removeFromCart", product);
+    },
+  },
+  computed: {
+    totalSum() {
+      let sum = 0;
+      for (const product of this.$store.state.shoppingCart) {
+        sum += product.price * product.amount;
+      }
+      return sum;
     },
   },
 };
