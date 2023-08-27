@@ -36,7 +36,7 @@
     </v-row>
     <div class="container">
       <div class="product-content">
-        <div class="title-product">{{ $t("title-product") }}</div>
+        <div class="title-product">{{ $t("title-product1") }}</div>
         <v-row
           class="container-item"
           style="margin: 0 !important; justify-content: center; align-items: center"
@@ -59,9 +59,7 @@
                 <h5 class="card-title">
                   {{ product.name }}
                 </h5>
-                <p class="card-text">
-                  {{ product.description }}
-                </p>
+                <p class="card-text">{{ product.price }}₫</p>
                 <div class="d-grid">
                   <button @click="addToCart(product)" class="btn1">Add to Cart</button>
                 </div>
@@ -71,7 +69,7 @@
         </v-row>
       </div>
       <div class="product-content">
-        <div class="title-product">{{ $t("title-product") }}</div>
+        <div class="title-product">{{ $t("title-product2") }}</div>
         <v-row
           class="container-item"
           style="margin: 0 !important; justify-content: center; align-items: center"
@@ -94,9 +92,7 @@
                 <h5 class="card-title">
                   {{ product.name }}
                 </h5>
-                <p class="card-text">
-                  {{ product.description }}
-                </p>
+                <p class="card-text">{{ product.price }}₫</p>
                 <div class="d-grid">
                   <button @click="addToCart(product)" class="btn1">Add to Cart</button>
                 </div>
@@ -106,7 +102,7 @@
         </v-row>
       </div>
       <div class="product-content">
-        <div class="title-product">{{ $t("title-product") }}</div>
+        <div class="title-product">{{ $t("title-product3") }}</div>
         <v-row
           class="container-item"
           style="margin: 0 !important; justify-content: center; align-items: center"
@@ -129,9 +125,7 @@
                 <h5 class="card-title">
                   {{ product.name }}
                 </h5>
-                <p class="card-text">
-                  {{ product.description }}
-                </p>
+                <p class="card-text">{{ product.price }}₫</p>
                 <div class="d-grid">
                   <button @click="addToCart(product)" class="btn1">Add to Cart</button>
                 </div>
@@ -141,7 +135,7 @@
         </v-row>
       </div>
       <div class="product-content">
-        <div class="title-product">{{ $t("title-product") }}</div>
+        <div class="title-product">{{ $t("title-product4") }}</div>
         <v-row
           class="container-item"
           style="margin: 0 !important; justify-content: center; align-items: center"
@@ -164,9 +158,7 @@
                 <h5 class="card-title">
                   {{ product.name }}
                 </h5>
-                <p class="card-text">
-                  {{ product.description }}
-                </p>
+                <p class="card-text">{{ product.price }}₫</p>
                 <div class="d-grid">
                   <button @click="addToCart(product)" class="btn1">Add to Cart</button>
                 </div>
@@ -189,28 +181,28 @@ export default {
           uuid: "1",
           name: this.$t("name1"),
           description: this.$t("description"),
-          price: "1",
+          price: "205500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_tom+ga.jpg",
         },
         {
           uuid: "2",
           name: this.$t("name2"),
           description: this.$t("description2"),
-          price: "2",
+          price: "205500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+ga.jpg",
         },
         {
           uuid: "3",
           name: this.$t("name3"),
           description: this.$t("description3"),
-          price: "3",
+          price: "215500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+tom.jpg",
         },
         {
           uuid: "4",
           name: this.$t("name4"),
           description: this.$t("description4"),
-          price: "4",
+          price: "215500",
           photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
         },
       ],
@@ -376,6 +368,10 @@ export default {
 }
 .card-title {
   width: 200px;
+  color: #ff5000;
+}
+.card-text {
+  font-weight: bold;
 }
 .title-product {
   font-size: 28px;
@@ -392,7 +388,7 @@ export default {
   padding: 12px 24px;
   border: 0;
   color: #fff;
-  background: #ff5000;
+  background: #1976d2;
   line-height: 1.15;
   font-size: 16px;
 }
@@ -439,6 +435,10 @@ a {
 <i18n>
   {
     "en":{
+      "title-product1":"FLAVORS OF THE WORLD",
+      "title-product2":"SEAFOOD CRAVERS",
+      "title-product3":"KID FAVORS",
+      "title-product4":"TRADITIONAL & MEAT LOVERS",
       "name1":"BANGKOK GREEN CURRY SHRIMP CHICKEN",
       "name2":"BANGKOK GREEN CURRY CHICKEN",
       "name3":"BANGKOK GREEN CURRY SHRIMP",
@@ -460,10 +460,6 @@ a {
       "name19":"TERIYAKI CHICKEN",
       "name20":"HAWAIIAN",
       "name21":"CHEESE MANIA",
-      "description":"1",
-      "description2":"2",
-      "description3":"3",
-      "description4":"4",
       "sale": "Daily Promotions",
       "paradise": "The paradise of food is waiting for you! Come and enjoy the quintessence of dishes from professional chefs",
       "pizza": "Pizza",
@@ -472,7 +468,11 @@ a {
       "drinks": "Drinks"
     },
     "vn":{
-   "name":"PIZZA BANGKOK CÀ RI XANH TÔM GÀ",
+      "title-product1":"HƯƠNG VỊ THẾ GIỚI",
+      "title-product2":"NGƯỜI MÊ HẢI SẢN",
+      "title-product3":"ƯU ĐÃI TRẺ EM",
+      "title-product4":"NGƯỜI YÊU THỊT & TRUYỀN THỐNG",
+      "name":"PIZZA BANGKOK CÀ RI XANH TÔM GÀ",
       "name2":"PIZZA BANGKOK CÀ RI XANH GÀ",
       "name3":"PIZZA BANGKOK CÀ RI XANH TÔM",
       "name4":"PIZZA BÒ BEEFSTEAK PHÔ MAI KIỂU NEW YORK",
@@ -493,10 +493,6 @@ a {
       "name3":"PIZZA GÀ XỐT TƯƠNG KIỂU NHẬT",
       "name4":"PIZZA DĂM BÔNG DỨA KIỂU HAWAII",
       "name":"PIZZA PHÔ MAI HẢO HẠNG",
-      "description":"1",
-      "description2":"2",
-      "description3":"3",
-      "description4":"4",
       "sale": "Khuyến Mãi Mỗi Ngày",
       "paradise": "Thiên đường của những món ăn đang chờ đợi bạn! Hãy đến và thưởng thức những tinh hoa của các món ăn từ tay những đầu bếp chuyên nghiệp",
       "pizza": "Pizza",
