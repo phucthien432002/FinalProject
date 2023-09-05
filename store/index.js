@@ -22,7 +22,6 @@ export const getters = {
 export const mutations = {
   addToCart(state, product) {
     // Thêm sản phẩm vào giỏ hàng
-    // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng hay chưa
     const existingProduct = state.shoppingCart.find(item => item.uuid === product.uuid);
 
     if (existingProduct) {
@@ -30,7 +29,9 @@ export const mutations = {
     } else {
       state.shoppingCart.push({ ...product, amount: 1 });
     }
-    
+
+    // Lưu giỏ hàng vào Local Storage
+    localStorage.setItem('shoppingCart', JSON.stringify(state.shoppingCart));
   },
   removeFromCart(state, product) {
     // Xóa sản phẩm khỏi giỏ hàng
@@ -42,11 +43,24 @@ export const mutations = {
       } else {
         state.shoppingCart.splice(productIndex, 1);
       }
+
+      // Lưu giỏ hàng vào Local Storage
+      localStorage.setItem('shoppingCart', JSON.stringify(state.shoppingCart));
     }
   },
   setProducts(state, products) {
     state.products = products;
   },
+  // Khởi tạo giỏ hàng từ Local Storage khi ứng dụng khởi đầu
+  initializeCartFromLocalStorage(state) {
+    if (process.client) {
+      const cartData = localStorage.getItem('shoppingCart');
+      if (cartData) {
+        state.shoppingCart = JSON.parse(cartData);
+      }
+    }
+  },
+
   // set language
   SET_LANG(state, locale) {
     state.locale = locale;

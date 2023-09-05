@@ -386,19 +386,15 @@ export default {
       shoppingCart: [],
     };
   },
-  mounted() {
-    this.shoppingCart = JSON.parse(localStorage.getItem("shoppingCart") || "[]");
-  },
-  watch: {
-    shoppingCart: {
-      handler(newValue) {
-        localStorage.setItem("shoppingCart", JSON.stringify(newValue));
-      },
-      deep: true,
-    },
-  },
   methods: {
     ...mapMutations(["addToCart"]),
+    // Gọi mutation để khởi tạo giỏ hàng từ Local Storage khi tải lại trang
+    initializeCart() {
+      this.$store.commit("initializeCartFromLocalStorage");
+    },
+  },
+  created() {
+    this.initializeCart();
   },
 };
 </script>
