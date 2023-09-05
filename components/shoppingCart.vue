@@ -42,7 +42,9 @@
               <h5 style="flex: none !important; width: 200px; color: #ff5000">
                 {{ product.name }}
               </h5>
-              <p style="font-weight: bold">{{ product.price }}₫ x {{ product.amount }}</p>
+              <p style="font-weight: bold">
+                {{ product.size }} - {{ product.price }}₫ x {{ product.amount }}
+              </p>
             </div>
             <div>
               <img

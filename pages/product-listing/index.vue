@@ -59,7 +59,14 @@
                 <h5 class="card-title">
                   {{ product.name }}
                 </h5>
-                <p class="card-text">{{ product.price }}₫</p>
+                <div
+                  class="d-flex justify-center align-center"
+                  style="margin: 0; padding: 0; gap: 5px"
+                >
+                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5>-</h5>
+                  <p class="card-text">{{ product.price }}₫</p>
+                </div>
                 <div class="d-grid">
                   <button @click="addToCart(product)" class="btn1">Add to Cart</button>
                 </div>
@@ -92,7 +99,14 @@
                 <h5 class="card-title">
                   {{ product.name }}
                 </h5>
-                <p class="card-text">{{ product.price }}₫</p>
+                <div
+                  class="d-flex justify-center align-center"
+                  style="margin: 0; padding: 0; gap: 5px"
+                >
+                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5>-</h5>
+                  <p class="card-text">{{ product.price }}₫</p>
+                </div>
                 <div class="d-grid">
                   <button @click="addToCart(product)" class="btn1">Add to Cart</button>
                 </div>
@@ -125,7 +139,14 @@
                 <h5 class="card-title">
                   {{ product.name }}
                 </h5>
-                <p class="card-text">{{ product.price }}₫</p>
+                <div
+                  class="d-flex justify-center align-center"
+                  style="margin: 0; padding: 0; gap: 5px"
+                >
+                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5>-</h5>
+                  <p class="card-text">{{ product.price }}₫</p>
+                </div>
                 <div class="d-grid">
                   <button @click="addToCart(product)" class="btn1">Add to Cart</button>
                 </div>
@@ -158,7 +179,14 @@
                 <h5 class="card-title">
                   {{ product.name }}
                 </h5>
-                <p class="card-text">{{ product.price }}₫</p>
+                <div
+                  class="d-flex justify-center align-center"
+                  style="margin: 0; padding: 0; gap: 5px"
+                >
+                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5>-</h5>
+                  <p class="card-text">{{ product.price }}₫</p>
+                </div>
                 <div class="d-grid">
                   <button @click="addToCart(product)" class="btn1">Add to Cart</button>
                 </div>
@@ -181,6 +209,7 @@ export default {
           uuid: "1",
           name: this.$t("name1"),
           description: this.$t("description"),
+          size: "MEDIUM",
           price: "205500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_tom+ga.jpg",
         },
@@ -188,6 +217,7 @@ export default {
           uuid: "2",
           name: this.$t("name2"),
           description: this.$t("description2"),
+          size: "MEDIUM",
           price: "205500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+ga.jpg",
         },
@@ -195,6 +225,7 @@ export default {
           uuid: "3",
           name: this.$t("name3"),
           description: this.$t("description3"),
+          size: "MEDIUM",
           price: "215500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+tom.jpg",
         },
@@ -202,6 +233,7 @@ export default {
           uuid: "4",
           name: this.$t("name4"),
           description: this.$t("description4"),
+          size: "MEDIUM",
           price: "215500",
           photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
         },
@@ -211,28 +243,32 @@ export default {
           uuid: "5",
           name: this.$t("name5"),
           description: this.$t("description"),
-          price: "1",
+          size: "SMALL",
+          price: "117000",
           photoURL: "https://img.dominos.vn/Surf-turf-Pizza-Bo-Tom-Nuong-Kieu-My-1.jpg",
         },
         {
           uuid: "6",
           name: this.$t("name6"),
           description: this.$t("description2"),
-          price: "2",
+          size: "SMALL",
+          price: "117000",
           photoURL: "https://img.dominos.vn/Pizza-Hai-San-Xot-Mayonnaise-Ocean-Mania.jpg",
         },
         {
           uuid: "7",
           name: this.$t("name7"),
           description: this.$t("description3"),
-          price: "3",
+          size: "SMALL",
+          price: "117000",
           photoURL: "https://img.dominos.vn/Pizzaminsea-Hai-San-Nhiet-Doi-Xot-Tieu.jpg",
         },
         {
           uuid: "8",
           name: this.$t("name8"),
           description: this.$t("description4"),
-          price: "4",
+          size: "SMALL",
+          price: "117000",
           photoURL:
             "https://img.dominos.vn/Pizza-Hai-San-Xot-Ca-Chua-Seafood-Delight.jpg",
         },
@@ -240,21 +276,24 @@ export default {
           uuid: "9",
           name: this.$t("name9"),
           description: this.$t("description3"),
-          price: "3",
+          size: "MEDIUM",
+          price: "205500",
           photoURL: "https://img.dominos.vn/Pizza+Bach+Tuoc+Mania-+TIENG+ANH.jpg",
         },
         {
           uuid: "10",
           name: this.$t("name10"),
           description: this.$t("description4"),
-          price: "4",
+          size: "MEDIUM",
+          price: "205500",
           photoURL: "https://img.dominos.vn/Pizza+Bach+Tuoc+Pizzamin+-+TIENG+ANH.jpg",
         },
         {
           uuid: "11",
           name: this.$t("name11"),
           description: this.$t("description4"),
-          price: "4",
+          size: "MEDIUM",
+          price: "205500",
           photoURL: "https://img.dominos.vn/Pizza+Bach+Tuoc+Delight+-+TIENG+ANH.jpg",
         },
       ],
@@ -263,14 +302,16 @@ export default {
           uuid: "12",
           name: this.$t("name12"),
           description: this.$t("description"),
-          price: "1",
+          size: "SMALL",
+          price: "97500",
           photoURL: "https://img.dominos.vn/Sausage-Kid-Mania-1.jpg",
         },
         {
           uuid: "13",
           name: this.$t("name13"),
           description: this.$t("description2"),
-          price: "2",
+          size: "SMALL",
+          price: "97500",
           photoURL:
             "https://img.dominos.vn/Pizza-Ga-Pho-Mai-Thit-Heo-Xong-Khoi-Cheesy-Chicken-Bacon.jpg",
         },
@@ -280,42 +321,48 @@ export default {
           uuid: "14",
           name: this.$t("name14"),
           description: this.$t("description"),
-          price: "1",
+          size: "MEDIUM",
+          price: "176000",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_cheese.jpg",
         },
         {
           uuid: "15",
           name: this.$t("name15"),
           description: this.$t("description2"),
-          price: "2",
+          size: "SMALL",
+          price: "117000",
           photoURL: "https://img.dominos.vn/Pizza-Thap-Cam-Thuong-Hang-Extravaganza.jpg",
         },
         {
           uuid: "16",
           name: this.$t("name16"),
           description: this.$t("description3"),
-          price: "3",
+          size: "SMALL",
+          price: "87500",
           photoURL: "https://img.dominos.vn/Veggie-mania-Pizza-Rau-Cu-Thap-Cam.jpg",
         },
         {
           uuid: "17",
           name: this.$t("name17"),
           description: this.$t("description4"),
-          price: "4",
+          size: "SMALL",
+          price: "117,000",
           photoURL: "https://img.dominos.vn/Meat-lover-Pizza-5-Loai-Thit-Thuong-Hang.jpg",
         },
         {
           uuid: "18",
           name: this.$t("name18"),
           description: this.$t("description"),
-          price: "1",
+          size: "SMALL",
+          price: "117000",
           photoURL: "https://img.dominos.vn/Pepperoni-feast-Pizza-Xuc-Xich-Y.jpg",
         },
         {
           uuid: "19",
           name: this.$t("name19"),
           description: this.$t("description2"),
-          price: "2",
+          size: "LARGE",
+          price: "97500",
           photoURL:
             "https://img.dominos.vn/Pizza-Ga-Xot-Tuong-Kieu-Nhat-Teriyaki-Chicken.jpg",
         },
@@ -323,14 +370,16 @@ export default {
           uuid: "20",
           name: this.$t("name20"),
           description: this.$t("description3"),
-          price: "3",
+          size: "SMALL",
+          price: "97500",
           photoURL: "https://img.dominos.vn/Pizza-Dam-Bong-Dua-Kieu-Hawaii-Hawaiian.jpg",
         },
         {
           uuid: "21",
           name: this.$t("name21"),
           description: this.$t("description4"),
-          price: "4",
+          size: "SMALL",
+          price: "87500",
           photoURL: "https://img.dominos.vn/Pizza-Pho-Mai-Hao-Hang-Cheese-Mania.jpg",
         },
       ],
@@ -472,27 +521,27 @@ a {
       "title-product2":"NGƯỜI MÊ HẢI SẢN",
       "title-product3":"ƯU ĐÃI TRẺ EM",
       "title-product4":"NGƯỜI YÊU THỊT & TRUYỀN THỐNG",
-      "name":"PIZZA BANGKOK CÀ RI XANH TÔM GÀ",
+      "name1":"PIZZA BANGKOK CÀ RI XANH TÔM GÀ",
       "name2":"PIZZA BANGKOK CÀ RI XANH GÀ",
       "name3":"PIZZA BANGKOK CÀ RI XANH TÔM",
       "name4":"PIZZA BÒ BEEFSTEAK PHÔ MAI KIỂU NEW YORK",
-      "name":"PIZZA BÒ & TÔM NƯỚNG KIỂU MỸ",
-      "name2":"PIZZA HẢI SẢN XỐT MAYONNAISE",
-      "name3":"PIZZA HẢI SẢN NHIỆT ĐỚI XỐT TIÊU",
-      "name4":"PIZZA HẢI SẢN XỐT CÀ CHUA",
-      "name":"PIZZA HẢI SẢN BẠCH TUỘC XỐT MAYONNAISE",
-      "name2":"PIZZA HẢI SẢN BẠCH TUỘC NHIỆT ĐỚI XỐT TIÊU",
-      "name3":"PIZZA HẢI SẢN BẠCH TUỘC XỐT CÀ CHUA",
-      "name4":"PIZZA XÚC XÍCH XỐT PHÔ MAI",
-      "name":"PIZZA GÀ PHÔ MAI THỊT HEO XÔNG KHÓI",
-      "name2":"PIZZA NGẬP VỊ PHÔ MAI HẢO HẠNG",
-      "name3":"PIZZA THẬP CẨM THƯỢNG HẠNG",
-      "name4":"PIZZA RAU CỦ THẬP CẨM",
-      "name":"PIZZA 5 LOẠI THỊT THƯỢNG HẠNG",
-      "name2":"PIZZA XÚC XÍCH Ý TRUYỀN THỐNG",
-      "name3":"PIZZA GÀ XỐT TƯƠNG KIỂU NHẬT",
-      "name4":"PIZZA DĂM BÔNG DỨA KIỂU HAWAII",
-      "name":"PIZZA PHÔ MAI HẢO HẠNG",
+      "name5":"PIZZA BÒ & TÔM NƯỚNG KIỂU MỸ",
+      "name6":"PIZZA HẢI SẢN XỐT MAYONNAISE",
+      "name7":"PIZZA HẢI SẢN NHIỆT ĐỚI XỐT TIÊU",
+      "name8":"PIZZA HẢI SẢN XỐT CÀ CHUA",
+      "name9":"PIZZA HẢI SẢN BẠCH TUỘC XỐT MAYONNAISE",
+      "name10":"PIZZA HẢI SẢN BẠCH TUỘC NHIỆT ĐỚI XỐT TIÊU",
+      "name11":"PIZZA HẢI SẢN BẠCH TUỘC XỐT CÀ CHUA",
+      "name12":"PIZZA XÚC XÍCH XỐT PHÔ MAI",
+      "name13":"PIZZA GÀ PHÔ MAI THỊT HEO XÔNG KHÓI",
+      "name14":"PIZZA NGẬP VỊ PHÔ MAI HẢO HẠNG",
+      "name15":"PIZZA THẬP CẨM THƯỢNG HẠNG",
+      "name16":"PIZZA RAU CỦ THẬP CẨM",
+      "name17":"PIZZA 5 LOẠI THỊT THƯỢNG HẠNG",
+      "name18":"PIZZA XÚC XÍCH Ý TRUYỀN THỐNG",
+      "name19":"PIZZA GÀ XỐT TƯƠNG KIỂU NHẬT",
+      "name20":"PIZZA DĂM BÔNG DỨA KIỂU HAWAII",
+      "name21":"PIZZA PHÔ MAI HẢO HẠNG",
       "sale": "Khuyến Mãi Mỗi Ngày",
       "paradise": "Thiên đường của những món ăn đang chờ đợi bạn! Hãy đến và thưởng thức những tinh hoa của các món ăn từ tay những đầu bếp chuyên nghiệp",
       "pizza": "Pizza",

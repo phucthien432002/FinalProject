@@ -30,6 +30,7 @@ export const mutations = {
     } else {
       state.shoppingCart.push({ ...product, amount: 1 });
     }
+    
   },
   removeFromCart(state, product) {
     // Xóa sản phẩm khỏi giỏ hàng
