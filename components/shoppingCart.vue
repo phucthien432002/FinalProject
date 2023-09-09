@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-menu offset-y>
+    <v-dialog v-model="dialog" width="300">
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="primary" dark v-bind="attrs" v-on="on">
           <v-icon>mdi-cart</v-icon>
@@ -51,7 +51,7 @@
                 :src="product.photoURL"
                 :style="
                   $vuetify.breakpoint.smAndDown
-                    ? 'width: 50px; height: 50px'
+                    ? 'width: 150px; height: 150px'
                     : 'width: 200px; height: 200px'
                 "
               />
@@ -62,12 +62,17 @@
           </div>
         </v-list-item>
       </v-list>
-    </v-menu>
+    </v-dialog>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      dialog: false,
+    };
+  },
   methods: {
     removeFromCart(product) {
       // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
@@ -120,5 +125,13 @@ export default {
   min-width: 300px;
   height: 80vh;
   overflow-x: auto;
+}
+.v-dialog {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 98%;
+  transform: translateX(-100%);
+  z-index: 1000;
 }
 </style>

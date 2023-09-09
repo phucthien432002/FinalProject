@@ -23,7 +23,7 @@
         </ul>
       </div>
       <v-spacer />
-      <div class="mr-2">
+      <div class="mr-2" style="position: relative">
         <shoppingCart />
       </div>
       <v-menu offset-y>
