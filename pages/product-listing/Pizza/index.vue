@@ -35,156 +35,166 @@
       </v-container>
     </v-row>
     <div class="container">
-      <div class="text-center">
-        <h2>{{ $t("title1") }}</h2>
-      </div>
-      <v-col
-        cols="12"
-        class="flex-nowrap flex-md-wrap justify-content-start d-flex"
-        style="margin: 0 !important; justify-content: center; align-items: center"
-      >
-        <div
-          v-for="(product, index) in products"
-          :key="'product-' + index"
-          class="px-1 py-1 flex-fit"
+      <div class="product-content">
+        <div class="title-product">{{ $t("title-product1") }}</div>
+        <v-row
+          class="container-item"
+          style="margin: 0 !important; justify-content: center; align-items: center"
         >
           <div
-            class="card mb-3 justify-center text-center"
-            style="width: auto; border: 4px solid #fff6f6"
+            v-for="(product, index) in products"
+            :key="'product-' + index"
+            class="px-1 py-1 flex-fit"
           >
-            <img
-              :src="product.photoURL"
-              class="card-img-top"
-              style="min-width: auto; height: 150px"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                {{ product.name }}
-              </h5>
-              <p class="card-text">
-                {{ product.description }}
-              </p>
-              <div class="d-grid">
-                <button @click="addToCart(product)" class="btn1">Add to Cart</button>
+            <div
+              class="card mb-3 justify-center text-center"
+              style="width: auto; border: 4px solid #fff6f6"
+            >
+              <img
+                :src="product.photoURL"
+                class="card-img-top"
+                style="min-width: auto; height: 150px"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ product.name }}
+                </h5>
+                <div
+                  class="d-flex justify-center align-center"
+                  style="margin: 0; padding: 0; gap: 5px"
+                >
+                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5>-</h5>
+                  <p class="card-text">{{ product.price }}₫</p>
+                </div>
+                <div class="d-grid">
+                  <button @click="addToCart(product)" class="btn1">Add to Cart</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </v-col>
-    </div>
-    <div class="container">
-      <div class="text-center">
-        <h2>{{ $t("title2") }}</h2>
+        </v-row>
       </div>
-      <v-col
-        cols="12"
-        class="py-2 flex-fit d-flex flex-wrap"
-        style="margin: 0 !important; justify-content: center; align-items: center"
-      >
-        <div
-          v-for="(product, index) in products2"
-          :key="'product-' + index"
-          class="px-1 py-1"
+      <div class="product-content">
+        <div class="title-product">{{ $t("title-product2") }}</div>
+        <v-row
+          class="container-item"
+          style="margin: 0 !important; justify-content: center; align-items: center"
         >
           <div
-            class="card mb-3 justify-center text-center"
-            style="width: auto; border: 4px solid #fff6f6"
+            v-for="(product, index) in products2"
+            :key="'product-' + index"
+            class="px-1 py-1 flex-fit"
           >
-            <img
-              :src="product.photoURL"
-              class="card-img-top"
-              style="min-width: auto; height: 150px"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                {{ product.name }}
-              </h5>
-              <p class="card-text">
-                {{ product.description }}
-              </p>
-              <div class="d-grid">
-                <button @click="addToCart(product)" class="btn1">Add to Cart</button>
+            <div
+              class="card mb-3 justify-center text-center"
+              style="width: auto; border: 4px solid #fff6f6"
+            >
+              <img
+                :src="product.photoURL"
+                class="card-img-top"
+                style="min-width: auto; height: 150px"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ product.name }}
+                </h5>
+                <div
+                  class="d-flex justify-center align-center"
+                  style="margin: 0; padding: 0; gap: 5px"
+                >
+                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5>-</h5>
+                  <p class="card-text">{{ product.price }}₫</p>
+                </div>
+                <div class="d-grid">
+                  <button @click="addToCart(product)" class="btn1">Add to Cart</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </v-col>
-    </div>
-    <div class="container">
-      <div class="text-center">
-        <h2>{{ $t("title3") }}</h2>
+        </v-row>
       </div>
-      <v-col
-        cols="12"
-        class="flex-fit d-flex"
-        style="margin: 0 !important; justify-content: center; align-items: center"
-      >
-        <div
-          v-for="(product, index) in products3"
-          :key="'product-' + index"
-          class="px-1 py-1 flex-fit"
+      <div class="product-content">
+        <div class="title-product">{{ $t("title-product3") }}</div>
+        <v-row
+          class="container-item"
+          style="margin: 0 !important; justify-content: center; align-items: center"
         >
           <div
-            class="card mb-3 justify-center text-center"
-            style="width: auto; border: 4px solid #fff6f6"
+            v-for="(product, index) in products3"
+            :key="'product-' + index"
+            class="px-1 py-1 flex-fit"
           >
-            <img
-              :src="product.photoURL"
-              class="card-img-top"
-              style="min-width: auto; height: 150px"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                {{ product.name }}
-              </h5>
-              <p class="card-text">
-                {{ product.description }}
-              </p>
-              <div class="d-grid">
-                <button @click="addToCart(product)" class="btn1">Add to Cart</button>
+            <div
+              class="card mb-3 justify-center text-center"
+              style="width: auto; border: 4px solid #fff6f6"
+            >
+              <img
+                :src="product.photoURL"
+                class="card-img-top"
+                style="min-width: auto; height: 150px"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ product.name }}
+                </h5>
+                <div
+                  class="d-flex justify-center align-center"
+                  style="margin: 0; padding: 0; gap: 5px"
+                >
+                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5>-</h5>
+                  <p class="card-text">{{ product.price }}₫</p>
+                </div>
+                <div class="d-grid">
+                  <button @click="addToCart(product)" class="btn1">Add to Cart</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </v-col>
-    </div>
-    <div class="container">
-      <div class="text-center">
-        <h2>{{ $t("title4") }}</h2>
+        </v-row>
       </div>
-      <v-col
-        cols="12"
-        class="flex-fit d-flex"
-        style="margin: 0 !important; justify-content: center; align-items: center"
-      >
-        <div
-          v-for="(product, index) in products4"
-          :key="'product-' + index"
-          class="px-1 py-1 flex-fit"
+      <div class="product-content">
+        <div class="title-product">{{ $t("title-product4") }}</div>
+        <v-row
+          class="container-item"
+          style="margin: 0 !important; justify-content: center; align-items: center"
         >
           <div
-            class="card mb-3 justify-center text-center"
-            style="width: auto; border: 4px solid #fff6f6"
+            v-for="(product, index) in products4"
+            :key="'product-' + index"
+            class="px-1 py-1 flex-fit"
           >
-            <img
-              :src="product.photoURL"
-              class="card-img-top"
-              style="min-width: auto; height: 150px"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                {{ product.name }}
-              </h5>
-              <p class="card-text">
-                {{ product.description }}
-              </p>
-              <div class="d-grid">
-                <button @click="addToCart(product)" class="btn1">Add to Cart</button>
+            <div
+              class="card mb-3 justify-center text-center"
+              style="width: auto; border: 4px solid #fff6f6"
+            >
+              <img
+                :src="product.photoURL"
+                class="card-img-top"
+                style="min-width: auto; height: 150px"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  {{ product.name }}
+                </h5>
+                <div
+                  class="d-flex justify-center align-center"
+                  style="margin: 0; padding: 0; gap: 5px"
+                >
+                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5>-</h5>
+                  <p class="card-text">{{ product.price }}₫</p>
+                </div>
+                <div class="d-grid">
+                  <button @click="addToCart(product)" class="btn1">Add to Cart</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </v-col>
+        </v-row>
+      </div>
     </div>
   </div>
 </template>
@@ -197,172 +207,223 @@ export default {
       products: [
         {
           uuid: "1",
-          name: this.$t("name"),
+          name: this.$t("name1"),
           description: this.$t("description"),
-          price: "1",
+          size: "MEDIUM",
+          price: "205500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_tom+ga.jpg",
         },
         {
           uuid: "2",
           name: this.$t("name2"),
           description: this.$t("description2"),
-          price: "2",
+          size: "MEDIUM",
+          price: "205500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+ga.jpg",
         },
         {
           uuid: "3",
           name: this.$t("name3"),
           description: this.$t("description3"),
-          price: "3",
+          size: "MEDIUM",
+          price: "215500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+tom.jpg",
         },
         {
           uuid: "4",
           name: this.$t("name4"),
           description: this.$t("description4"),
-          price: "4",
+          size: "MEDIUM",
+          price: "215500",
           photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
         },
       ],
       products2: [
         {
-          uuid: "1",
+          uuid: "5",
           name: this.$t("name5"),
           description: this.$t("description"),
-          price: "1",
-          photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_tom+ga.jpg",
+          size: "SMALL",
+          price: "117000",
+          photoURL: "https://img.dominos.vn/Surf-turf-Pizza-Bo-Tom-Nuong-Kieu-My-1.jpg",
         },
         {
-          uuid: "2",
+          uuid: "6",
           name: this.$t("name6"),
           description: this.$t("description2"),
-          price: "2",
-          photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+ga.jpg",
+          size: "SMALL",
+          price: "117000",
+          photoURL: "https://img.dominos.vn/Pizza-Hai-San-Xot-Mayonnaise-Ocean-Mania.jpg",
         },
         {
-          uuid: "3",
+          uuid: "7",
           name: this.$t("name7"),
           description: this.$t("description3"),
-          price: "3",
-          photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+tom.jpg",
+          size: "SMALL",
+          price: "117000",
+          photoURL: "https://img.dominos.vn/Pizzaminsea-Hai-San-Nhiet-Doi-Xot-Tieu.jpg",
         },
         {
-          uuid: "4",
+          uuid: "8",
           name: this.$t("name8"),
           description: this.$t("description4"),
-          price: "4",
-          photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
+          size: "SMALL",
+          price: "117000",
+          photoURL:
+            "https://img.dominos.vn/Pizza-Hai-San-Xot-Ca-Chua-Seafood-Delight.jpg",
         },
         {
-          uuid: "4",
+          uuid: "9",
           name: this.$t("name9"),
-          description: this.$t("description4"),
-          price: "4",
-          photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
+          description: this.$t("description3"),
+          size: "MEDIUM",
+          price: "205500",
+          photoURL: "https://img.dominos.vn/Pizza+Bach+Tuoc+Mania-+TIENG+ANH.jpg",
         },
         {
-          uuid: "4",
+          uuid: "10",
           name: this.$t("name10"),
           description: this.$t("description4"),
-          price: "4",
-          photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
+          size: "MEDIUM",
+          price: "205500",
+          photoURL: "https://img.dominos.vn/Pizza+Bach+Tuoc+Pizzamin+-+TIENG+ANH.jpg",
         },
         {
-          uuid: "4",
+          uuid: "11",
           name: this.$t("name11"),
           description: this.$t("description4"),
-          price: "4",
-          photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
+          size: "MEDIUM",
+          price: "205500",
+          photoURL: "https://img.dominos.vn/Pizza+Bach+Tuoc+Delight+-+TIENG+ANH.jpg",
         },
       ],
       products3: [
         {
-          uuid: "1",
+          uuid: "12",
           name: this.$t("name12"),
           description: this.$t("description"),
-          price: "1",
-          photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_tom+ga.jpg",
+          size: "SMALL",
+          price: "97500",
+          photoURL: "https://img.dominos.vn/Sausage-Kid-Mania-1.jpg",
         },
         {
-          uuid: "2",
+          uuid: "13",
           name: this.$t("name13"),
           description: this.$t("description2"),
-          price: "2",
-          photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+ga.jpg",
+          size: "SMALL",
+          price: "97500",
+          photoURL:
+            "https://img.dominos.vn/Pizza-Ga-Pho-Mai-Thit-Heo-Xong-Khoi-Cheesy-Chicken-Bacon.jpg",
         },
       ],
       products4: [
         {
-          uuid: "1",
+          uuid: "14",
           name: this.$t("name14"),
           description: this.$t("description"),
-          price: "1",
-          photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_tom+ga.jpg",
+          size: "MEDIUM",
+          price: "176000",
+          photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_cheese.jpg",
         },
         {
-          uuid: "2",
+          uuid: "15",
           name: this.$t("name15"),
           description: this.$t("description2"),
-          price: "2",
-          photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+ga.jpg",
+          size: "SMALL",
+          price: "117000",
+          photoURL: "https://img.dominos.vn/Pizza-Thap-Cam-Thuong-Hang-Extravaganza.jpg",
         },
         {
-          uuid: "3",
+          uuid: "16",
           name: this.$t("name16"),
           description: this.$t("description3"),
-          price: "3",
-          photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+tom.jpg",
+          size: "SMALL",
+          price: "87500",
+          photoURL: "https://img.dominos.vn/Veggie-mania-Pizza-Rau-Cu-Thap-Cam.jpg",
         },
         {
-          uuid: "4",
+          uuid: "17",
           name: this.$t("name17"),
           description: this.$t("description4"),
-          price: "4",
-          photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
+          size: "SMALL",
+          price: "117,000",
+          photoURL: "https://img.dominos.vn/Meat-lover-Pizza-5-Loai-Thit-Thuong-Hang.jpg",
         },
         {
-          uuid: "4",
+          uuid: "18",
           name: this.$t("name18"),
-          description: this.$t("description4"),
-          price: "4",
-          photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
+          description: this.$t("description"),
+          size: "SMALL",
+          price: "117000",
+          photoURL: "https://img.dominos.vn/Pepperoni-feast-Pizza-Xuc-Xich-Y.jpg",
         },
         {
-          uuid: "4",
+          uuid: "19",
           name: this.$t("name19"),
-          description: this.$t("description4"),
-          price: "4",
-          photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
+          description: this.$t("description2"),
+          size: "LARGE",
+          price: "97500",
+          photoURL:
+            "https://img.dominos.vn/Pizza-Ga-Xot-Tuong-Kieu-Nhat-Teriyaki-Chicken.jpg",
         },
         {
-          uuid: "4",
+          uuid: "20",
           name: this.$t("name20"),
+          description: this.$t("description3"),
+          size: "SMALL",
+          price: "97500",
+          photoURL: "https://img.dominos.vn/Pizza-Dam-Bong-Dua-Kieu-Hawaii-Hawaiian.jpg",
+        },
+        {
+          uuid: "21",
+          name: this.$t("name21"),
           description: this.$t("description4"),
-          price: "4",
-          photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
+          size: "SMALL",
+          price: "87500",
+          photoURL: "https://img.dominos.vn/Pizza-Pho-Mai-Hao-Hang-Cheese-Mania.jpg",
         },
       ],
       shoppingCart: [],
     };
   },
-  mounted() {
-    this.shoppingCart = JSON.parse(localStorage.getItem("shoppingCart") || "[]");
-  },
-  watch: {
-    shoppingCart: {
-      handler(newValue) {
-        localStorage.setItem("shoppingCart", JSON.stringify(newValue));
-      },
-      deep: true,
-    },
-  },
   methods: {
     ...mapMutations(["addToCart"]),
+    // Gọi mutation để khởi tạo giỏ hàng từ Local Storage khi tải lại trang
+    initializeCart() {
+      this.$store.commit("initializeCartFromLocalStorage");
+    },
+  },
+  created() {
+    this.initializeCart();
   },
 };
 </script>
 
 <style scoped>
+.container-item {
+  gap: 20px;
+}
+.card {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.card-body {
+  display: grid !important;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-content: center;
+}
+.card-title {
+  width: 200px;
+  color: #ff5000;
+}
+.card-text {
+  font-weight: bold;
+}
+.title-product {
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+}
 .btn1 {
   display: inline-block;
   outline: none;
@@ -372,7 +433,7 @@ export default {
   padding: 12px 24px;
   border: 0;
   color: #fff;
-  background: #ff5000;
+  background: #1976d2;
   line-height: 1.15;
   font-size: 16px;
 }
@@ -419,11 +480,11 @@ a {
 <i18n>
   {
     "en":{
-      "title1": "FLAVORS OF THE WORLD",
-      "title2": "SEAFOOD CRAVERS",
-      "title3": "KID FAVORS",
-      "title4": "TRADITIONAL & MEAT LOVERS",
-      "name":"BANGKOK GREEN CURRY SHRIMP CHICKEN",
+      "title-product1":"FLAVORS OF THE WORLD",
+      "title-product2":"SEAFOOD CRAVERS",
+      "title-product3":"KID FAVORS",
+      "title-product4":"TRADITIONAL & MEAT LOVERS",
+      "name1":"BANGKOK GREEN CURRY SHRIMP CHICKEN",
       "name2":"BANGKOK GREEN CURRY CHICKEN",
       "name3":"BANGKOK GREEN CURRY SHRIMP",
       "name4":"NEW YORK CHEESESTEAK",
@@ -436,17 +497,14 @@ a {
       "name11":"OCTOPUS SEAFOOD DELIGHT",
       "name12":"SAUSAGE KID MANIA",
       "name13":"CHEESY CHICKEN BACON",
-      "name14":"EXTRAVAGANZA",
-      "name15":"VEGGIE MANIA",
-      "name16":"MEAT LOVERS",
-      "name17":"PEPPERONI FEAST",
-      "name18":"TERIYAKI CHICKEN",
-      "name19":"HAWAIIAN",
-      "name20":"CHEESE MANIA",
-      "description":"1",
-      "description2":"2",
-      "description3":"3",
-      "description4":"4",
+      "name14":"CHEESY MADNESS",
+      "name15":"EXTRAVAGANZA",
+      "name16":"VEGGIE MANIA",
+      "name17":"MEAT LOVERS",
+      "name18":"PEPPERONI FEAST",
+      "name19":"TERIYAKI CHICKEN",
+      "name20":"HAWAIIAN",
+      "name21":"CHEESE MANIA",
       "sale": "Daily Promotions",
       "paradise": "The paradise of food is waiting for you! Come and enjoy the quintessence of dishes from professional chefs",
       "pizza": "Pizza",
@@ -455,11 +513,11 @@ a {
       "drinks": "Drinks"
     },
     "vn":{
-      "title1": "HƯƠNG VỊ THẾ GIỚI",
-      "title2": "NGƯỜI YÊU HẢI SẢN",
-      "title3": "DÀNH CHO TRẺ EM",
-      "title4": "TRUYỀN THỐNG & NGƯỜI YÊU THỊT",
-      "name":"PIZZA BANGKOK CÀ RI XANH TÔM GÀ",
+      "title-product1":"HƯƠNG VỊ THẾ GIỚI",
+      "title-product2":"NGƯỜI MÊ HẢI SẢN",
+      "title-product3":"ƯU ĐÃI TRẺ EM",
+      "title-product4":"NGƯỜI YÊU THỊT & TRUYỀN THỐNG",
+      "name1":"PIZZA BANGKOK CÀ RI XANH TÔM GÀ",
       "name2":"PIZZA BANGKOK CÀ RI XANH GÀ",
       "name3":"PIZZA BANGKOK CÀ RI XANH TÔM",
       "name4":"PIZZA BÒ BEEFSTEAK PHÔ MAI KIỂU NEW YORK",
@@ -470,19 +528,16 @@ a {
       "name9":"PIZZA HẢI SẢN BẠCH TUỘC XỐT MAYONNAISE",
       "name10":"PIZZA HẢI SẢN BẠCH TUỘC NHIỆT ĐỚI XỐT TIÊU",
       "name11":"PIZZA HẢI SẢN BẠCH TUỘC XỐT CÀ CHUA",
-      "name12":"PIZZA XÚC XÍCH XỐT PHÔ MAI ",
+      "name12":"PIZZA XÚC XÍCH XỐT PHÔ MAI",
       "name13":"PIZZA GÀ PHÔ MAI THỊT HEO XÔNG KHÓI",
-      "name14":"PIZZA THẬP CẨM THƯỢNG HẠNG",
-      "name15":"PIZZA RAU CỦ THẬP CẨM",
-      "name16":"PIZZA 5 LOẠI THỊT THƯỢNG HẠNG",
-      "name17":"PIZZA XÚC XÍCH Ý TRUYỀN THỐNG",
-      "name18":"PIZZA GÀ XỐT TƯƠNG KIỂU NHẬT",
-      "name19":"PIZZA DĂM BÔNG DỨA KIỂU HAWAII",
-      "name20":"PIZZA PHÔ MAI HẢO HẠNG",
-      "description":"1",
-      "description2":"2",
-      "description3":"3",
-      "description4":"4",
+      "name14":"PIZZA NGẬP VỊ PHÔ MAI HẢO HẠNG",
+      "name15":"PIZZA THẬP CẨM THƯỢNG HẠNG",
+      "name16":"PIZZA RAU CỦ THẬP CẨM",
+      "name17":"PIZZA 5 LOẠI THỊT THƯỢNG HẠNG",
+      "name18":"PIZZA XÚC XÍCH Ý TRUYỀN THỐNG",
+      "name19":"PIZZA GÀ XỐT TƯƠNG KIỂU NHẬT",
+      "name20":"PIZZA DĂM BÔNG DỨA KIỂU HAWAII",
+      "name21":"PIZZA PHÔ MAI HẢO HẠNG",
       "sale": "Khuyến Mãi Mỗi Ngày",
       "paradise": "Thiên đường của những món ăn đang chờ đợi bạn! Hãy đến và thưởng thức những tinh hoa của các món ăn từ tay những đầu bếp chuyên nghiệp",
       "pizza": "Pizza",
