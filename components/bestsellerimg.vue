@@ -58,11 +58,11 @@ export default {
           name: this.$t("menu2"),
         },
         {
-          src: "/images/best_seller_menu/3.jpg",
+          src: "/images/best_seller_menu/4.jpg",
           name: this.$t("menu3"),
         },
         {
-          src: "/images/best_seller_menu/4.jpg",
+          src: "/images/best_seller_menu/3.jpg",
           name: this.$t("menu4"),
         },
       ];
