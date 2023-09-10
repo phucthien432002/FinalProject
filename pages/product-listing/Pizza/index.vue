@@ -25,7 +25,7 @@
               <a href="/product-listing/Sides">{{ $t("sides") }}</a>
             </li>
             <li>
-              <a href="/product-listing/Deseert">{{ $t("dessert") }}</a>
+              <a href="/product-listing/Dessert">{{ $t("dessert") }}</a>
             </li>
             <li>
               <a href="/product-listing/Drinks">{{ $t("drinks") }}</a>

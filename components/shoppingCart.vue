@@ -42,9 +42,7 @@
               <h5 style="flex: none !important; width: 200px; color: #ff5000">
                 {{ product.name }}
               </h5>
-              <p style="font-weight: bold">
-                {{ product.size }} - {{ product.price }}₫ x {{ product.amount }}
-              </p>
+              <p style="font-weight: bold">{{ product.price }}₫ x {{ product.amount }}</p>
             </div>
             <div>
               <img
@@ -61,6 +59,9 @@
             </div>
           </div>
         </v-list-item>
+        <div>
+          <button @click="submitOrder()">{{ $t("checkout") }}</button>
+        </div>
       </v-list>
     </v-dialog>
   </div>
@@ -74,6 +75,15 @@ export default {
     };
   },
   methods: {
+    submitOrder() {
+      // Truy cập giỏ hàng và console log ra sản phẩm
+      const shoppingCart = this.$store.state.shoppingCart;
+      console.log("Sản phẩm trong giỏ hàng của bạn:", shoppingCart);
+      // Gọi mutation để xóa tất cả sản phẩm khỏi giỏ hàng
+      this.$store.commit("clearCart");
+      // Xóa trạng thái giỏ hàng từ localStorage
+      localStorage.removeItem("shoppingCart");
+    },
     removeFromCart(product) {
       // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
       this.$store.commit("removeFromCart", product);

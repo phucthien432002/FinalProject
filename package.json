@@ -19,6 +19,7 @@
     "aos": "^2.3.4",
     "cookie-universal-nuxt": "^2.1.5",
     "core-js": "^3.25.3",
+    "firebase": "^10.3.1",
     "nuxt": "^2.15.8",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",

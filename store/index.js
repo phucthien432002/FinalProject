@@ -32,6 +32,10 @@ export const mutations = {
 
     // Lưu giỏ hàng vào Local Storage
     localStorage.setItem('shoppingCart', JSON.stringify(state.shoppingCart));
+    
+  },
+  clearCart(state) {
+    state.shoppingCart = [];
   },
   removeFromCart(state, product) {
     // Xóa sản phẩm khỏi giỏ hàng

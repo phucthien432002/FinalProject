@@ -141,6 +141,19 @@ export default {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    env: {
+      // Your Firebase configuration here
+      firebaseConfig: {
+        apiKey: "AIzaSyCU6o6GPNPe2GPhHgVYCrOK63n3UiTdJKU",
+        authDomain: "final-project-bf632.firebaseapp.com",
+        databaseURL: "https://final-project-bf632-default-rtdb.firebaseio.com",
+        projectId: "final-project-bf632",
+        storageBucket: "final-project-bf632.appspot.com",
+        messagingSenderId: "320594181878",
+        appId: "1:320594181878:web:6f4ec7b831e033663ab6d7",
+        measurementId: "G-181CMQG1K7"
+      },
+    },
   },
 };
