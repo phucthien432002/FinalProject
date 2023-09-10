@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -83,6 +84,19 @@ export default {
       this.$store.commit("clearCart");
       // Xóa trạng thái giỏ hàng từ localStorage
       localStorage.removeItem("shoppingCart");
+      // Gửi dữ liệu lên Firebase Realtime Database bằng Axios
+      const firebaseUrl =
+        "https://final-project-bf632-default-rtdb.firebaseio.com/orders.json"; // Thay đổi URL của bạn
+      axios
+        .post(firebaseUrl, shoppingCart)
+        .then((response) => {
+          console.log("Dữ liệu đã được gửi thành công:", response.data);
+          // Thực hiện các xử lý khác sau khi gửi dữ liệu thành công
+        })
+        .catch((error) => {
+          console.error("Lỗi khi gửi dữ liệu lên Firebase:", error);
+          // Xử lý lỗi nếu cần
+        });
     },
     removeFromCart(product) {
       // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
