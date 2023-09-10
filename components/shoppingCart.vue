@@ -60,7 +60,20 @@
           </div>
         </v-list-item>
         <div>
-          <button @click="submitOrder()">{{ $t("checkout") }}</button>
+          <button @click="showCheckoutForm">Thanh toán</button>
+          <!-- Biểu mẫu nhập thông tin -->
+          <form v-if="isCheckoutFormVisible" @submit.prevent="submitOrder">
+            <div class="form-group">
+              <label for="name">Tên:</label>
+              <input type="text" id="name" v-model="orderInfo.name" required />
+            </div>
+            <div class="form-group">
+              <label for="address">Địa chỉ:</label>
+              <input type="text" id="address" v-model="orderInfo.address" required />
+            </div>
+            <!-- Thêm các trường khác tương tự -->
+            <button type="submit">Đặt hàng</button>
+          </form>
         </div>
       </v-list>
     </v-dialog>
@@ -72,26 +85,48 @@ import axios from "axios";
 export default {
   data() {
     return {
+      isCheckoutFormVisible: false, // Mặc định biểu mẫu không hiển thị
+      orderInfo: {
+        name: "",
+        address: "",
+        // Thêm các trường khác tương tự
+      },
       dialog: false,
     };
   },
   methods: {
+    showCheckoutForm() {
+      // Hiển thị biểu mẫu khi nút thanh toán được nhấn
+      this.isCheckoutFormVisible = true;
+    },
+
     submitOrder() {
       // Truy cập giỏ hàng và console log ra sản phẩm
       const shoppingCart = this.$store.state.shoppingCart;
       console.log("Sản phẩm trong giỏ hàng của bạn:", shoppingCart);
+
+      // Lấy thông tin đặt hàng từ biểu mẫu
+      const orderData = {
+        ...this.orderInfo,
+        shoppingCart,
+      };
+
       // Gọi mutation để xóa tất cả sản phẩm khỏi giỏ hàng
       this.$store.commit("clearCart");
+
       // Xóa trạng thái giỏ hàng từ localStorage
       localStorage.removeItem("shoppingCart");
-      // Gửi dữ liệu lên Firebase Realtime Database bằng Axios
+
+      // Gửi dữ liệu đặt hàng (bao gồm thông tin và giỏ hàng) lên Firebase Realtime Database
       const firebaseUrl =
-        "https://final-project-bf632-default-rtdb.firebaseio.com/orders.json"; // Thay đổi URL của bạn
+        "https://final-project-bf632-default-rtdb.firebaseio.com/orders.json";
       axios
-        .post(firebaseUrl, shoppingCart)
+        .post(firebaseUrl, orderData)
         .then((response) => {
           console.log("Dữ liệu đã được gửi thành công:", response.data);
           // Thực hiện các xử lý khác sau khi gửi dữ liệu thành công
+          // Sau khi hoàn thành đặt hàng, bạn có thể ẩn biểu mẫu lại
+          this.isCheckoutFormVisible = false;
         })
         .catch((error) => {
           console.error("Lỗi khi gửi dữ liệu lên Firebase:", error);
