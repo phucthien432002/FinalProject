@@ -60,7 +60,7 @@
           </div>
         </v-list-item>
         <div>
-          <button @click="showCheckoutForm">Thanh toán</button>
+          <button v-if="cartHasItems" @click="showCheckoutForm">Thanh toán</button>
           <!-- Biểu mẫu nhập thông tin -->
           <form v-if="isCheckoutFormVisible" @submit.prevent="submitOrder">
             <div class="form-group">
@@ -91,8 +91,18 @@ export default {
         address: "",
         // Thêm các trường khác tương tự
       },
+      cartHasItems: false,
       dialog: false,
     };
+  },
+  watch: {
+    shoppingCart: {
+      handler(newVal) {
+        // Khi dữ liệu trong giỏ hàng thay đổi, cập nhật biến cartHasItems
+        this.cartHasItems = newVal.length > 0;
+      },
+      immediate: true, // Tính giá trị ban đầu khi component được tạo
+    },
   },
   methods: {
     showCheckoutForm() {
@@ -139,6 +149,10 @@ export default {
     },
   },
   computed: {
+    shoppingCart() {
+      return this.$store.state.shoppingCart;
+    },
+
     totalSum() {
       let sum = 0;
       for (const product of this.$store.state.shoppingCart) {
