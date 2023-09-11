@@ -2,7 +2,6 @@
   <div class="text-center">
     <div class="cart-icon-container">
       <span class="cart-count">{{ cartItemCount }}</span>
-
       <v-dialog v-model="dialog" width="300">
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" dark v-bind="attrs" v-on="on">
@@ -190,21 +189,21 @@ export default {
 
 <style>
 .cart-icon-container {
-  position: relative; /* Để có thể điều khiển vị trí của số */
+  position: relative;
 }
 
 .cart-count {
-  position: absolute; /* Đặt vị trí tuyệt đối để đặt số lượng trên biểu tượng */
-  top: -8px; /* Điều chỉnh vị trí dọc */
-  right: -6px; /* Điều chỉnh vị trí ngang */
-  background-color: #ff5000; /* Màu nền của số */
-  color: white; /* Màu chữ của số */
-  border-radius: 50%; /* Để tạo hình dạng hình tròn cho số */
-  width: 20px; /* Độ rộng của số */
-  height: 20px; /* Chiều cao của số */
-  text-align: center; /* Để căn giữa số */
-  font-size: 12px; /* Kích thước chữ */
-  line-height: 20px; /* Dòng giữa */
+  position: absolute;
+  top: -8px;
+  right: -6px;
+  background-color: #ff5000;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
   z-index: 9999999 !important;
 }
 .card-body {
