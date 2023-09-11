@@ -1,92 +1,98 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="dialog" width="300">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on">
-          <v-icon>mdi-cart</v-icon>
-        </v-btn>
-      </template>
-      <v-list v-if="$store.state.shoppingCart.length === 0">
-        <v-list-item class="justify-center align-center">
-          <div>
-            <h5>Your cart is empty. Please add items to your cart.</h5>
-          </div>
-        </v-list-item>
-      </v-list>
-      <v-list v-else>
-        <v-list-item
-          class="justify-center align-center"
-          style="border-bottom: 2px solid black"
-        >
-          <div class="d-flex">
-            <h5>Shopping Cart -</h5>
-            <h5 style="color: #c1a742; margin-left: 4px">{{ totalSum }}₫</h5>
-          </div>
-        </v-list-item>
-      </v-list>
-      <v-list class="justify-center align-center cart-container py-4">
-        <v-list-item class="d-flex flex-column py-4" style="gap: 10px">
-          <div
-            v-for="(product, index) in $store.state.shoppingCart"
-            :key="'product-' + index"
-            width="300px"
-            style="
-              align-items: center;
-              justify-content: center;
-              text-align: center;
-              padding: 20px;
-            "
-            class="justify-center align-center card-container"
+    <div class="cart-icon-container">
+      <span class="cart-count">{{ cartItemCount }}</span>
+
+      <v-dialog v-model="dialog" width="300">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="primary" dark v-bind="attrs" v-on="on">
+            <v-icon>mdi-cart</v-icon>
+          </v-btn>
+        </template>
+        <v-list v-if="$store.state.shoppingCart.length === 0">
+          <v-list-item class="justify-center align-center">
+            <div>
+              <h5>Your cart is empty. Please add items to your cart.</h5>
+            </div>
+          </v-list-item>
+        </v-list>
+        <v-list v-else>
+          <v-list-item
+            class="justify-center align-center"
+            style="border-bottom: 2px solid black"
           >
-            <div class="card-body">
-              <h5 style="flex: none !important; width: 200px; color: #ff5000">
-                {{ product.name }}
-              </h5>
-              <p style="font-weight: bold">{{ product.price }}₫ x {{ product.amount }}</p>
+            <div class="d-flex">
+              <h5>Shopping Cart -</h5>
+              <h5 style="color: #c1a742; margin-left: 4px">{{ totalSum }}₫</h5>
             </div>
-            <div>
-              <img
-                :src="product.photoURL"
-                :style="
-                  $vuetify.breakpoint.smAndDown
-                    ? 'width: 150px; height: 150px'
-                    : 'width: 200px; height: 200px'
-                "
-              />
+          </v-list-item>
+        </v-list>
+        <v-list class="justify-center align-center cart-container py-4">
+          <v-list-item class="d-flex flex-column py-4" style="gap: 10px">
+            <div
+              v-for="(product, index) in $store.state.shoppingCart"
+              :key="'product-' + index"
+              width="300px"
+              style="
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 20px;
+              "
+              class="justify-center align-center card-container"
+            >
+              <div class="card-body">
+                <h5 style="flex: none !important; width: 200px; color: #ff5000">
+                  {{ product.name }}
+                </h5>
+                <p style="font-weight: bold">
+                  {{ product.price }}₫ x {{ product.amount }}
+                </p>
+              </div>
+              <div>
+                <img
+                  :src="product.photoURL"
+                  :style="
+                    $vuetify.breakpoint.smAndDown
+                      ? 'width: 150px; height: 150px'
+                      : 'width: 200px; height: 200px'
+                  "
+                />
+              </div>
+              <div class="d-grid btn1">
+                <button @click="removeFromCart(product)">Remove</button>
+              </div>
             </div>
-            <div class="d-grid btn1">
-              <button @click="removeFromCart(product)">Remove</button>
-            </div>
+          </v-list-item>
+          <div>
+            <button v-if="cartHasItems" @click="showCheckoutForm">Thanh toán</button>
+            <!-- Biểu mẫu nhập thông tin -->
+            <form v-if="isCheckoutFormVisible" @submit.prevent="submitOrder">
+              <div class="form-group">
+                <label for="name">Tên:</label>
+                <input type="text" id="name" v-model="orderInfo.name" required />
+              </div>
+              <div class="form-group">
+                <label for="address">Địa chỉ:</label>
+                <input type="text" id="address" v-model="orderInfo.address" required />
+              </div>
+              <!-- Thêm các trường khác tương tự -->
+              <div>
+                <v-alert
+                  v-if="showAlert"
+                  type="success"
+                  dismissible
+                  @input="showAlert = false"
+                >
+                  Cảm ơn bạn đã đặt hàng!
+                </v-alert>
+                <button type="submit">Đặt hàng</button>
+              </div>
+            </form>
           </div>
-        </v-list-item>
-        <div>
-          <button v-if="cartHasItems" @click="showCheckoutForm">Thanh toán</button>
-          <!-- Biểu mẫu nhập thông tin -->
-          <form v-if="isCheckoutFormVisible" @submit.prevent="submitOrder">
-            <div class="form-group">
-              <label for="name">Tên:</label>
-              <input type="text" id="name" v-model="orderInfo.name" required />
-            </div>
-            <div class="form-group">
-              <label for="address">Địa chỉ:</label>
-              <input type="text" id="address" v-model="orderInfo.address" required />
-            </div>
-            <!-- Thêm các trường khác tương tự -->
-            <div>
-              <v-alert
-                v-if="showAlert"
-                type="success"
-                dismissible
-                @input="showAlert = false"
-              >
-                Cảm ơn bạn đã đặt hàng!
-              </v-alert>
-              <button type="submit">Đặt hàng</button>
-            </div>
-          </form>
-        </div>
-      </v-list>
-    </v-dialog>
+        </v-list>
+      </v-dialog>
+    </div>
   </div>
 </template>
 
@@ -162,6 +168,11 @@ export default {
     },
   },
   computed: {
+    cartItemCount() {
+      const cart = this.$store.state.shoppingCart;
+      return cart.reduce((total, product) => total + product.amount, 0);
+    },
+
     shoppingCart() {
       return this.$store.state.shoppingCart;
     },
@@ -178,6 +189,24 @@ export default {
 </script>
 
 <style>
+.cart-icon-container {
+  position: relative; /* Để có thể điều khiển vị trí của số */
+}
+
+.cart-count {
+  position: absolute; /* Đặt vị trí tuyệt đối để đặt số lượng trên biểu tượng */
+  top: -8px; /* Điều chỉnh vị trí dọc */
+  right: -6px; /* Điều chỉnh vị trí ngang */
+  background-color: #ff5000; /* Màu nền của số */
+  color: white; /* Màu chữ của số */
+  border-radius: 50%; /* Để tạo hình dạng hình tròn cho số */
+  width: 20px; /* Độ rộng của số */
+  height: 20px; /* Chiều cao của số */
+  text-align: center; /* Để căn giữa số */
+  font-size: 12px; /* Kích thước chữ */
+  line-height: 20px; /* Dòng giữa */
+  z-index: 9999999 !important;
+}
 .card-body {
   justify-content: center;
   display: grid !important;
