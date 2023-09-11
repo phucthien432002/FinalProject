@@ -63,7 +63,9 @@
                   class="d-flex justify-center align-center"
                   style="margin: 0; padding: 0; gap: 5px"
                 >
-                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5 style="margin-top: 1px; font-size: 16px !important">
+                    {{ product.size }}
+                  </h5>
                   <h5>-</h5>
                   <p class="card-text">{{ product.price }}₫</p>
                 </div>
@@ -103,7 +105,9 @@
                   class="d-flex justify-center align-center"
                   style="margin: 0; padding: 0; gap: 5px"
                 >
-                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5 style="margin-top: 1px; font-size: 16px !important">
+                    {{ product.size }}
+                  </h5>
                   <h5>-</h5>
                   <p class="card-text">{{ product.price }}₫</p>
                 </div>
@@ -143,7 +147,9 @@
                   class="d-flex justify-center align-center"
                   style="margin: 0; padding: 0; gap: 5px"
                 >
-                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5 style="margin-top: 1px; font-size: 16px !important">
+                    {{ product.size }}
+                  </h5>
                   <h5>-</h5>
                   <p class="card-text">{{ product.price }}₫</p>
                 </div>
@@ -183,7 +189,9 @@
                   class="d-flex justify-center align-center"
                   style="margin: 0; padding: 0; gap: 5px"
                 >
-                  <h5 style="margin-top: 1px">{{ product.size }}</h5>
+                  <h5 style="margin-top: 1px; font-size: 16px !important">
+                    {{ product.size }}
+                  </h5>
                   <h5>-</h5>
                   <p class="card-text">{{ product.price }}₫</p>
                 </div>

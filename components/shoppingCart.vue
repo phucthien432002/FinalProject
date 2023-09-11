@@ -72,7 +72,17 @@
               <input type="text" id="address" v-model="orderInfo.address" required />
             </div>
             <!-- Thêm các trường khác tương tự -->
-            <button type="submit">Đặt hàng</button>
+            <div>
+              <v-alert
+                v-if="showAlert"
+                type="success"
+                dismissible
+                @input="showAlert = false"
+              >
+                Cảm ơn bạn đã đặt hàng!
+              </v-alert>
+              <button type="submit">Đặt hàng</button>
+            </div>
           </form>
         </div>
       </v-list>
@@ -85,6 +95,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      showAlert: false,
       isCheckoutFormVisible: false, // Mặc định biểu mẫu không hiển thị
       orderInfo: {
         name: "",
@@ -142,6 +153,8 @@ export default {
           console.error("Lỗi khi gửi dữ liệu lên Firebase:", error);
           // Xử lý lỗi nếu cần
         });
+      this.showAlert = true;
+      window.location.reload();
     },
     removeFromCart(product) {
       // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
