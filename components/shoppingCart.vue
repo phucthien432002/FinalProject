@@ -230,6 +230,10 @@ export default {
     removeFromCart(product) {
       // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
       this.$store.commit("removeFromCart", product);
+      if (this.$store.state.shoppingCart.length === 0) {
+        // Nếu giỏ hàng trống, làm mới trang
+        window.location.reload();
+      }
     },
   },
   computed: {
