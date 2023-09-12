@@ -26,8 +26,8 @@
             </div>
           </v-list-item>
         </v-list>
-        <v-list class="justify-center align-center cart-container py-4">
-          <v-list-item class="d-flex flex-column py-4" style="gap: 10px">
+        <v-list class="justify-center align-center cart-container pt-4">
+          <v-list-item class="d-flex flex-column pt-4" style="gap: 10px">
             <div
               v-for="(product, index) in $store.state.shoppingCart"
               :key="'product-' + index"
@@ -63,8 +63,54 @@
               </div>
             </div>
           </v-list-item>
+          <div class="px-3 pb-4" style="d-flex flex-column;border-top: 2px solid black">
+            <div class="row-checkout">
+              <div class="col-8">
+                <span class="grey--text font-weight-bold">{{
+                  $t("total-checkout")
+                }}</span>
+              </div>
+
+              <div class="col-4 text-right">
+                <span style="font-weight: bold">{{ totalSum }}đ</span>
+              </div>
+            </div>
+            <div class="row-checkout">
+              <div class="col-8">
+                <span class="grey--text font-weight-bold">{{
+                  $t("promo-checkout")
+                }}</span>
+              </div>
+
+              <div class="col-4 text-right">
+                <span style="color: red">0đ</span>
+              </div>
+            </div>
+            <div class="row-checkout">
+              <div class="col-8">
+                <span class="grey--text font-weight-bold">{{
+                  $t("voucher-checkout")
+                }}</span>
+              </div>
+
+              <div class="col-4 text-right">
+                <span style="color: red">0đ</span>
+              </div>
+            </div>
+            <div class="row-checkout">
+              <div class="col-8">
+                <span class="grey--text font-weight-bold">{{ $t("ship-checkout") }}</span>
+              </div>
+
+              <div class="col-4 text-right">
+                <span style="color: red">0đ</span>
+              </div>
+            </div>
+          </div>
           <div>
-            <button v-if="cartHasItems" @click="showCheckoutForm">Thanh toán</button>
+            <button class="btn-checkout" v-if="cartHasItems" @click="showCheckoutForm">
+              {{ $t("checkout") }} - {{ totalSum }}₫
+            </button>
             <!-- Biểu mẫu nhập thông tin -->
             <form v-if="isCheckoutFormVisible" @submit.prevent="submitOrder">
               <div class="form-group">
@@ -188,6 +234,20 @@ export default {
 </script>
 
 <style>
+.row-checkout {
+  display: flex;
+  flex-wrap: wrap;
+}
+.btn-checkout {
+  color: #fff;
+  background-color: #e31837;
+  border-color: #e31837;
+  width: 100%;
+  display: inline-block;
+  border: 1px solid transparent;
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
 .cart-icon-container {
   position: relative;
 }
@@ -249,3 +309,23 @@ export default {
   z-index: 1000;
 }
 </style>
+
+<i18n>
+  {
+    "en":{
+      "checkout":"Proceed to checkout",
+      "total-checkout":"Total",
+      "promo-checkout":"Discount Promotion",
+      "voucher-checkout":"Discount Voucher",
+      "ship-checkout": "Delivery Charges"
+    },
+    "vn":{
+      "checkout":"Hoàn tất đơn hàng",
+      "total-checkout":"Tổng",
+      "promo-checkout":"Giảm K.Mãi",
+      "voucher-checkout":"Giảm Vouchers",
+      "ship-checkout": "Phí giao hàng"
+    }
+  }
+  
+</i18n>
