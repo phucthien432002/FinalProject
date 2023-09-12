@@ -112,14 +112,30 @@
               {{ $t("checkout") }} - {{ totalSum }}₫
             </button>
             <!-- Biểu mẫu nhập thông tin -->
-            <form v-if="isCheckoutFormVisible" @submit.prevent="submitOrder">
+            <form
+              v-if="isCheckoutFormVisible"
+              @submit.prevent="submitOrder"
+              class="centered-form"
+            >
               <div class="form-group">
                 <label for="name">Tên:</label>
-                <input type="text" id="name" v-model="orderInfo.name" required />
+                <input
+                  type="text"
+                  id="name"
+                  v-model="orderInfo.name"
+                  required
+                  class="custom-input"
+                />
               </div>
               <div class="form-group">
                 <label for="address">Địa chỉ:</label>
-                <input type="text" id="address" v-model="orderInfo.address" required />
+                <input
+                  type="text"
+                  id="address"
+                  v-model="orderInfo.address"
+                  required
+                  class="custom-input"
+                />
               </div>
               <!-- Thêm các trường khác tương tự -->
               <div>
@@ -234,6 +250,21 @@ export default {
 </script>
 
 <style>
+.custom-input {
+  /* Tùy chỉnh các thuộc tính CSS cho ô input ở đây */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.centered-form {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
 .row-checkout {
   display: flex;
   flex-wrap: wrap;
