@@ -107,63 +107,63 @@ export default {
         {
           uuid: "42",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           price: "24500",
           photoURL: "https://img.dominos.vn/coke-zero.jpg",
         },
         {
           uuid: "43",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           price: "38500",
           photoURL: "https://img.dominos.vn/coke-1.5.jpg",
         },
         {
           uuid: "44",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           price: "38500",
           photoURL: "https://img.dominos.vn/coke-1.5-new-new.png",
         },
         {
           uuid: "45",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           price: "38500",
           photoURL: "https://img.dominos.vn/Sprite-1.5L.jpg",
         },
         {
           uuid: "46",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           price: "38500",
           photoURL: "https://img.dominos.vn/fanta-1.5.jpg",
         },
         {
           uuid: "47",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           price: "24500",
           photoURL: "https://img.dominos.vn/dao-hat-chia.jpg",
         },
         {
           uuid: "48",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           price: "24500",
           photoURL: "https://img.dominos.vn/Fuzetea%2B-Chanh-Day-350ml-new-new.png",
         },
         {
           uuid: "49",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           price: "24500",
           photoURL: "https://img.dominos.vn/daisani.jpg",
         },
         {
           uuid: "50",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           price: "38500",
           photoURL: "https://img.dominos.vn/dasani-pc-new.png",
         },

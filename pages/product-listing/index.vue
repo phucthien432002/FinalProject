@@ -240,7 +240,7 @@ export default {
         {
           uuid: "4",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           size: "MEDIUM",
           price: "215500",
           photoURL: "https://img.dominos.vn/Menu+BG+1.jpg",
@@ -274,7 +274,7 @@ export default {
         {
           uuid: "8",
           name: this.$t("name8"),
-          description: this.$t("description4"),
+         
           size: "SMALL",
           price: "117000",
           photoURL:
@@ -291,7 +291,7 @@ export default {
         {
           uuid: "10",
           name: this.$t("name10"),
-          description: this.$t("description4"),
+         
           size: "MEDIUM",
           price: "205500",
           photoURL: "https://img.dominos.vn/Pizza+Bach+Tuoc+Pizzamin+-+TIENG+ANH.jpg",
@@ -299,7 +299,7 @@ export default {
         {
           uuid: "11",
           name: this.$t("name11"),
-          description: this.$t("description4"),
+         
           size: "MEDIUM",
           price: "205500",
           photoURL: "https://img.dominos.vn/Pizza+Bach+Tuoc+Delight+-+TIENG+ANH.jpg",
@@ -352,7 +352,7 @@ export default {
         {
           uuid: "17",
           name: this.$t("name17"),
-          description: this.$t("description4"),
+         
           size: "SMALL",
           price: "117,000",
           photoURL: "https://img.dominos.vn/Meat-lover-Pizza-5-Loai-Thit-Thuong-Hang.jpg",
@@ -385,7 +385,7 @@ export default {
         {
           uuid: "21",
           name: this.$t("name21"),
-          description: this.$t("description4"),
+         
           size: "SMALL",
           price: "87500",
           photoURL: "https://img.dominos.vn/Pizza-Pho-Mai-Hao-Hang-Cheese-Mania.jpg",

@@ -261,7 +261,7 @@ export default {
         {
           uuid: "25",
           name: this.$t("name4"),
-          description: this.$t("description4"),
+         
           price: "127000",
           photoURL:
             "https://img.dominos.vn/MENU-PC_Ca%CC%81nh-Ga%CC%80-BBQ-Kie%CC%82%CC%89u-My%CC%83-.jpg",
@@ -269,7 +269,7 @@ export default {
         {
           uuid: "26",
           name: this.$t("name5"),
-          description: this.$t("description4"),
+         
           price: "97500",
           photoURL:
             "https://img.dominos.vn/MENU-PC_Ca%CC%81nh-Ga%CC%80-BBQ-Kie%CC%82%CC%89u-My%CC%83-.jpg",
@@ -303,7 +303,7 @@ export default {
         {
           uuid: "30",
           name: this.$t("name9"),
-          description: this.$t("description4"),
+         
           price: "197500",
           photoURL:
             "https://img.dominos.vn/MENU-PC_Mi%CC%80-Y%CC%81-Bo%CC%80-Ba%CC%86%CC%80m-%C4%90u%CC%81t-Lo%CC%80.jpg",
@@ -352,7 +352,7 @@ export default {
         {
           uuid: "36",
           name: this.$t("name15"),
-          description: this.$t("description4"),
+         
           price: "58000",
           photoURL:
             "https://img.dominos.vn/MENU-PC_Ba%CC%81nh-Mi%CC%80-Nu%CC%9Bo%CC%9B%CC%81ng-Pho%CC%82-Mai.jpg",
