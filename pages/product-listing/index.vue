@@ -216,7 +216,7 @@ export default {
         {
           uuid: "1",
           name: this.$t("name1"),
-          description: this.$t("description"),
+          
           size: "MEDIUM",
           price: "205500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_tom+ga.jpg",
@@ -224,7 +224,7 @@ export default {
         {
           uuid: "2",
           name: this.$t("name2"),
-          description: this.$t("description2"),
+          
           size: "MEDIUM",
           price: "205500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+ga.jpg",
@@ -232,7 +232,7 @@ export default {
         {
           uuid: "3",
           name: this.$t("name3"),
-          description: this.$t("description3"),
+         
           size: "MEDIUM",
           price: "215500",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_full+tom.jpg",
@@ -250,7 +250,7 @@ export default {
         {
           uuid: "5",
           name: this.$t("name5"),
-          description: this.$t("description"),
+          
           size: "SMALL",
           price: "117000",
           photoURL: "https://img.dominos.vn/Surf-turf-Pizza-Bo-Tom-Nuong-Kieu-My-1.jpg",
@@ -258,7 +258,7 @@ export default {
         {
           uuid: "6",
           name: this.$t("name6"),
-          description: this.$t("description2"),
+          
           size: "SMALL",
           price: "117000",
           photoURL: "https://img.dominos.vn/Pizza-Hai-San-Xot-Mayonnaise-Ocean-Mania.jpg",
@@ -266,7 +266,7 @@ export default {
         {
           uuid: "7",
           name: this.$t("name7"),
-          description: this.$t("description3"),
+         
           size: "SMALL",
           price: "117000",
           photoURL: "https://img.dominos.vn/Pizzaminsea-Hai-San-Nhiet-Doi-Xot-Tieu.jpg",
@@ -283,7 +283,7 @@ export default {
         {
           uuid: "9",
           name: this.$t("name9"),
-          description: this.$t("description3"),
+         
           size: "MEDIUM",
           price: "205500",
           photoURL: "https://img.dominos.vn/Pizza+Bach+Tuoc+Mania-+TIENG+ANH.jpg",
@@ -309,7 +309,7 @@ export default {
         {
           uuid: "12",
           name: this.$t("name12"),
-          description: this.$t("description"),
+          
           size: "SMALL",
           price: "97500",
           photoURL: "https://img.dominos.vn/Sausage-Kid-Mania-1.jpg",
@@ -317,7 +317,7 @@ export default {
         {
           uuid: "13",
           name: this.$t("name13"),
-          description: this.$t("description2"),
+          
           size: "SMALL",
           price: "97500",
           photoURL:
@@ -328,7 +328,7 @@ export default {
         {
           uuid: "14",
           name: this.$t("name14"),
-          description: this.$t("description"),
+          
           size: "MEDIUM",
           price: "176000",
           photoURL: "https://img.dominos.vn/Menu+BG+-+TIENG+ANH_cheese.jpg",
@@ -336,7 +336,7 @@ export default {
         {
           uuid: "15",
           name: this.$t("name15"),
-          description: this.$t("description2"),
+          
           size: "SMALL",
           price: "117000",
           photoURL: "https://img.dominos.vn/Pizza-Thap-Cam-Thuong-Hang-Extravaganza.jpg",
@@ -344,7 +344,7 @@ export default {
         {
           uuid: "16",
           name: this.$t("name16"),
-          description: this.$t("description3"),
+         
           size: "SMALL",
           price: "87500",
           photoURL: "https://img.dominos.vn/Veggie-mania-Pizza-Rau-Cu-Thap-Cam.jpg",
@@ -360,7 +360,7 @@ export default {
         {
           uuid: "18",
           name: this.$t("name18"),
-          description: this.$t("description"),
+          
           size: "SMALL",
           price: "117000",
           photoURL: "https://img.dominos.vn/Pepperoni-feast-Pizza-Xuc-Xich-Y.jpg",
@@ -368,7 +368,7 @@ export default {
         {
           uuid: "19",
           name: this.$t("name19"),
-          description: this.$t("description2"),
+          
           size: "LARGE",
           price: "97500",
           photoURL:
@@ -377,7 +377,7 @@ export default {
         {
           uuid: "20",
           name: this.$t("name20"),
-          description: this.$t("description3"),
+         
           size: "SMALL",
           price: "97500",
           photoURL: "https://img.dominos.vn/Pizza-Dam-Bong-Dua-Kieu-Hawaii-Hawaiian.jpg",

@@ -104,14 +104,12 @@ export default {
         {
           uuid: "42",
           name: this.$t("name4"),
-
           price: "48500",
           photoURL: "https://img.dominos.vn/MENU-PC-Cinnamon-Roll-nen-xam_360X240px.jpg",
         },
         {
           uuid: "43",
           name: this.$t("name4"),
-
           price: "48500",
           photoURL:
             "https://img.dominos.vn/MENU-PC_BA%CC%81NH-SO%CC%82-CO%CC%82-LA-%C4%90U%CC%81T-LO%CC%80.jpg",
@@ -119,14 +117,12 @@ export default {
         {
           uuid: "44",
           name: this.$t("name4"),
-
           price: "38500",
           photoURL: "https://img.dominos.vn/MENU-PC_choco-pizza.jpg",
         },
         {
           uuid: "45",
           name: this.$t("name4"),
-
           price: "38500",
           photoURL: "https://img.dominos.vn/MENU-PC_choco-pizza.jpg",
         },
