@@ -63,7 +63,11 @@
               </div>
             </div>
           </v-list-item>
-          <div class="px-3 pb-4" style="d-flex flex-column;border-top: 2px solid black">
+          <div
+            class="px-3 pb-4"
+            style="d-flex flex-column;border-top: 2px solid black"
+            v-if="cartHasItems"
+          >
             <div class="row-checkout">
               <div class="col-8">
                 <span class="grey--text font-weight-bold">{{
@@ -113,7 +117,7 @@
             </button>
             <!-- Biểu mẫu nhập thông tin -->
             <form
-              v-if="isCheckoutFormVisible"
+              v-if="isCheckoutFormVisible && cartHasItems"
               @submit.prevent="submitOrder"
               class="centered-form"
             >
