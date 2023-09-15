@@ -217,6 +217,8 @@ export default {
         .then((response) => {
           console.log("Dữ liệu đã được gửi thành công:", response.data);
           // Thực hiện các xử lý khác sau khi gửi dữ liệu thành công
+          // Sau khi hoàn thành đặt hàng, bạn có thể ẩn biểu mẫu lại
+          this.isCheckoutFormVisible = false;
         })
         .catch((error) => {
           console.error("Lỗi khi gửi dữ liệu lên Firebase:", error);
