@@ -117,7 +117,7 @@
             </button>
             <!-- Biểu mẫu nhập thông tin -->
             <form
-              v-if="isCheckoutFormVisible && cartHasItems"
+              v-if="isCheckoutFormVisible"
               @submit.prevent="submitOrder"
               class="centered-form"
             >
