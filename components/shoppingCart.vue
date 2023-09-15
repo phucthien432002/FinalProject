@@ -225,7 +225,10 @@ export default {
           // Xử lý lỗi nếu cần
         });
       this.showAlert = true;
-      window.location.reload();
+      const reloadTimeout = 1000;
+      setTimeout(function () {
+        window.location.reload();
+      }, reloadTimeout);
     },
     removeFromCart(product) {
       // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
