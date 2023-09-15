@@ -63,7 +63,11 @@
               </div>
             </div>
           </v-list-item>
-          <div class="px-3 pb-4" style="d-flex flex-column;border-top: 2px solid black">
+          <div
+            class="px-3 pb-4"
+            style="d-flex flex-column;border-top: 2px solid black"
+            v-if="cartHasItems"
+          >
             <div class="row-checkout">
               <div class="col-8">
                 <span class="grey--text font-weight-bold">{{
@@ -226,6 +230,10 @@ export default {
     removeFromCart(product) {
       // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
       this.$store.commit("removeFromCart", product);
+      if (this.$store.state.shoppingCart.length === 0) {
+        // Nếu giỏ hàng trống, làm mới trang
+        window.location.reload();
+      }
     },
   },
   computed: {
