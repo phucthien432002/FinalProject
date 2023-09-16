@@ -141,7 +141,16 @@
                   class="custom-input"
                 />
               </div>
-              <!-- Thêm các trường khác tương tự -->
+              <div class="form-group">
+                <label for="address">Email:</label>
+                <input
+                  type="text"
+                  id="address"
+                  v-model="orderInfo.email"
+                  required
+                  class="custom-input"
+                />
+              </div>
               <div>
                 <v-alert
                   v-if="showAlert"
@@ -167,11 +176,11 @@ export default {
   data() {
     return {
       showAlert: false,
-      isCheckoutFormVisible: false, // Mặc định biểu mẫu không hiển thị
+      isCheckoutFormVisible: false,
       orderInfo: {
         name: "",
         address: "",
-        // Thêm các trường khác tương tự
+        email: "",
       },
       cartHasItems: false,
       dialog: false,
@@ -183,7 +192,7 @@ export default {
         // Khi dữ liệu trong giỏ hàng thay đổi, cập nhật biến cartHasItems
         this.cartHasItems = newVal.length > 0;
       },
-      immediate: true, // Tính giá trị ban đầu khi component được tạo
+      immediate: true,
     },
   },
   methods: {
@@ -193,7 +202,7 @@ export default {
     },
 
     submitOrder() {
-      // Truy cập giỏ hàng và console log ra sản phẩm
+      // Truy cập giỏ hàng
       const shoppingCart = this.$store.state.shoppingCart;
       console.log("Sản phẩm trong giỏ hàng của bạn:", shoppingCart);
 
@@ -209,37 +218,35 @@ export default {
       // Xóa trạng thái giỏ hàng từ localStorage
       localStorage.removeItem("shoppingCart");
 
-      // Gửi dữ liệu đặt hàng (bao gồm thông tin và giỏ hàng) lên Firebase Realtime Database
       const firebaseUrl =
         "https://final-project-bf632-default-rtdb.firebaseio.com/orders.json";
       axios
         .post(firebaseUrl, orderData)
         .then((response) => {
           console.log("Dữ liệu đã được gửi thành công:", response.data);
-          // Thực hiện các xử lý khác sau khi gửi dữ liệu thành công
-          // Sau khi hoàn thành đặt hàng, bạn có thể ẩn biểu mẫu lại
+          // Sau khi hoàn thành đặt hàng, ẩn biểu mẫu lại
           this.isCheckoutFormVisible = false;
         })
         .catch((error) => {
           console.error("Lỗi khi gửi dữ liệu lên Firebase:", error);
-          // Xử lý lỗi nếu cần
         });
+      // Hiển thị thông báo đặt hàng thành công
       this.showAlert = true;
-      const reloadTimeout = 1000;
+
       setTimeout(function () {
         window.location.reload();
-      }, reloadTimeout);
+      }, 1000);
     },
     removeFromCart(product) {
       // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
       this.$store.commit("removeFromCart", product);
       if (this.$store.state.shoppingCart.length === 0) {
-        // Nếu giỏ hàng trống, làm mới trang
         window.location.reload();
       }
     },
   },
   computed: {
+    // Tính số lượng sản phẩm đã có trong giỏ hàng
     cartItemCount() {
       const cart = this.$store.state.shoppingCart;
       return cart.reduce((total, product) => total + product.amount, 0);
@@ -262,7 +269,6 @@ export default {
 
 <style>
 .custom-input {
-  /* Tùy chỉnh các thuộc tính CSS cho ô input ở đây */
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
