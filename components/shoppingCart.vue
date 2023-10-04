@@ -22,7 +22,9 @@
           >
             <div class="d-flex">
               <h5>Shopping Cart -</h5>
-              <h5 style="color: #c1a742; margin-left: 4px">{{ totalSum }}₫</h5>
+              <h5 style="color: #c1a742; margin-left: 4px">
+                {{ totalSum - discountedAmount }}₫
+              </h5>
             </div>
           </v-list-item>
         </v-list>
@@ -68,6 +70,10 @@
             style="d-flex flex-column;border-top: 2px solid black"
             v-if="cartHasItems"
           >
+            <div class="discount-voucher">
+              <input type="text" v-model="discountCode" placeholder="Nhập mã giảm giá" />
+              <button @click="applyDiscount">Áp dụng</button>
+            </div>
             <div class="row-checkout">
               <div class="col-8">
                 <span class="grey--text font-weight-bold">{{
@@ -76,7 +82,7 @@
               </div>
 
               <div class="col-4 text-right">
-                <span style="font-weight: bold">{{ totalSum }}đ</span>
+                <span style="font-weight: bold">{{ totalSum - discountedAmount }}đ</span>
               </div>
             </div>
             <div class="row-checkout">
@@ -98,7 +104,7 @@
               </div>
 
               <div class="col-4 text-right">
-                <span style="color: red">0đ</span>
+                <span style="color: red">{{ discountedAmount }}đ</span>
               </div>
             </div>
             <div class="row-checkout">
@@ -113,7 +119,7 @@
           </div>
           <div>
             <button class="btn-checkout" v-if="cartHasItems" @click="showCheckoutForm">
-              {{ $t("checkout") }} - {{ totalSum }}₫
+              {{ $t("checkout") }} - {{ totalSum - discountedAmount }}₫
             </button>
             <!-- Biểu mẫu nhập thông tin -->
             <form
@@ -175,6 +181,9 @@ import axios from "axios";
 export default {
   data() {
     return {
+      discountCode: "",
+      totalAmount: 100000,
+      discountedAmount: 0,
       showAlert: false,
       isCheckoutFormVisible: false,
       orderInfo: {
@@ -196,6 +205,22 @@ export default {
     },
   },
   methods: {
+    applyDiscount() {
+      if (this.discountCode === "GIAM15K") {
+        // Nếu mã giảm giá hợp lệ, giảm 15.000 đồng
+        this.discountedAmount = 15000;
+        // Cập nhật giá trị của discountCode với giá trị đã nhập
+        this.discountCode = "GIAM15K";
+      } else if (this.discountCode === "GIAM20K") {
+        // Nếu mã giảm giá hợp lệ, giảm 20.000 đồng
+        this.discountedAmount = 20000;
+        // Cập nhật giá trị của discountCode với giá trị đã nhập
+        this.discountCode = "GIAM20K";
+      } else {
+        // Mã giảm giá không hợp lệ
+        alert("Mã giảm giá không hợp lệ");
+      }
+    },
     showCheckoutForm() {
       // Hiển thị biểu mẫu khi nút thanh toán được nhấn
       this.isCheckoutFormVisible = true;
@@ -210,8 +235,11 @@ export default {
       const orderData = {
         ...this.orderInfo,
         shoppingCart,
+        discountCode: this.discountCode, // Thêm mã giảm giá vào đối tượng orderData
+        totalAmount: this.totalSum - this.discountedAmount, // Thêm tổng tiền đã giảm giá
       };
-
+      // Gán giá trị của discountCode trước khi gửi lên Firebase
+      this.discountCode = this.discountCode;
       // Gọi mutation để xóa tất cả sản phẩm khỏi giỏ hàng
       this.$store.commit("clearCart");
 
