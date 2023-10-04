@@ -159,6 +159,10 @@
                   required
                   class="custom-input"
                 />
+
+                <div v-if="emailError" class="error-message">
+                  {{ emailError }}
+                </div>
               </div>
               <div>
                 <v-alert
@@ -184,6 +188,8 @@ import axios from "axios";
 export default {
   data() {
     return {
+      emailValid: false,
+      emailError: "",
       discountCodeEmpty: false,
       discountCode: "",
       totalAmount: 100000,
@@ -210,36 +216,37 @@ export default {
     },
   },
   methods: {
+    validateEmail(email) {
+      const emailPattern = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return emailPattern.test(email);
+    },
     applyDiscount() {
       if (this.discountCode === "GIAM15K") {
-        // Nếu mã giảm giá hợp lệ, giảm 15.000 đồng
         this.discountedAmount = 15000;
-        // Cập nhật giá trị của discountCode với giá trị đã nhập
+
         this.discountCode = "GIAM15K";
-        // Xóa thông báo lỗi nếu có
+
         this.discountCodeError = "";
-        // Đặt lại discountCodeEmpty thành false
+
         this.discountCodeEmpty = false;
       } else if (this.discountCode === "GIAM20K") {
-        // Nếu mã giảm giá hợp lệ, giảm 20.000 đồng
         this.discountedAmount = 20000;
-        // Cập nhật giá trị của discountCode với giá trị đã nhập
+
         this.discountCode = "GIAM20K";
         // Xóa thông báo lỗi nếu có
         this.discountCodeError = "";
-        // Đặt lại discountCodeEmpty thành false
+
         this.discountCodeEmpty = false;
       } else {
         // Kiểm tra nếu ô input trống
         if (!this.discountCode.trim()) {
-          // Nếu ô input trống, hiển thị thông báo
           this.discountCodeError = "Vui lòng nhập mã khuyến mãi";
-          // Đặt lại discountCodeEmpty thành true
+
           this.discountCodeEmpty = true;
         } else {
           // Mã giảm giá không hợp lệ
           this.discountCodeError = "Mã giảm giá không hợp lệ";
-          // Đặt lại discountCodeEmpty thành false
+
           this.discountCodeEmpty = false;
         }
       }
@@ -250,6 +257,13 @@ export default {
     },
 
     submitOrder() {
+      if (!this.validateEmail(this.orderInfo.email) || this.orderInfo.email.length < 9) {
+        this.emailError = "Email không hợp lệ";
+        this.orderInfo.email = "";
+        return; // Ngăn việc đặt hàng nếu email không hợp lệ
+      } else {
+        this.emailError = ""; //
+      }
       // Truy cập giỏ hàng
       const shoppingCart = this.$store.state.shoppingCart;
       console.log("Sản phẩm trong giỏ hàng của bạn:", shoppingCart);
@@ -258,15 +272,15 @@ export default {
       const orderData = {
         ...this.orderInfo,
         shoppingCart,
-        discountCode: this.discountCode, // Thêm mã giảm giá vào đối tượng orderData
-        totalAmount: this.totalSum - this.discountedAmount, // Thêm tổng tiền đã giảm giá
+        discountCode: this.discountCode,
+        totalAmount: this.totalSum - this.discountedAmount, //
       };
+
       // Gán giá trị của discountCode trước khi gửi lên Firebase
       this.discountCode = this.discountCode;
-      // Gọi mutation để xóa tất cả sản phẩm khỏi giỏ hàng
+
       this.$store.commit("clearCart");
 
-      // Xóa trạng thái giỏ hàng từ localStorage
       localStorage.removeItem("shoppingCart");
 
       const firebaseUrl =
@@ -275,13 +289,13 @@ export default {
         .post(firebaseUrl, orderData)
         .then((response) => {
           console.log("Dữ liệu đã được gửi thành công:", response.data);
-          // Sau khi hoàn thành đặt hàng, ẩn biểu mẫu lại
+
           this.isCheckoutFormVisible = false;
         })
         .catch((error) => {
           console.error("Lỗi khi gửi dữ liệu lên Firebase:", error);
         });
-      // Hiển thị thông báo đặt hàng thành công
+
       this.showAlert = true;
 
       setTimeout(function () {
@@ -289,7 +303,6 @@ export default {
       }, 1000);
     },
     removeFromCart(product) {
-      // Gọi mutation để xóa sản phẩm khỏi giỏ hàng
       this.$store.commit("removeFromCart", product);
       if (this.$store.state.shoppingCart.length === 0) {
         window.location.reload();
@@ -297,7 +310,6 @@ export default {
     },
   },
   computed: {
-    // Tính số lượng sản phẩm đã có trong giỏ hàng
     cartItemCount() {
       const cart = this.$store.state.shoppingCart;
       return cart.reduce((total, product) => total + product.amount, 0);
