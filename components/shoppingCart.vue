@@ -74,6 +74,9 @@
               <input type="text" v-model="discountCode" placeholder="Nhập mã giảm giá" />
               <button @click="applyDiscount">Áp dụng</button>
             </div>
+            <div v-if="discountCodeError" class="error-message">
+              {{ discountCodeError }}
+            </div>
             <div class="row-checkout">
               <div class="col-8">
                 <span class="grey--text font-weight-bold">{{
@@ -181,6 +184,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      discountCodeEmpty: false,
       discountCode: "",
       totalAmount: 100000,
       discountedAmount: 0,
@@ -193,6 +197,7 @@ export default {
       },
       cartHasItems: false,
       dialog: false,
+      discountCodeError: "",
     };
   },
   watch: {
@@ -211,14 +216,32 @@ export default {
         this.discountedAmount = 15000;
         // Cập nhật giá trị của discountCode với giá trị đã nhập
         this.discountCode = "GIAM15K";
+        // Xóa thông báo lỗi nếu có
+        this.discountCodeError = "";
+        // Đặt lại discountCodeEmpty thành false
+        this.discountCodeEmpty = false;
       } else if (this.discountCode === "GIAM20K") {
         // Nếu mã giảm giá hợp lệ, giảm 20.000 đồng
         this.discountedAmount = 20000;
         // Cập nhật giá trị của discountCode với giá trị đã nhập
         this.discountCode = "GIAM20K";
+        // Xóa thông báo lỗi nếu có
+        this.discountCodeError = "";
+        // Đặt lại discountCodeEmpty thành false
+        this.discountCodeEmpty = false;
       } else {
-        // Mã giảm giá không hợp lệ
-        alert("Mã giảm giá không hợp lệ");
+        // Kiểm tra nếu ô input trống
+        if (!this.discountCode.trim()) {
+          // Nếu ô input trống, hiển thị thông báo
+          this.discountCodeError = "Vui lòng nhập mã khuyến mãi";
+          // Đặt lại discountCodeEmpty thành true
+          this.discountCodeEmpty = true;
+        } else {
+          // Mã giảm giá không hợp lệ
+          this.discountCodeError = "Mã giảm giá không hợp lệ";
+          // Đặt lại discountCodeEmpty thành false
+          this.discountCodeEmpty = false;
+        }
       }
     },
     showCheckoutForm() {
@@ -296,6 +319,39 @@ export default {
 </script>
 
 <style>
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+.discount-voucher {
+  margin-top: 4px !important;
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 300px; /* Điều chỉnh độ rộng tối đa của khung mã giảm giá */
+  margin: 0 auto; /* Canh giữa khung mã giảm giá */
+}
+
+.discount-voucher input[type="text"] {
+  flex: 1; /* Input mở rộng để điền vào toàn bộ khoảng trống còn lại */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none; /* Loại bỏ viền khi focus */
+}
+
+.discount-voucher button {
+  background-color: #007bff; /* Màu nền của nút */
+  color: #fff; /* Màu chữ trắng */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Hiệu ứng màu nền thay đổi */
+}
+
+.discount-voucher button:hover {
+  background-color: #0056b3; /* Màu nền thay đổi khi hover */
+}
 .custom-input {
   width: 100%;
   padding: 10px;
