@@ -235,7 +235,7 @@ export default {
 .v-application p {
   margin-bottom: 0 !important;
 }
-#C1A742 .v-toolbar__content,
+.v-toolbar__content,
 .v-toolbar__extension {
   padding: 4px 0px !important;
 }

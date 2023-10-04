@@ -341,29 +341,30 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 300px; /* Điều chỉnh độ rộng tối đa của khung mã giảm giá */
-  margin: 0 auto; /* Canh giữa khung mã giảm giá */
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .discount-voucher input[type="text"] {
-  flex: 1; /* Input mở rộng để điền vào toàn bộ khoảng trống còn lại */
+  padding: 4px;
+  flex: 1;
   border: 1px solid #ccc;
   border-radius: 5px;
-  outline: none; /* Loại bỏ viền khi focus */
+  outline: none;
 }
 
 .discount-voucher button {
-  background-color: #007bff; /* Màu nền của nút */
-  color: #fff; /* Màu chữ trắng */
+  padding: 4px 1px;
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  padding: 4px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Hiệu ứng màu nền thay đổi */
+  transition: background-color 0.3s;
 }
 
 .discount-voucher button:hover {
-  background-color: #0056b3; /* Màu nền thay đổi khi hover */
+  background-color: #0056b3;
 }
 .custom-input {
   width: 100%;
