@@ -160,7 +160,7 @@
         </div>
         <div class="copy-right-container">
           <span class="text-center align-center">
-            © 2020 Domino’s Pizza Vietnam | Privacy Policy
+            © 2023 Pizza Family Vietnam | Privacy Policy
           </span>
         </div>
       </div>
