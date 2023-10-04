@@ -233,21 +233,21 @@ export default {
         this.discountedAmount = 20000;
 
         this.discountCode = "GIAM20K";
-        // Xóa thông báo lỗi nếu có
+
         this.discountCodeError = "";
 
         this.discountCodeEmpty = false;
       } else {
-        // Kiểm tra nếu ô input trống
         if (!this.discountCode.trim()) {
           this.discountCodeError = "Vui lòng nhập mã khuyến mãi";
 
           this.discountCodeEmpty = true;
         } else {
-          // Mã giảm giá không hợp lệ
           this.discountCodeError = "Mã giảm giá không hợp lệ";
 
           this.discountCodeEmpty = false;
+
+          this.discountedAmount = 0;
         }
       }
     },
@@ -356,6 +356,7 @@ export default {
   background-color: #007bff; /* Màu nền của nút */
   color: #fff; /* Màu chữ trắng */
   border: none;
+  padding: 4px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s; /* Hiệu ứng màu nền thay đổi */
