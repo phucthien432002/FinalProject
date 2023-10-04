@@ -4,54 +4,67 @@
       :clipped-left="clipped"
       fixed
       app
-      style="position: fixed; height: 100px; background-color: #c1a742 !important"
+      style="height: 100px; background-color: #c1a742 !important"
+      class="d-flex"
+      width="100%"
     >
-      <nuxt-link to="/" class="logo"
-        ><img src="../static/images/icon4.png" alt="Logo"
-      /></nuxt-link>
-      <div class="navbar-collapse collapse">
-        <ul class="navbar-nav mx-auto text-center text-uppercase">
-          <li class="nav-item d-flex align-items-center">
-            <a href="" class="nav-link">{{ $t("salenav") }}</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a href="/product-listing" class="nav-link">{{ $t("menunav") }}</a>
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <a href="" class="nav-link">{{ $t("blog") }}</a>
-          </li>
-        </ul>
+      <div>
+        <nuxt-link to="/" class="logo"
+          ><img src="../static/images/icon4.png" alt="Logo"
+        /></nuxt-link>
       </div>
-      <v-spacer />
-      <div class="mr-2" style="position: relative">
-        <shoppingCart />
+      <div
+        class="d-inline-flex align-center justify-center"
+        style="position: fixed; right: 1%; left: 0"
+        width="100%"
+      >
+        <div class="navbar-collapse collapse">
+          <ul class="navbar-nav mx-auto text-center text-uppercase ul-navbar">
+            <li class="nav-item d-flex align-items-center">
+              <a href="" class="nav-link">{{ $t("salenav") }}</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a href="/product-listing" class="nav-link">{{ $t("menunav") }}</a>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a href="" class="nav-link">{{ $t("blog") }}</a>
+            </li>
+          </ul>
+        </div>
+        <v-spacer />
+        <div class="mr-2" style="position: relative">
+          <shoppingCart />
+        </div>
+        <v-menu offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn color="#ff5c23" dark v-bind="attrs" v-on="on">
+              <h5>Language</h5>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item-group v-model="selectedItem" color="#ff5c23">
+              <v-list-item
+                v-for="(item, index) in locales"
+                :key="index"
+                @click="changeLange(item.value)"
+              >
+                <img :src="item.flag" alt="Flag icon" class="px-2" />
+                <v-list-item-title>{{ item.name }}</v-list-item-title>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
+        </v-menu>
       </div>
-      <v-menu offset-y>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn color="#ff5c23" dark v-bind="attrs" v-on="on">
-            <h5>Language</h5>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item-group v-model="selectedItem" color="#ff5c23">
-            <v-list-item
-              v-for="(item, index) in locales"
-              :key="index"
-              @click="changeLange(item.value)"
-            >
-              <img :src="item.flag" alt="Flag icon" class="px-2" />
-              <v-list-item-title>{{ item.name }}</v-list-item-title>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-      </v-menu>
     </v-app-bar>
     <v-main>
       <Nuxt />
     </v-main>
     <footer>
       <div id="footer">
-        <div class="grid-container">
+        <div
+          class="grid-container"
+          :class="$vuetify.breakpoint.smAndDown ? 'd-flex flex-column' : ''"
+        >
           <div class="item-footer">
             <h1>About Us</h1>
             <ul>
@@ -211,6 +224,14 @@ export default {
 };
 </script>
 <style>
+.ul-navbar {
+  gap: 50px;
+}
+@media screen and (max-width: 1024px) {
+  .ul-navbar {
+    gap: 0px !important;
+  }
+}
 .v-application p {
   margin-bottom: 0 !important;
 }
