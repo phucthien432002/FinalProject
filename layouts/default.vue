@@ -69,20 +69,13 @@
             <h1>About Us</h1>
             <ul>
               <li>
-                <a href="https://dominos.vn/blogs" target="_blank"> Blog</a>
+                <a href="" target="_blank"> Blog</a>
               </li>
               <li>
-                <a href="https://dominos.vn/blogs/tuyen-dung" target="_blank">
-                  Recruitment</a
-                >
+                <a href="" target="_blank"> Recruitment</a>
               </li>
               <li>
-                <a
-                  href="https://dominos.vn/store-locations?store-id=1185"
-                  target="_blank"
-                >
-                  Store List</a
-                >
+                <a href="" target="_blank"> Store List</a>
               </li>
             </ul>
           </div>
@@ -90,20 +83,13 @@
             <h1>Products</h1>
             <ul>
               <li>
-                <a href="https://dominos.vn/product-listing" target="_blank"> Menu</a>
+                <a href="" target="_blank"> Menu</a>
               </li>
               <li>
-                <a href="https://dominos.vn/voucher-default" target="_blank">
-                  E-Voucher</a
-                >
+                <a href="" target="_blank"> E-Voucher</a>
               </li>
               <li>
-                <a
-                  href="https://dominos.vn/promotion-listing?store-id=1185&device-enum=0"
-                  target="_blank"
-                >
-                  Promotion</a
-                >
+                <a href="" target="_blank"> Promotion</a>
               </li>
             </ul>
           </div>
@@ -134,24 +120,20 @@
             <h1>Social Media</h1>
             <ul>
               <li>
-                <a
-                  href="https://www.facebook.com/DominosPizzaVietnam/?brand_redir=207571100452"
-                  target="_blank"
+                <a href="" target="_blank"
                   ><i class="fa-brands fa-facebook"></i> Facebook</a
                 >
               </li>
               <li>
-                <a href="https://www.instagram.com/dominospizza_vietnam/" target="_blank"
+                <a href="" target="_blank"
                   ><i class="fa-brands fa-instagram"></i> Instagram</a
                 >
               </li>
               <li>
-                <a href="https://www.tiktok.com/@dominospizzavietnam" target="_blank"
-                  ><i class="fa-brands fa-tiktok"></i> Tiktok</a
-                >
+                <a href="" target="_blank"><i class="fa-brands fa-tiktok"></i> Tiktok</a>
               </li>
               <li>
-                <a href="https://www.youtube.com/@DominosPizzaVNOfficial" target="_blank"
+                <a href="" target="_blank"
                   ><i class="fa-brands fa-youtube"></i> Youtube</a
                 >
               </li>
