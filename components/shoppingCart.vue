@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div class="text-center" style="z-index: 999999999999 !important; margin-right: 8px">
     <div class="cart-icon-container">
       <span class="cart-count">{{ cartItemCount }}</span>
       <v-dialog v-model="dialog" width="300">
@@ -399,9 +399,10 @@ export default {
 }
 
 .cart-count {
-  position: absolute;
-  top: -8px;
-  right: -6px;
+  position: relative;
+  padding: 4px;
+  top: -20px;
+  right: -76px;
   background-color: #ff5000;
   color: white;
   border-radius: 50%;

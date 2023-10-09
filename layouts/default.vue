@@ -1,14 +1,52 @@
 <template>
   <v-app dark>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-      style="height: 100px; background-color: #c1a742 !important"
-      class="d-flex"
-      width="100%"
-    >
-      <div>
+    <nav>
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <label class="logo"
+        ><nuxt-link to="/" class="logo" style="text-decoration: none; color: white"
+          >Family Pizza</nuxt-link
+        ></label
+      >
+      <ul class="ul-nav">
+        <li>
+          <a href="">{{ $t("salenav") }}</a>
+        </li>
+        <li>
+          <a href="/product-listing">{{ $t("menunav") }}</a>
+        </li>
+        <li>
+          <a href="">{{ $t("blog") }}</a>
+        </li>
+        <li>
+          <shoppingCart style="position: relative !important" />
+        </li>
+        <li>
+          <v-menu offset-y>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="#ff5c23" dark v-bind="attrs" v-on="on">
+                <h5>Language</h5>
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item-group v-model="selectedItem" color="#ff5c23">
+                <v-list-item
+                  v-for="(item, index) in locales"
+                  :key="index"
+                  @click="changeLange(item.value)"
+                >
+                  <img :src="item.flag" alt="Flag icon" class="px-2" />
+                  <v-list-item-title>{{ item.name }}</v-list-item-title>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-menu>
+        </li>
+      </ul>
+    </nav>
+    <!-- <div>
         <nuxt-link to="/" class="logo"
           ><img src="../static/images/icon4.png" alt="Logo"
         /></nuxt-link>
@@ -54,8 +92,8 @@
             </v-list-item-group>
           </v-list>
         </v-menu>
-      </div>
-    </v-app-bar>
+      </div> -->
+
     <v-main>
       <Nuxt />
     </v-main>
@@ -206,13 +244,98 @@ export default {
 };
 </script>
 <style>
-.ul-navbar {
-  gap: 50px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+nav {
+  height: 80px;
+  width: 100%;
+  background-color: #c1a742;
+}
+label.logo {
+  font-size: 35px;
+  line-height: 80px;
+  padding: 0 100px;
+  font-weight: bold;
+}
+nav ul {
+  float: right;
+  list-style: none;
+  margin-right: 20px;
+  justify-content: center;
+}
+nav ul li {
+  display: inline-block;
+  margin: 0 5px;
+  line-height: 80px;
+}
+nav ul li a {
+  color: white !important;
+  font-size: 17px;
+  padding: 24px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+a:hover {
+  background-color: #ff5c23;
+  transition: 0.5s ease;
+}
+.checkbtn {
+  font-size: 30px;
+  color: white;
+  line-height: 80px;
+  float: right;
+  margin-right: 40px;
+  cursor: pointer;
+  display: none;
+}
+#check {
+  display: none;
+}
+@media (max-width: 952px) {
+  label.logo {
+    font-size: 30px;
+    padding-left: 50px;
+  }
+  nav ul li a {
+    font-size: 16px;
+  }
+}
+@media (max-width: 858px) {
+  .checkbtn {
+    display: block;
+  }
+  .ul-nav {
+    z-index: 999999999;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #c1a742;
+    top: 80px;
+    left: -100%;
+    transition: all 0.5s;
+    text-align: center;
+  }
+  nav ul li {
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a {
+    font-size: 20px;
+  }
+  a.active {
+    background: none;
+    color: #ff5c23;
+  }
+  #check:checked ~ ul {
+    left: 0;
+  }
 }
 @media screen and (max-width: 1024px) {
-  .ul-navbar {
-    gap: 0px !important;
-  }
 }
 .v-application p {
   margin-bottom: 0 !important;
@@ -232,160 +355,7 @@ export default {
   background-color: black;
   color: white !important;
 }
-.navbar-nav li a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  padding: 2.35rem 4px !important;
-}
-.navbar-nav li a:hover {
-  color: white;
-  background-color: #ff5c23;
-}
-.navbar-nav .nav-link {
-  padding-right: 0;
-  padding-left: 0;
-}
-.nav-link {
-  display: block;
-  padding: 0.5rem 4px;
-  cursor: pointer;
-}
 
-.navbar-nav {
-  justify-content: center;
-  display: flex;
-  padding-left: 0;
-  margin-bottom: 0;
-  list-style: none;
-}
-.navbar-collapse {
-  flex-basis: 100%;
-  flex-grow: 1;
-  align-items: center;
-}
-.logo img {
-  display: block;
-  width: 230px;
-  height: 270px;
-}
-.v-toolbar__content {
-  height: 100% !important;
-}
-@media screen and (min-width: 1200px) and (max-width: 2800px) {
-  .navbar-nav li a {
-    padding: 2.3rem 2.5rem !important;
-  }
-}
-@media screen and (min-width: 778px) {
-  .navbar-nav li a {
-    padding: 2.3rem 1.5rem !important;
-  }
-}
-
-@media only screen and (max-width: 616px) {
-  .v-btn__content {
-    font-size: 12px;
-  }
-  .navbar-nav li a {
-    font-size: 12px;
-  }
-  .nav-link {
-    padding: none !important;
-  }
-  .navbar-nav {
-    padding: none !important;
-  }
-  .navbar-nav li a {
-    padding: none !important;
-  }
-}
-@media only screen and (max-width: 777px) {
-  .imgicon {
-    width: 100px;
-    height: 45px;
-  }
-  footer {
-    background-color: #c1a742;
-    width: 100vw;
-    padding-top: 16px;
-    border-top: #ff5c23 solid 8px;
-    position: relative;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-  }
-  #footer {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .item-footer {
-    padding: 10px 20px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .item-footer h1 {
-    margin-left: 10px;
-    color: white;
-  }
-
-  .item-footer li {
-    list-style-type: ">";
-    line-height: 32px;
-  }
-  .item-footer li a {
-    margin-left: 10px;
-    font-size: 15px;
-    text-decoration: none;
-    color: white;
-    border-bottom: black solid 1px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  footer a:hover {
-    color: black;
-    transition: 0.3s;
-  }
-
-  .copy-right-container {
-    margin-top: 20px;
-    background-color: #717980;
-    color: white;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .copy-right-container a {
-    text-decoration: none;
-    color: white;
-  }
-
-  .dropbtn {
-    display: none;
-  }
-
-  #checkDropmenu {
-    display: none;
-  }
-  .v-app-bar__nav-icon {
-    display: none;
-  }
-  .logo img {
-    content: url(../static/images/icon5.png);
-    width: 170px; /* Adjust the size as needed */
-    height: 100px;
-  }
-}
 footer {
   background-color: #c1a742;
   width: 100vw;
