@@ -2,7 +2,7 @@
   <div class="page">
     <v-row style="margin: 0 !important">
       <div
-        class="py-4 justify-center align-center d-flex mt-8"
+        class="justify-center align-center d-flex "
         style="background-color: #e2f4fc; width: 100vw"
       >
         <h4 class="pr-2 pa-2" style="color: #717273">{{ $t("paradise") }}</h4>

@@ -7,7 +7,7 @@
       </label>
       <label class="logo"
         ><nuxt-link to="/" class="logo" style="text-decoration: none; color: white"
-          >Family Pizza</nuxt-link
+          >Pizza Family</nuxt-link
         ></label
       >
       <ul class="ul-nav">
