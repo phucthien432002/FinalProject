@@ -145,14 +145,14 @@ export default {
     env: {
       // Your Firebase configuration here
       firebaseConfig: {
-        apiKey: "AIzaSyCU6o6GPNPe2GPhHgVYCrOK63n3UiTdJKU",
-        authDomain: "final-project-bf632.firebaseapp.com",
-        databaseURL: "https://final-project-bf632-default-rtdb.firebaseio.com",
-        projectId: "final-project-bf632",
-        storageBucket: "final-project-bf632.appspot.com",
-        messagingSenderId: "320594181878",
-        appId: "1:320594181878:web:6f4ec7b831e033663ab6d7",
-        measurementId: "G-181CMQG1K7"
+      apiKey: "AIzaSyARIYNNrTFqBYvlxeNDmLFfD5tbMouhZL8",
+      authDomain: "shopping-website-a122b.firebaseapp.com",
+      databaseURL: "https://shopping-website-a122b-default-rtdb.firebaseio.com",
+      projectId: "shopping-website-a122b",
+      storageBucket: "shopping-website-a122b.appspot.com",
+      messagingSenderId: "579661434362",
+      appId: "1:579661434362:web:e1fcf65a8afdde7a796843",
+      measurementId: "G-7PXQF11CD0"
       },
     },
   },

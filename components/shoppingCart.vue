@@ -284,7 +284,7 @@ export default {
       localStorage.removeItem("shoppingCart");
 
       const firebaseUrl =
-        "https://final-project-bf632-default-rtdb.firebaseio.com/orders.json";
+        "https://shopping-website-a122b-default-rtdb.firebaseio.com/orders.json";
       axios
         .post(firebaseUrl, orderData)
         .then((response) => {
@@ -298,9 +298,9 @@ export default {
 
       this.showAlert = true;
 
-      setTimeout(function () {
-        window.location.reload();
-      }, 1000);
+      // setTimeout(function () {
+      //   window.location.reload();
+      // }, 1000);
     },
     removeFromCart(product) {
       this.$store.commit("removeFromCart", product);

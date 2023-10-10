@@ -21,7 +21,7 @@
           <a href="/product-listing">{{ $t("menunav") }}</a>
         </li>
         <li>
-          <a href="">{{ $t("blog") }}</a>
+          <a href="/blog">{{ $t("blog") }}</a>
         </li>
         <li>
           <shoppingCart style="position: relative !important" />
@@ -219,7 +219,6 @@ label.logo {
 .nav-bar ul {
   float: right;
   list-style: none;
-  margin-right: 20px;
   justify-content: center;
 }
 .nav-bar ul li {
