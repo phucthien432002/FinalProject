@@ -1,12 +1,15 @@
 <template>
   <v-app dark>
-    <nav>
+    <nav class="nav-bar">
       <input type="checkbox" id="check" />
       <label for="check" class="checkbtn">
         <i class="fas fa-bars"></i>
       </label>
       <label class="logo"
-        ><nuxt-link to="/" class="logo" style="text-decoration: none; color: white"
+        ><nuxt-link
+          to="/"
+          class="logo a-hover"
+          style="text-decoration: none; color: white"
           >Pizza Family</nuxt-link
         ></label
       >
@@ -261,25 +264,25 @@ label.logo {
   padding: 0 100px;
   font-weight: bold;
 }
-nav ul {
+.nav-bar ul {
   float: right;
   list-style: none;
   margin-right: 20px;
   justify-content: center;
 }
-nav ul li {
+.nav-bar ul li {
   display: inline-block;
   margin: 0 5px;
   line-height: 80px;
 }
-nav ul li a {
+.nav-bar ul li a {
   color: white !important;
   font-size: 17px;
   padding: 24px 12px;
   border-radius: 4px;
   text-transform: uppercase;
 }
-a:hover {
+.ul-nav a:hover {
   background-color: #ff5c23;
   transition: 0.5s ease;
 }
@@ -435,6 +438,10 @@ footer a:hover {
 
 #checkDropmenu {
   display: none;
+}
+.a-hover:hover {
+  color: #ff5c23 !important;
+  transition: 0.5s;
 }
 </style>
 <i18n>

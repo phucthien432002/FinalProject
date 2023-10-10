@@ -12,7 +12,7 @@
         <div style="width: 100%; max-width: 100vw">
           <ul class="dot-list py-2" style="width: 100%; max-width: 100vw">
             <li>
-              <a href="">{{ $t("sale") }}</a>
+              <a class="a-hover" href="">{{ $t("sale") }}</a>
             </li>
             <li>
               <a
@@ -22,13 +22,13 @@
               >
             </li>
             <li>
-              <a href="/product-listing/Sides">{{ $t("sides") }}</a>
+              <a class="a-hover" href="/product-listing/Sides">{{ $t("sides") }}</a>
             </li>
             <li>
-              <a href="/product-listing/Dessert">{{ $t("dessert") }}</a>
+              <a class="a-hover" href="/product-listing/Dessert">{{ $t("dessert") }}</a>
             </li>
             <li>
-              <a href="/product-listing/Drinks">{{ $t("drinks") }}</a>
+              <a class="a-hover" href="/product-listing/Drinks">{{ $t("drinks") }}</a>
             </li>
           </ul>
         </div>

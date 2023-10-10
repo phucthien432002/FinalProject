@@ -2,7 +2,7 @@
   <div class="page">
     <v-row style="margin: 0 !important">
       <div
-        class="justify-center align-center d-flex "
+        class="justify-center align-center d-flex"
         style="background-color: #e2f4fc; width: 100vw"
       >
         <h4 class="pr-2 pa-2" style="color: #717273">{{ $t("paradise") }}</h4>
@@ -12,16 +12,16 @@
         <div style="width: 100%; max-width: 100vw">
           <ul class="dot-list py-2" style="width: 100%; max-width: 100vw">
             <li>
-              <a href="">{{ $t("sale") }}</a>
+              <a class="a-hover" href="">{{ $t("sale") }}</a>
             </li>
             <li>
-              <a href="/product-listing/Pizza">{{ $t("pizza") }}</a>
+              <a class="a-hover" href="/product-listing/Pizza">{{ $t("pizza") }}</a>
             </li>
             <li>
-              <a href="/product-listing/Sides">{{ $t("sides") }}</a>
+              <a class="a-hover" href="/product-listing/Sides">{{ $t("sides") }}</a>
             </li>
             <li>
-              <a href="/product-listing/Dessert">{{ $t("dessert") }}</a>
+              <a class="a-hover" href="/product-listing/Dessert">{{ $t("dessert") }}</a>
             </li>
             <li>
               <a

@@ -1,6 +1,6 @@
 <template>
   <div class="container blog-padding">
-    <nuxt-link to="/" style="color: black">Home</nuxt-link> /
+    <nuxt-link class="a-hover" to="/" style="color: black">Home</nuxt-link> /
     <nuxt-link to="/blog" style="color: #ff5c23; pointer-events: none">{{
       $t("blog")
     }}</nuxt-link>
@@ -28,6 +28,7 @@
                   href="https://pizzainn.vn/pizza-margherita-va-mot-so-dieu-ban-co-the-chua-biet"
                   title="Pizza Margherita Và Một Số Điều Bạn Có Thể Chưa Biết"
                   style="color: black"
+                  class="a-hover"
                   >Pizza Margherita Và Một Số Điều Bạn Có Thể Chưa Biết</a
                 >
                 <p>
@@ -68,6 +69,7 @@
                   href="/doi-net-ve-mon-pizza-trong-van-hoa-am-thuc-cua-my"
                   title="Đôi Nét Về Món Pizza Trong Văn Hoá Ẩm Thực Của Mỹ"
                   style="color: black"
+                  class="a-hover"
                   >Đôi Nét Về Món Pizza Trong Văn Hoá Ẩm Thực Của Mỹ</a
                 >
                 <p>
@@ -108,6 +110,7 @@
                   href="/ly-do-khien-cong-viec-cua-nguoi-tho-lam-banh-pizza-luon-ben-vung"
                   title="Lý Do Khiến Công Việc Của Người Thợ Làm Bánh Pizza Luôn Bền Vững"
                   style="color: black"
+                  class="a-hover"
                   >Lý Do Khiến Công Việc Của Người Thợ Làm Bánh Pizza Luôn Bền Vững</a
                 >
                 <p>
@@ -132,7 +135,7 @@
       </div>
       <div class="col-md-4 col-lg-3 col-sm-12 blog-sidebar">
         <div class="aside-title margin-top-20">
-          <a href="blog" title="Tin khuyến mãi" style="pointer-events: none"
+          <a href="/" title="Tin khuyến mãi" style="pointer-events: none"
             >Tin khuyến mãi</a
           >
         </div>
@@ -152,6 +155,7 @@
             </div>
             <div class="qodef-e-content">
               <a
+                class="a-hover"
                 href="https://pizzainn.vn/pizza-margherita-va-mot-so-dieu-ban-co-the-chua-biet"
                 alt="Pizza Margherita Và Một Số Điều Bạn Có Thể Chưa Biết"
               >
@@ -176,6 +180,7 @@
             </div>
             <div class="qodef-e-content">
               <a
+                class="a-hover"
                 href="/doi-net-ve-mon-pizza-trong-van-hoa-am-thuc-cua-my"
                 alt="Đôi Nét Về Món Pizza Trong Văn Hoá Ẩm Thực Của Mỹ"
               >
@@ -200,6 +205,7 @@
             </div>
             <div class="qodef-e-content">
               <a
+                class="a-hover"
                 href="/ly-do-khien-cong-viec-cua-nguoi-tho-lam-banh-pizza-luon-ben-vung"
                 alt="Lý Do Khiến Công Việc Của Người Thợ Làm Bánh Pizza Luôn Bền Vững"
               >
@@ -306,7 +312,7 @@ a {
   font-size: 16px;
   line-height: 1.5em;
   letter-spacing: 0.12em;
-  background-color: #00974b;
+  background-color: #ff5c23;
   padding: 5px 10px;
   text-align: center;
   border-top-left-radius: 10px;
@@ -355,5 +361,9 @@ a {
   content: "";
   display: table;
   clear: both;
+}
+.a-hover:hover {
+  color: #ff5c23 !important;
+  transition: 0.5s;
 }
 </style>
