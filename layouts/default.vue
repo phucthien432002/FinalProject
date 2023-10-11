@@ -1,5 +1,18 @@
 <template>
   <v-app dark>
+    <div class="announcement">
+      <a href="" class="announcement-bar"> </a>
+      <div class="announcement-bar-text">
+        <span class="announcement-bar-close" tabindex="0" role="button"> </span>
+        <div class="announcement-bar-text-inner">
+          <p>
+            <a href="" target="_blank">
+              Join the Buddy’s Team! We are Hiring - Apply Now!
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
     <nav class="nav-bar">
       <input type="checkbox" id="check" />
       <label for="check" class="checkbtn">
@@ -9,7 +22,7 @@
         ><nuxt-link
           to="/"
           class="logo a-hover"
-          style="text-decoration: none; color: white"
+          style="text-decoration: none; color: #e5152d"
           >Pizza Family</nuxt-link
         ></label
       >
@@ -141,11 +154,13 @@
       </div>
     </footer>
     <scrollup />
+    <phone-num />
   </v-app>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
+
 import scrollup from "../components/scrollup.vue";
 export default {
   components: { scrollup },
@@ -208,12 +223,12 @@ export default {
 nav {
   height: 80px;
   width: 100%;
-  background-color: #c1a742;
+  background-color: white;
 }
 label.logo {
-  font-size: 35px;
+  font-size: 34px;
   line-height: 80px;
-  padding: 0 100px;
+  padding-left: 100px;
   font-weight: bold;
 }
 .nav-bar ul {
@@ -227,7 +242,9 @@ label.logo {
   line-height: 80px;
 }
 .nav-bar ul li a {
-  color: white !important;
+  font-family: cursive;
+  font-weight: bold;
+  color: #164983 !important;
   font-size: 17px;
   padding: 24px 12px;
   border-radius: 4px;
@@ -239,7 +256,7 @@ label.logo {
 }
 .checkbtn {
   font-size: 30px;
-  color: white;
+  color: black;
   line-height: 80px;
   float: right;
   margin-right: 40px;
@@ -251,8 +268,8 @@ label.logo {
 }
 @media (max-width: 952px) {
   label.logo {
-    font-size: 30px;
-    padding-left: 50px;
+    font-size: 24px;
+    padding-left: 20px !important;
   }
   nav ul li a {
     font-size: 16px;
@@ -267,8 +284,8 @@ label.logo {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background-color: #c1a742;
-    top: 80px;
+    background-color: white;
+    top: 110px;
     left: -100%;
     transition: all 0.5s;
     text-align: center;
@@ -311,7 +328,7 @@ label.logo {
 }
 
 footer {
-  background-color: #c1a742;
+  background-color: #164983;
   width: 100vw;
   padding-top: 64px;
   border-top: #ff5c23 solid 8px;
@@ -352,7 +369,7 @@ footer {
   font-size: 15px;
   text-decoration: none;
   color: white;
-  border-bottom: black solid 1px;
+  border-bottom: white solid 1px;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -360,14 +377,14 @@ footer {
 }
 
 footer a:hover {
-  color: black;
+  color: #ff5c23;
   transition: 0.3s;
 }
 
 .copy-right-container {
   border-top: 2px solid white;
   margin-top: 80px;
-  background-color: #c1a742;
+  background-color: #164983;
   color: white;
   font-weight: 600;
   font-size: 16px;
@@ -393,6 +410,40 @@ footer a:hover {
 .a-hover:hover {
   color: #ff5c23 !important;
   transition: 0.5s;
+}
+.announcement {
+  background-color: #e5152d;
+  text-align: center;
+}
+.announcement-bar {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.announcement-bar-text {
+  font-family: "proxima-nova", arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0px;
+  text-transform: none;
+  line-height: 1.2em;
+  padding: 0.8em 3em;
+}
+.announcement-bar-close {
+  display: none !important;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.8em;
+  height: 2.78em;
+}
+.announcement-bar-text-inner a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
 }
 </style>
 <i18n>

@@ -22,9 +22,7 @@
           >
             <div class="d-flex">
               <h5>Shopping Cart -</h5>
-              <h5 style="color: #c1a742; margin-left: 4px">
-                {{ totalSum - discountedAmount }}₫
-              </h5>
+              <h5 style="margin-left: 4px">{{ totalSum - discountedAmount }}₫</h5>
             </div>
           </v-list-item>
         </v-list>
@@ -164,7 +162,7 @@
                   {{ emailError }}
                 </div>
               </div>
-              <div>
+              <div class="button-order">
                 <v-alert
                   v-if="showAlert"
                   type="success"
@@ -298,9 +296,9 @@ export default {
 
       this.showAlert = true;
 
-      // setTimeout(function () {
-      //   window.location.reload();
-      // }, 1000);
+      setTimeout(function () {
+        window.location.reload();
+      }, 1000);
     },
     removeFromCart(product) {
       this.$store.commit("removeFromCart", product);
@@ -454,6 +452,15 @@ export default {
   left: 98%;
   transform: translateX(-100%);
   z-index: 1000;
+}
+.button-order button {
+  padding: 4px 1px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 </style>
 

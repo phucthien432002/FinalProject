@@ -19,7 +19,7 @@
         >
           <div class="d-flex flex-column card-content">
             <v-card-text>
-              <h3 style="color: rgb(100, 255, 255)" class="font-weight-bold text-center">
+              <h3 style="color: #ff5c23" class="font-weight-bold text-center">
                 {{ image.name }}
               </h3>
             </v-card-text>
