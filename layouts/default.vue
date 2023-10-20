@@ -285,7 +285,7 @@ label.logo {
     width: 100%;
     height: 100vh;
     background-color: white;
-    top: 110px;
+    top: 150px;
     left: -100%;
     transition: all 0.5s;
     text-align: center;
@@ -362,6 +362,7 @@ footer {
 .item-footer li {
   list-style-type: ">";
   line-height: 32px;
+  color: white;
 }
 
 .item-footer li a {

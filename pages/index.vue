@@ -170,7 +170,7 @@
             <p style="color: grey">{{ $t("miss") }}</p>
           </span>
           <v-spacer></v-spacer>
-          <a class="a-hover" style="text-decoration: none; color: black" href=""
+          <a class="a-hover" style="text-decoration: none; color: black" href="/blog"
             >{{ $t("view") }} <i class="fas fa-arrow-right"></i
           ></a>
         </div>
@@ -181,7 +181,7 @@
                 <div class="evo-news-item">
                   <div class="item-img">
                     <a
-                      href="https://pizzainn.vn/pizza-margherita-va-mot-so-dieu-ban-co-the-chua-biet"
+                      href="/blog/bai-viet-so-1"
                       title="Pizza Margherita Và Một Số Điều Bạn Có Thể Chưa Biết"
                     >
                       <img
@@ -194,7 +194,7 @@
                   </div>
                   <div class="item-img-content">
                     <a
-                      href="https://pizzainn.vn/pizza-margherita-va-mot-so-dieu-ban-co-the-chua-biet"
+                      href="/blog/bai-viet-so-1"
                       title="Pizza Margherita Và Một Số Điều Bạn Có Thể Chưa Biết"
                       style="color: black"
                       class="a-hover"
@@ -222,7 +222,7 @@
                 <div class="evo-news-item">
                   <div class="item-img">
                     <a
-                      href="/doi-net-ve-mon-pizza-trong-van-hoa-am-thuc-cua-my"
+                      href="/blog/bai-viet-so-2"
                       title="Đôi Nét Về Món Pizza Trong Văn Hoá Ẩm Thực Của Mỹ"
                     >
                       <img
@@ -235,7 +235,7 @@
                   </div>
                   <div class="item-img-content">
                     <a
-                      href="/doi-net-ve-mon-pizza-trong-van-hoa-am-thuc-cua-my"
+                      href="/blog/bai-viet-so-2"
                       title="Đôi Nét Về Món Pizza Trong Văn Hoá Ẩm Thực Của Mỹ"
                       style="color: black"
                       class="a-hover"
@@ -263,7 +263,7 @@
                 <div class="evo-news-item">
                   <div class="item-img">
                     <a
-                      href="/ly-do-khien-cong-viec-cua-nguoi-tho-lam-banh-pizza-luon-ben-vung"
+                      href="/blog/bai-viet-so-3"
                       title="Lý Do Khiến Công Việc Của Người Thợ Làm Bánh Pizza Luôn Bền Vững"
                     >
                       <img
@@ -276,7 +276,7 @@
                   </div>
                   <div class="item-img-content">
                     <a
-                      href="/ly-do-khien-cong-viec-cua-nguoi-tho-lam-banh-pizza-luon-ben-vung"
+                      href="/blog/bai-viet-so-3"
                       title="Lý Do Khiến Công Việc Của Người Thợ Làm Bánh Pizza Luôn Bền Vững"
                       style="color: black"
                       class="a-hover"
