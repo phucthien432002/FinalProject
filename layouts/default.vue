@@ -1,17 +1,85 @@
 <template>
   <v-app dark>
     <div class="announcement">
-      <a href="" class="announcement-bar"> </a>
       <div class="announcement-bar-text">
         <span class="announcement-bar-close" tabindex="0" role="button"> </span>
         <div class="announcement-bar-text-inner">
           <p>
-            <a href="" target="_blank">
+            <a @click="showRegisterForm = true" target="_blank">
               Join the Buddy’s Team! We are Hiring - Apply Now!
             </a>
           </p>
         </div>
       </div>
+    </div>
+    <div v-if="showRegisterForm" class="register-form">
+      <div class="d-flex">
+        <h2>Đăng ký</h2>
+        <v-spacer></v-spacer>
+        <button @click="closeRegistrationForm">x</button>
+      </div>
+      <form @submit.prevent="submitHiring">
+        <div class="form-group">
+          <label for="name">Tên:</label>
+          <input
+            type="text"
+            id="name"
+            v-model="orderInfo.name"
+            required
+            class="custom-input"
+          />
+        </div>
+        <div class="form-group">
+          <label for="address">Địa chỉ:</label>
+          <input
+            type="text"
+            id="address"
+            v-model="orderInfo.address"
+            required
+            class="custom-input"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            v-model="orderInfo.email"
+            required
+            class="custom-input"
+          />
+          <div v-if="emailError" class="error-message">
+            {{ emailError }}
+          </div>
+        </div>
+        <div>
+          <div class="form-group">
+            <label for="fileURL"
+              >Bạn hãy cung cấp cho chúng tôi đường dẫn đến file Word của bạn thông qua
+              Google Drive</label
+            >
+            <a
+              href="https://drive.google.com/uc?export=download&id=1ZMXpT9kDHk7Am68p7SZF6lWLvzB8b-DR"
+              download
+            >
+              Tải xuống tệp Word
+            </a>
+            <input
+              type="text"
+              id="fileURL"
+              v-model="orderInfo.fileURL"
+              required
+              class="custom-input"
+            />
+          </div>
+        </div>
+        <div class="button-order">
+          <v-alert v-if="showAlert" type="success" dismissible @input="showAlert = false">
+            Bạn đã đăng ký thành công!
+          </v-alert>
+          <button type="submit">Hoàn tất đăng ký</button>
+        </div>
+      </form>
     </div>
     <nav class="nav-bar">
       <input type="checkbox" id="check" />
@@ -160,7 +228,7 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-
+import axios from "axios";
 import scrollup from "../components/scrollup.vue";
 export default {
   components: { scrollup },
@@ -170,6 +238,17 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      showRegisterForm: false,
+      file: null,
+      showAlert: false,
+      emailValid: false,
+      emailError: "",
+      orderInfo: {
+        name: "",
+        address: "",
+        email: "",
+        fileURL: "",
+      },
       items: [
         {
           icon: "mdi-apps",
@@ -196,9 +275,54 @@ export default {
       const path = this.switchLocalePath(value);
       this.$router.push(path);
     },
+    validateEmail(email) {
+      const emailPattern = /^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      return emailPattern.test(email);
+    },
     getFlagIcon(language) {
       // Assuming the flag icons are placed in the "static/flags" directory
       return `/flags/${language}.png`; // Replace "png" with the actual file extension of your flag icons
+    },
+    handleFileUpload(event) {
+      this.orderInfo.file = event.target.files[0];
+    },
+    submitHiring() {
+      if (!this.validateEmail(this.orderInfo.email) || this.orderInfo.email.length < 9) {
+        this.emailError = "Email không hợp lệ";
+        this.orderInfo.email = "";
+        return; // Ngăn việc đặt hàng nếu email không hợp lệ
+      } else {
+        this.emailError = ""; //
+      }
+
+      const orderData = {
+        name: this.orderInfo.name,
+        address: this.orderInfo.address,
+        email: this.orderInfo.email,
+        fileURL: this.orderInfo.fileURL,
+      };
+
+      // Gửi dữ liệu đăng ký và tệp lên Firebase Realtime Database
+      const firebaseUrl =
+        "https://shopping-website-a122b-default-rtdb.firebaseio.com/hiring.json";
+      axios
+        .post(firebaseUrl, orderData)
+        .then((response) => {
+          console.log("Dữ liệu đã được gửi thành công:", response.data);
+        })
+        .catch((error) => {
+          console.error("Lỗi khi gửi dữ liệu lên Firebase:", error);
+        });
+
+      this.showAlert = true;
+
+      setTimeout(function () {
+        window.location.reload();
+      }, 1000);
+    },
+
+    closeRegistrationForm() {
+      this.showRegisterForm = false;
     },
     removeFromCart(product) {
       const shoppingCart = this.modelValue;
@@ -219,6 +343,46 @@ export default {
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
+}
+.register-form {
+  z-index: 999999999 !important;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: start;
+}
+
+.register-form p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.register-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.register-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.register-form button:hover {
+  background-color: #0056b3;
 }
 nav {
   height: 80px;
