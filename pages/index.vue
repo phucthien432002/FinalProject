@@ -11,7 +11,7 @@
                 </div>
               </div>
               <a class="item" href="" target="_blank">
-                <img src="../static/images/2.jpg" alt="" />
+                <img src="../static/images/2.png" alt="" />
               </a>
               <a class="item" href="" target="_blank">
                 <img src="../static/images/3.jpg" alt="" />
@@ -20,7 +20,7 @@
                 <img src="../static/images/4.jpg" alt="" />
               </a>
               <a class="item" href="" target="_blank">
-                <img src="../static/images/5.jpg" alt="" />
+                <img src="../static/images/5.png" alt="" />
               </a>
               <a class="item" href="" target="_blank">
                 <img src="../static/images/6.jpg" alt="" />
@@ -32,7 +32,7 @@
                 <img src="../static/images/8.png" alt="" />
               </a>
               <a class="item" href="" target="_blank">
-                <img src="../static/images/9.jpg" alt="" />
+                <img src="../static/images/9.png" alt="" />
               </a>
               <a class="item" href="" target="_blank">
                 <img src="../static/images/10.jpg" alt="" />
