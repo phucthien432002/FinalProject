@@ -96,7 +96,7 @@
       >
       <ul class="ul-nav">
         <li>
-          <a href="">{{ $t("salenav") }}</a>
+          <a href="/promo-listing">{{ $t("salenav") }}</a>
         </li>
         <li>
           <a href="/product-listing">{{ $t("menunav") }}</a>
@@ -270,6 +270,7 @@ export default {
     ...mapGetters(["locales", "locale"]),
   },
   created() {
+    // Khởi tạo giỏ hàng cho toàn bộ trang
     this.$store.commit("initializeCartFromLocalStorage");
   },
   methods: {
