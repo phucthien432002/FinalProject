@@ -269,6 +269,9 @@ export default {
   computed: {
     ...mapGetters(["locales", "locale"]),
   },
+  created() {
+    this.$store.commit("initializeCartFromLocalStorage");
+  },
   methods: {
     ...mapMutations(["SET_LANG"]),
     changeLange(value) {
@@ -283,9 +286,7 @@ export default {
       // Assuming the flag icons are placed in the "static/flags" directory
       return `/flags/${language}.png`; // Replace "png" with the actual file extension of your flag icons
     },
-    handleFileUpload(event) {
-      this.orderInfo.file = event.target.files[0];
-    },
+
     submitHiring() {
       if (!this.validateEmail(this.orderInfo.email) || this.orderInfo.email.length < 9) {
         this.emailError = "Email không hợp lệ";
