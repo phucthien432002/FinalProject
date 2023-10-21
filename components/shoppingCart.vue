@@ -122,7 +122,7 @@
             <button class="btn-checkout" v-if="cartHasItems" @click="showCheckoutForm">
               {{ $t("checkout") }} - {{ totalSum - discountedAmount }}₫
             </button>
-            <!-- Biểu mẫu nhập thông tin -->
+
             <form
               v-if="isCheckoutFormVisible"
               @submit.prevent="submitOrder"
@@ -258,11 +258,11 @@ export default {
       if (!this.validateEmail(this.orderInfo.email) || this.orderInfo.email.length < 9) {
         this.emailError = "Email không hợp lệ";
         this.orderInfo.email = "";
-        return; // Ngăn việc đặt hàng nếu email không hợp lệ
+        return;
       } else {
-        this.emailError = ""; //
+        this.emailError = "";
       }
-      // Truy cập giỏ hàng
+
       const shoppingCart = this.$store.state.shoppingCart;
       console.log("Sản phẩm trong giỏ hàng của bạn:", shoppingCart);
 
