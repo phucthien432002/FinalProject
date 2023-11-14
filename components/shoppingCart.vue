@@ -282,7 +282,7 @@ export default {
       localStorage.removeItem("shoppingCart");
 
       const firebaseUrl =
-        "https://shopping-website-a122b-default-rtdb.firebaseio.com/orders.json";
+        "https://shopping-website-96946-default-rtdb.firebaseio.com/orders.json";
       axios
         .post(firebaseUrl, orderData)
         .then((response) => {
