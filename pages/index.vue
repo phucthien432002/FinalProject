@@ -309,6 +309,7 @@
 </template>
 <script>
 import bestseller from "../components/bestseller.vue";
+
 export default {
   components: { bestseller },
   name: "DefaultLayout",

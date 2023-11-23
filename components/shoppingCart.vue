@@ -288,6 +288,12 @@ export default {
         .then((response) => {
           console.log("Dữ liệu đã được gửi thành công:", response.data);
 
+          axios.post("http://localhost:8080", {
+            from: "phucthien1233212002@gmail.com",
+            to: this.orderInfo.email,
+            subject: "test",
+            text: "test",
+          });
           this.isCheckoutFormVisible = false;
         })
         .catch((error) => {
