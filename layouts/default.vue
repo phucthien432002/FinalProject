@@ -311,6 +311,13 @@ export default {
         .post(firebaseUrl, orderData)
         .then((response) => {
           console.log("Dữ liệu đã được gửi thành công:", response.data);
+          axios.post("http://localhost:8080", {
+            from: "phucthien1233212002@gmail.com",
+            to: this.orderInfo.email,
+            subject: "Do not reply this message",
+            text:
+              "Chúng tôi đã nhận được đơn và sẽ sớm liên hệ bạn. Xin vui lòng chờ đợi từ 5-7 ngày.",
+          });
         })
         .catch((error) => {
           console.error("Lỗi khi gửi dữ liệu lên Firebase:", error);

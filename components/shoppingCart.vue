@@ -149,6 +149,16 @@
                 />
               </div>
               <div class="form-group">
+                <label for="phone">Số điện thoại:</label>
+                <input
+                  type="text"
+                  id="phone"
+                  v-model="orderInfo.phone"
+                  required
+                  class="custom-input"
+                />
+              </div>
+              <div class="form-group">
                 <label for="address">Email:</label>
                 <input
                   type="text"
@@ -197,6 +207,7 @@ export default {
       orderInfo: {
         name: "",
         address: "",
+        phone: "",
         email: "",
       },
       cartHasItems: false,
@@ -288,11 +299,32 @@ export default {
         .then((response) => {
           console.log("Dữ liệu đã được gửi thành công:", response.data);
 
+          let totalSum = 0;
+          const cartText = shoppingCart
+            .map((product) => {
+              totalSum += product.price * product.amount;
+              return `
+              <div>
+              Tên sản phẩm: ${product.name}
+              </div>
+              <div>
+              Giá: ${product.price}
+              </div>
+              <div>
+              Số lượng: ${product.amount}
+              </div>
+  `;
+            })
+            .join("\r\n\r\n");
+          const totalAmount = totalSum - this.discountedAmount;
+          let message = `
+          Tổng giá tiền của bạn là: ${totalAmount}  
+`;
           axios.post("http://localhost:8080", {
             from: "phucthien1233212002@gmail.com",
             to: this.orderInfo.email,
-            subject: "test",
-            text: "test",
+            subject: "Your Order",
+            text: [cartText, message],
           });
           this.isCheckoutFormVisible = false;
         })

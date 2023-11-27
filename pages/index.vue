@@ -321,9 +321,6 @@ export default {
     const next = this.$el.querySelector("#next");
     let active = 0;
     const countItem = items.length;
-    // const autoRef = setInterval(() => {
-    //   next.click();
-    // }, 5000);
 
     next.onclick = function nextItem() {
       if (active + 1 >= countItem) {
