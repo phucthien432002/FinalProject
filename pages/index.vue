@@ -77,13 +77,11 @@
                   />
                 </div>
                 <div class="kc-title-wrap">
-                  <h3 class="kc_title">Chất lượng dẫn đầu</h3>
+                  <h3 class="kc_title">{{ $t("text1") }}</h3>
                 </div>
                 <div class="kc-css-753924 kc_text_block">
                   <p>
-                    Chú trọng khâu tuyển chọn đội ngũ đầu bếp chuyên nghiệp, thực đơn của
-                    Pizza Express luôn được đổi mới, đa dạng với pizza nhiều hương vị,
-                    sandwich, mỳ ý và các món ăn nhanh khác.
+                    {{ $t("text1-1") }}
                   </p>
                 </div>
               </div>
@@ -99,13 +97,11 @@
                   />
                 </div>
                 <div class="kc-title-wrap">
-                  <h3 class="kc_title">Giao hàng đúng giờ</h3>
+                  <h3 class="kc_title">{{ $t("text2") }}</h3>
                 </div>
                 <div class="kc-css-753924 kc_text_block">
                   <p>
-                    Để tăng cường sự tin tưởng và yên tâm với khách hàng, Pizza Express
-                    cam kết luôn giao hàng đúng giờ và chi phí giao hàng rẻ nhất để đảm
-                    bảo khách hàng có thể nhận bánh trong thời gian nhanh nhất.
+                    {{ $t("text2-2") }}
                   </p>
                 </div>
               </div>
@@ -121,14 +117,11 @@
                   />
                 </div>
                 <div class="kc-title-wrap">
-                  <h3 class="kc_title">Pizza Take Away</h3>
+                  <h3 class="kc_title">{{ $t("text3") }}</h3>
                 </div>
                 <div class="kc-css-753924 kc_text_block">
                   <p>
-                    Lựa chọn cho mình một hướng đi mới để tạo nên sự khác biệt, mô hình
-                    Pizza take away - pizza mang đi giúp khách hàng tiết kiệm thời gian,
-                    đem đến sự tiện lợi tối ưu trong việc lựa chọn, thanh toán, đóng gói
-                    và nhận hàng.
+                    {{ $t("text3-3") }}
                   </p>
                 </div>
               </div>
@@ -144,14 +137,11 @@
                   />
                 </div>
                 <div class="kc-title-wrap">
-                  <h3 class="kc_title">Phục vụ chuyên nghiệp</h3>
+                  <h3 class="kc_title">{{ $t("text4") }}</h3>
                 </div>
                 <div class="kc-css-753924 kc_text_block">
                   <p>
-                    Pizza Express cùng với đội ngũ nhân viên mang đầy sức trẻ và nhiệt
-                    huyết, chúng tôi luôn mong muốn đem lại cho khách hàng của mình chất
-                    lượng dịch vụ tốt nhất, luôn lắng nghe và chăm sóc những nhu cầu dù là
-                    nhỏ nhất của Quý khách.
+                    {{ $t("text4-4") }}
                   </p>
                 </div>
               </div>
@@ -599,12 +589,28 @@ p:last-child {
   "en":{
     "news": "Our latest news",
     "miss": "Don't miss this week's deals",
-    "view": "View All"
+    "view": "View All",
+    "text1": "Leading quality",
+    "text1-1":"Pay attention to the selection of professional chefs and menus Pizza Family is always innovated and diversified with pizzas of many flavors, sandwiches, pasta and other fast food dishes.",
+    "text2": "Delivery on time",
+    "text2-2": "To increase trust and peace of mind with customers, Pizza Family Committed to always delivering on time and with the cheapest delivery cost to ensure Ensuring customers can receive their cakes as quickly as possible.",
+    "text3": "Pizza Take Away",
+    "text3-3": "Choose a new direction for yourself to create a difference and a model Pizza take away - take away pizza helps customers save time, Brings optimal convenience in choosing, paying, and packaging and receive the goods.",
+    "text4": "PROFESSIONAL SERVICE",
+    "text4-4": "Pizza Family and its staff are full of youth and enthusiasm We always want to bring quality to our customers The best quality service, always listening and taking care of every need your smallest."
   },
   "vn":{
     "news": "Tin tức mới nhất của chúng tôi",
     "miss": "Đừng bỏ lỡ ưu đãi tuần này",
-    "view": "Xem tất cả"
+    "view": "Xem tất cả",
+    "text1": "Chất lượng dẫn đầu",
+    "text1-1": "Chú trọng khâu tuyển chọn đội ngũ đầu bếp chuyên nghiệp, thực đơn của Pizza Family luôn được đổi mới, đa dạng với pizza nhiều hương vị, sandwich, mỳ ý và các món ăn nhanh khác.",
+    "text2": "Giao hàng đúng giờ",
+    "text2-2": "Để tăng cường sự tin tưởng và yên tâm với khách hàng, Pizza Family cam kết luôn giao hàng đúng giờ và chi phí giao hàng rẻ nhất để đảm bảo khách hàng có thể nhận bánh trong thời gian nhanh nhất.",
+    "text3": "Pizza mang đi",
+    "text3-3": "Lựa chọn cho mình một hướng đi mới để tạo nên sự khác biệt, mô hình Pizza take away - pizza mang đi giúp khách hàng tiết kiệm thời gian, đem đến sự tiện lợi tối ưu trong việc lựa chọn, thanh toán, đóng gói và nhận hàng.",
+    "text4": "PHỤC VỤ CHUYÊN NGHIỆP",
+    "text4-4": "Pizza Family cùng với đội ngũ nhân viên mang đầy sức trẻ và nhiệt huyết, chúng tôi luôn mong muốn đem lại cho khách hàng của mình chất lượng dịch vụ tốt nhất, luôn lắng nghe và chăm sóc những nhu cầu dù là nhỏ nhất của Quý khách."
   }
 }
 </i18n>
