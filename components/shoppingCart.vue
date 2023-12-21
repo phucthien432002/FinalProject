@@ -200,7 +200,6 @@ export default {
       emailError: "",
       discountCodeEmpty: false,
       discountCode: "",
-      totalAmount: 100000,
       discountedAmount: 0,
       showAlert: false,
       isCheckoutFormVisible: false,
@@ -293,7 +292,7 @@ export default {
       localStorage.removeItem("shoppingCart");
 
       const firebaseUrl =
-        "https://shopping-website-96946-default-rtdb.firebaseio.com/orders.json";
+        "https://shopping-website-62b9c-default-rtdb.firebaseio.com/orders.json";
       axios
         .post(firebaseUrl, orderData)
         .then((response) => {
@@ -337,6 +336,7 @@ export default {
       setTimeout(function () {
         window.location.reload();
       }, 1000);
+      this.$router.push("/history");
     },
     removeFromCart(product) {
       this.$store.commit("removeFromCart", product);

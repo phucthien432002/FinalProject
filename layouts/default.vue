@@ -306,7 +306,7 @@ export default {
 
       // Gửi dữ liệu đăng ký và tệp lên Firebase Realtime Database
       const firebaseUrl =
-        "https://shopping-website-96946-default-rtdb.firebaseio.com/hiring.json";
+        "https://shopping-website-62b9c-default-rtdb.firebaseio.com/hiring.json";
       axios
         .post(firebaseUrl, orderData)
         .then((response) => {

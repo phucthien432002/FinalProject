@@ -21,7 +21,6 @@ export const getters = {
 };
 export const mutations = {
   addToCart(state, product) {
-    // Thêm sản phẩm vào giỏ hàng
     const existingProduct = state.shoppingCart.find(item => item.uuid === product.uuid);
 
     if (existingProduct) {
@@ -38,7 +37,6 @@ export const mutations = {
     state.shoppingCart = [];
   },
   removeFromCart(state, product) {
-    // Xóa sản phẩm khỏi giỏ hàng
     const productIndex = state.shoppingCart.findIndex(item => item.uuid === product.uuid);
 
     if (productIndex !== -1) {
