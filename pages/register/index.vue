@@ -73,6 +73,7 @@ export default {
           )
           .then((result) => console.log(result))
           .catch((e) => console.log(e));
+        this.$router.push("/signIn");
       } else {
         console.log("Password is not valid");
       }
