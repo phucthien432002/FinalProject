@@ -49,7 +49,7 @@ export default {
       this.pageSize += 5;
     },
     hidePhoneNumber(phoneNumber) {
-      if (phoneNumber.length === 10) {
+      if (phoneNumber.length === 10 || phoneNumber.length === 11) {
         return "xxxxxx" + phoneNumber.substring(6);
       } else {
         return phoneNumber;
