@@ -154,6 +154,7 @@ export default {
         appId: "1:11927739381:web:de91ded02c7b1b4d495ebc",
         measurementId: "G-11RS3CCPZK"
       },
+      fbApiKey:'AIzaSyAWd5LxoO1qJzHweigzvFxguwh9gE8rocw'
     },
   },
 };
