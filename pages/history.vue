@@ -6,7 +6,7 @@
           {{ orderInfo.name }}
         </p>
         <div class="card-content">
-          <div>Số điện thoại: {{ orderInfo.phone }}</div>
+          <div>Số điện thoại: {{ hidePhoneNumber(orderInfo.phone) }}</div>
           <div>Tổng tiền: {{ orderInfo.totalAmount }} $</div>
           <!-- Các thông tin khác -->
         </div>
@@ -47,7 +47,13 @@ export default {
   methods: {
     showMore() {
       this.pageSize += 5;
-      console.log("hello");
+    },
+    hidePhoneNumber(phoneNumber) {
+      if (phoneNumber.length === 10) {
+        return "xxxxxx" + phoneNumber.substring(6);
+      } else {
+        return phoneNumber;
+      }
     },
   },
 };
