@@ -2,7 +2,7 @@
   <div>
     <header>
       <nav>
-        <ul>
+        <ul class="header_setting">
           <li>
             <nuxt-link to="/">Home</nuxt-link>
           </li>
@@ -25,4 +25,9 @@
 export default {};
 </script>
 
-<style></style>
+<style>
+.header_setting {
+  display: flex;
+  gap: 40px;
+}
+</style>

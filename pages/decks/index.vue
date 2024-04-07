@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="container">
-      <h3>List of your decks:</h3>
+      <div class="d-flex justify-space-between my-3">
+        <h3>List of your decks:</h3>
+        <button class="btn1" @click.prevent="openModal">Create a Deck</button>
+      </div>
       <ul class="decks-list">
         <li class="li-card">
           <nuxt-link class="deck" to="/decks/1">
@@ -50,19 +53,24 @@
         </li>
       </ul>
     </div>
+    <v-modal name="test">
+      <div class="test_body">
+        <h1>Hello Test</h1>
+        <button class="btn1" @click.prevent="closeModal">Close Modal</button>
+      </div>
+    </v-modal>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      deckID: "1",
-    };
-  },
   methods: {
-    showDeck() {
-      this.$router.push(`/decks/${this.deckID}`);
+    closeModal() {
+      this.$modal.close({ name: "test" });
+    },
+    openModal() {
+      console.log("open modal");
+      this.$modal.open({ name: "test" });
     },
   },
 };
@@ -96,5 +104,9 @@ li {
     width: 250px;
     height: auto;
   }
+}
+.test_body {
+  background-color: #ffffff;
+  padding: 1rem;
 }
 </style>
