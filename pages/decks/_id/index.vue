@@ -5,7 +5,20 @@
         <h3>Deck: {{ deck.name }}</h3>
         <div class="tools">
           <button class="btn1">Start Now</button>
-          <button class="btn1" @click.prevent="openModal">Create a card</button>
+          <button
+            style="background-color: green !important"
+            class="btn1"
+            @click.prevent="openModal('CreateCardModal')"
+          >
+            Create a card
+          </button>
+          <button
+            class="btn1"
+            style="background-color: red !important"
+            @click.prevent="openModal('DeckFormModal')"
+          >
+            Edit Modal
+          </button>
         </div>
         <hr class="divide" />
         <div class="row">
@@ -50,7 +63,7 @@
             style="display: flex; justify-content: end; padding-top: 12px"
           >
             <button class="btn1" @click.prevent="closeModal">Close Modal</button>
-            <button class="btn1 ml-3" @click.prevent="closeModal">Create Modal</button>
+            <button class="btn1 ml-3" @click.prevent="openModal">Create Modal</button>
           </div>
         </form>
       </div>
@@ -115,9 +128,15 @@ export default {
     closeModal() {
       this.$modal.close({ name: "CreateCardModal" });
     },
-    openModal() {
-      console.log("open modal");
-      this.$modal.open({ name: "CreateCardModal" });
+    openModal(name) {
+      if (name === "CreateCardModal") {
+        this.$modal.open({ name: "CreateCardModal" });
+      } else if (name === "DeckFormModal") {
+        this.$modal.open({
+          name: "DeckFormModal",
+          payload: { ...this.deck, id: this.$route.params.id },
+        });
+      }
     },
   },
 };

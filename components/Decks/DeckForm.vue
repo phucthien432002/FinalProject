@@ -32,7 +32,9 @@
       style="display: flex; justify-content: end; padding-top: 12px"
     >
       <button class="btn1" @click.prevent="closeModal">Close Modal</button>
-      <button class="btn1 ml-3" type="submit">Create Modal</button>
+      <button class="btn1 ml-3" type="submit">
+        {{ editedDeck && editedDeck.id ? "Edit" : "Create" }}
+      </button>
     </div>
   </form>
 </template>
@@ -54,7 +56,7 @@ export default {
   },
   methods: {
     closeModal() {
-      this.$modal.close({ name: "CreateDeckModal" });
+      this.$modal.close({ name: "DeckFormModal" });
     },
     onSave() {
       this.$emit("submit", this.editedDeck);

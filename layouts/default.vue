@@ -133,6 +133,13 @@
     <v-main>
       <Nuxt />
     </v-main>
+    <!--  Modal -->
+    <v-modal v-slot="payload" name="DeckFormModal">
+      <div class="modal_body">
+        <h2>{{ payload && payload.payload ? "Edit a deck" : "Create a new Deck" }}</h2>
+        <deck-form :deck="payload.payload" @submit="onSubmit" />
+      </div>
+    </v-modal>
     <footer>
       <div id="footer">
         <div
@@ -227,11 +234,12 @@
 </template>
 
 <script>
+import DeckForm from "@/components/Decks/DeckForm.vue";
 import { mapGetters, mapMutations } from "vuex";
 import axios from "axios";
 import scrollup from "../components/scrollup.vue";
 export default {
-  components: { scrollup },
+  components: { scrollup, DeckForm },
   data() {
     return {
       selectedItem: 1,
@@ -332,6 +340,37 @@ export default {
 
     closeRegistrationForm() {
       this.showRegisterForm = false;
+    },
+    onSubmit(deckData) {
+      if (deckData && !deckData.id) {
+        axios
+          .post(
+            "https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks.json",
+            deckData
+          )
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      } else {
+        const deckId = deckData.id;
+        delete deckData.id;
+        axios
+          .put(
+            "https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks/" +
+              deckId +
+              ".json",
+            deckData
+          )
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
     },
     removeFromCart(product) {
       const shoppingCart = this.modelValue;

@@ -16,25 +16,15 @@
         />
       </ul>
     </div>
-    <!--  Modal -->
-    <v-modal name="CreateDeckModal">
-      <div class="modal_body">
-        <h2>Create a new Deck</h2>
-        <deck-form @submit="onSubmit" />
-      </div>
-    </v-modal>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import DeckList from "@/components/Decks/DeckList";
-import DeckForm from "@/components/Decks/DeckForm.vue";
 
 export default {
   components: {
     DeckList,
-    DeckForm,
   },
   computed: {
     decks() {
@@ -43,21 +33,7 @@ export default {
   },
   methods: {
     openModal() {
-      console.log("open modal");
-      this.$modal.open({ name: "CreateDeckModal" });
-    },
-    onSubmit(deckData) {
-      axios
-        .post(
-          "https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks.json",
-          deckData
-        )
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      this.$modal.open({ name: "DeckFormModal" });
     },
   },
 };
