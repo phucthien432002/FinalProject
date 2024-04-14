@@ -353,6 +353,7 @@ export default {
   box-sizing: border-box;
   text-decoration: none;
 }
+
 .register-form {
   z-index: 999999999 !important;
   position: fixed;

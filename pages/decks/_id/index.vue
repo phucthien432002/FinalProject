@@ -2,73 +2,131 @@
   <section>
     <div class="row">
       <div class="container text-center">
-        <h3>Deck #{{ $route.params.id }}: Shopping</h3>
+        <h3>Deck #{{ $route.params.id }}: {{ deck.name }}</h3>
         <div class="tools">
           <button class="btn1">Start Now</button>
-          <button class="btn1">Create a card</button>
+          <button class="btn1" @click.prevent="openModal">Create a card</button>
         </div>
         <hr class="divide" />
         <div class="row">
-          <div class="column_3">
-            <div class="card">
-              <div class="front-card">
-                <img
-                  src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-10-03/651bea9dc9649b0ef5ad913e.webp"
-                  alt="Thumbnail card"
-                />
-              </div>
-              <div class="back-card">
-                <h6>Shop</h6>
-              </div>
-            </div>
-          </div>
-          <div class="column_3">
-            <div class="card">
-              <div class="front-card">
-                <img
-                  src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-10-03/651bea9dc9649b0ef5ad913e.webp"
-                  alt="Thumbnail card"
-                />
-              </div>
-              <div class="back-card">
-                <h6>Shop</h6>
-              </div>
-            </div>
-          </div>
-          <div class="column_3">
-            <div class="card">
-              <div class="front-card">
-                <img
-                  src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-10-03/651bea9dc9649b0ef5ad913e.webp"
-                  alt="Thumbnail card"
-                />
-              </div>
-              <div class="back-card">
-                <h6>Shop</h6>
-              </div>
-            </div>
-          </div>
-          <div class="column_3">
-            <div class="card">
-              <div class="front-card">
-                <img
-                  src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-10-03/651bea9dc9649b0ef5ad913e.webp"
-                  alt="Thumbnail card"
-                />
-              </div>
-              <div class="back-card">
-                <h6>Shop</h6>
-              </div>
-            </div>
-          </div>
+          <card-list
+            v-for="card in cards"
+            :key="card._id"
+            :keyword="card.keyword"
+            :picture="card.picture"
+          />
         </div>
       </div>
     </div>
+    <!--  Modal -->
+    <v-modal name="CreateCardModal">
+      <div class="modal_body">
+        <h2>Create a new Deck</h2>
+        <form action="">
+          <div class="from_group">
+            <label for="">Name:</label>
+            <input
+              style="border: 2px solid grey; width: 100%; border-radius: 8px"
+              class="form_control"
+              type="text"
+              placeholder="Please enter name Deck"
+            />
+          </div>
+          <div class="from_group">
+            <label for="">Description:</label>
+            <textarea
+              style="border: 2px solid grey; width: 100%; border-radius: 8px"
+              class="form_control"
+              placeholder="Please enter description"
+            ></textarea>
+          </div>
+          <div class="from_group">
+            <label for="">Thumbnail:</label>
+            <input type="file" />
+            <div class="review"></div>
+          </div>
+          <div
+            class="form_group"
+            style="display: flex; justify-content: end; padding-top: 12px"
+          >
+            <button class="btn1" @click.prevent="closeModal">Close Modal</button>
+            <button class="btn1 ml-3" @click.prevent="closeModal">Create Modal</button>
+          </div>
+        </form>
+      </div>
+    </v-modal>
   </section>
 </template>
 
 <script>
-export default {};
+import CardList from "@/components/Cards/CartList.vue";
+export default {
+  components: {
+    CardList,
+  },
+  asyncData(context) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          deck: {
+            _id: 1,
+            name: `1 by deck ${context.params.id}`,
+            description: "1",
+            thumbnail:
+              "https://i.etsystatic.com/29488153/r/il/e0f22b/3860244894/il_fullxfull.3860244894_p9az.jpg",
+          },
+        });
+      }, 1500);
+    })
+      .then((data) => {
+        return data;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
+
+  data() {
+    return {
+      cards: [
+        {
+          _id: 1,
+          picture:
+            "https://i.etsystatic.com/29488153/r/il/e0f22b/3860244894/il_fullxfull.3860244894_p9az.jpg",
+          keyword: "Shop",
+        },
+        {
+          _id: 2,
+          picture:
+            "https://i.etsystatic.com/29488153/r/il/e0f22b/3860244894/il_fullxfull.3860244894_p9az.jpg",
+          keyword: "Shop",
+        },
+        {
+          _id: 3,
+          picture:
+            "https://i.etsystatic.com/29488153/r/il/e0f22b/3860244894/il_fullxfull.3860244894_p9az.jpg",
+          keyword: "Shop",
+        },
+        {
+          _id: 4,
+          picture:
+            "https://i.etsystatic.com/29488153/r/il/e0f22b/3860244894/il_fullxfull.3860244894_p9az.jpg",
+          keyword: "Shop",
+        },
+      ],
+    };
+  },
+
+  methods: {
+    closeModal() {
+      this.$modal.close({ name: "CreateCardModal" });
+    },
+    openModal() {
+      console.log("open modal");
+      this.$modal.open({ name: "CreateCardModal" });
+    },
+  },
+};
 </script>
 
 <style>
@@ -91,5 +149,13 @@ section {
   gap: 20px;
   justify-content: center;
   padding-bottom: 20px;
+}
+.modal_body {
+  background-color: #ffffff;
+  padding: 1rem;
+}
+.form_control {
+  display: flex;
+  flex-direction: column;
 }
 </style>

@@ -1,4 +1,7 @@
+import { set } from "core-js/core/dict";
+
 export const state = () => ({
+  decks:[],
   products: [],
   shoppingCart: [],
   locales: [
@@ -16,10 +19,16 @@ export const state = () => ({
   locale: "en"
 });
 export const getters = {
+  decks(){
+    return state.decks
+  },
   locale: state => state.locales,
   locales: state => state.locales
 };
 export const mutations = {
+  setDecks(state, decks){
+    state.decks =  decks
+  },
   addToCart(state, product) {
     const existingProduct = state.shoppingCart.find(item => item.uuid === product.uuid);
 
@@ -69,4 +78,8 @@ export const mutations = {
     this.$cookies.set("lang", locale);
   }
 };
-export const actions = {};
+export const actions = {
+  setDecks(vuexContext, decks){
+    vuexContext.commit('setDecks',decks)
+  }
+};
