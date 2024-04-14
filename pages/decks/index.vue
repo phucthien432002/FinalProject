@@ -8,8 +8,8 @@
       <ul class="decks-list">
         <deck-list
           v-for="deck in decks"
-          :id="deck._id"
-          :key="deck._id"
+          :id="deck.id"
+          :key="deck.id"
           :name="deck.name"
           :description="deck.description"
           :thumbnail="deck.thumbnail"
@@ -20,94 +20,44 @@
     <v-modal name="CreateDeckModal">
       <div class="modal_body">
         <h2>Create a new Deck</h2>
-        <form action="">
-          <div class="from_group">
-            <label for="">Name:</label>
-            <input
-              style="border: 2px solid grey; width: 100%; border-radius: 8px"
-              class="form_control"
-              type="text"
-              placeholder="Please enter name Deck"
-            />
-          </div>
-          <div class="from_group">
-            <label for="">Description:</label>
-            <textarea
-              style="border: 2px solid grey; width: 100%; border-radius: 8px"
-              class="form_control"
-              placeholder="Please enter description"
-            ></textarea>
-          </div>
-          <div class="from_group">
-            <label for="">Thumbnail:</label>
-            <input type="file" />
-            <div class="review"></div>
-          </div>
-          <div
-            class="form_group"
-            style="display: flex; justify-content: end; padding-top: 12px"
-          >
-            <button class="btn1" @click.prevent="closeModal">Close Modal</button>
-            <button class="btn1 ml-3" @click.prevent="closeModal">Create Modal</button>
-          </div>
-        </form>
+        <deck-form @submit="onSubmit" />
       </div>
     </v-modal>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import DeckList from "@/components/Decks/DeckList";
+import DeckForm from "@/components/Decks/DeckForm.vue";
 
 export default {
   components: {
     DeckList,
+    DeckForm,
   },
-  asyncData(context, callback) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          decks: [
-            {
-              _id: 1,
-              name: "1",
-              description: "1",
-              thumbnail:
-                "https://i.etsystatic.com/29488153/r/il/e0f22b/3860244894/il_fullxfull.3860244894_p9az.jpg",
-            },
-            {
-              _id: 2,
-              name: "2",
-              description: "2",
-              thumbnail:
-                "https://i.etsystatic.com/29488153/r/il/e0f22b/3860244894/il_fullxfull.3860244894_p9az.jpg",
-            },
-            {
-              _id: 3,
-              name: "3",
-              description: "3",
-              thumbnail:
-                "https://i.etsystatic.com/29488153/r/il/e0f22b/3860244894/il_fullxfull.3860244894_p9az.jpg",
-            },
-          ],
-        });
-      }, 1500);
-    })
-      .then((data) => {
-        return data;
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  },
-
-  methods: {
-    closeModal() {
-      this.$modal.close({ name: "CreateDeckModal" });
+  computed: {
+    decks() {
+      return this.$store.getters.decks;
     },
+  },
+  methods: {
     openModal() {
       console.log("open modal");
       this.$modal.open({ name: "CreateDeckModal" });
+    },
+    onSubmit(deckData) {
+      axios
+        .post(
+          "https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks.json",
+          deckData
+        )
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     },
   },
 };

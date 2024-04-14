@@ -1,5 +1,5 @@
-import { set } from "core-js/core/dict";
-
+import Vuex from 'vuex'
+import axios from 'axios'
 export const state = () => ({
   decks:[],
   products: [],
@@ -19,7 +19,7 @@ export const state = () => ({
   locale: "en"
 });
 export const getters = {
-  decks(){
+  decks(state){
     return state.decks
   },
   locale: state => state.locales,
@@ -79,6 +79,17 @@ export const mutations = {
   }
 };
 export const actions = {
+  nuxtServerInit(vuexContext,context){
+    return axios.get('https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks.json').then((response) => {
+    const decksArr = []
+    for (const key in response.data){
+      decksArr.push({...response.data[key],id: key})
+    }
+    vuexContext.commit('setDecks',decksArr)
+    }).catch((e) => {
+      context.error(e)
+    })
+  },
   setDecks(vuexContext, decks){
     vuexContext.commit('setDecks',decks)
   }

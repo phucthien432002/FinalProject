@@ -2,7 +2,7 @@
   <section>
     <div class="row">
       <div class="container text-center">
-        <h3>Deck #{{ $route.params.id }}: {{ deck.name }}</h3>
+        <h3>Deck: {{ deck.name }}</h3>
         <div class="tools">
           <button class="btn1">Start Now</button>
           <button class="btn1" @click.prevent="openModal">Create a card</button>
@@ -59,30 +59,24 @@
 </template>
 
 <script>
+import axios from "axios";
 import CardList from "@/components/Cards/CartList.vue";
 export default {
   components: {
     CardList,
   },
   asyncData(context) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          deck: {
-            _id: 1,
-            name: `1 by deck ${context.params.id}`,
-            description: "1",
-            thumbnail:
-              "https://i.etsystatic.com/29488153/r/il/e0f22b/3860244894/il_fullxfull.3860244894_p9az.jpg",
-          },
-        });
-      }, 1500);
-    })
-      .then((data) => {
-        return data;
+    return axios
+      .get(
+        `https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks/${context.params.id}.json`
+      )
+      .then((response) => {
+        return {
+          deck: response.data,
+        };
       })
       .catch((e) => {
-        console.log(e);
+        context.error(e);
       });
   },
 
