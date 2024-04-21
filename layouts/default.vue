@@ -343,33 +343,14 @@ export default {
     },
     onSubmit(deckData) {
       if (deckData && !deckData.id) {
-        axios
-          .post(
-            "https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks.json",
-            deckData
-          )
-          .then((data) => {
-            console.log(data);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+        this.$store
+          .dispatch("addDeck", deckData)
+          .then(() => this.$modal.close({ name: "DeckFormModal" }));
       } else {
-        const deckId = deckData.id;
-        delete deckData.id;
-        axios
-          .put(
-            "https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks/" +
-              deckId +
-              ".json",
-            deckData
-          )
-          .then((data) => {
-            console.log(data);
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+        this.$store.dispatch("editDeck", deckData).then(() => {
+          this.$modal.close({ name: "DeckFormModal" });
+          this.$router.push("/decks");
+        });
       }
     },
     removeFromCart(product) {

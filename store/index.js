@@ -29,6 +29,14 @@ export const mutations = {
   setDecks(state, decks){
     state.decks =  decks
   },
+  addDeck(state, newDeck){
+    state.decks.push(newDeck)
+  },
+  editDeck(state, editDeck){
+    const deckIndex = state.decks.findIndex(deck => deck.id === editDeck.id)
+
+    state.decks[deckIndex] = editDeck
+  },
   addToCart(state, product) {
     const existingProduct = state.shoppingCart.find(item => item.uuid === product.uuid);
 
@@ -89,6 +97,36 @@ export const actions = {
     }).catch((e) => {
       context.error(e)
     })
+  },
+  addDeck(vuexContext,deckData){
+    return axios
+    .post(
+      "https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks.json",
+      deckData
+    )
+    .then((result) => {
+      vuexContext.commit('addDeck', {...deckData, id: result.data.name})
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+  },
+  editDeck(vuexContext, deckData){
+    const deckId = deckData.id;
+    delete deckData.id;
+    axios
+      .put(
+        "https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks/" +
+          deckId +
+          ".json",
+        deckData
+      )
+      .then((result) => {
+        vuexContext.commit('editDeck', {...result.data, id: deckId})
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   },
   setDecks(vuexContext, decks){
     vuexContext.commit('setDecks',decks)

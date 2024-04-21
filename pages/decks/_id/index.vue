@@ -14,7 +14,7 @@
           </button>
           <button
             class="btn1"
-            style="background-color: red !important"
+            style="background-color: orange !important"
             @click.prevent="openModal('DeckFormModal')"
           >
             Edit Modal

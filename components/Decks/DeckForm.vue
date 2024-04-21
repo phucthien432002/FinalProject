@@ -31,7 +31,7 @@
       class="form_group"
       style="display: flex; justify-content: end; padding-top: 12px"
     >
-      <button class="btn1" @click.prevent="closeModal">Close Modal</button>
+      <button class="btn1" type="button" @click.prevent="closeModal">Close Modal</button>
       <button class="btn1 ml-3" type="submit">
         {{ editedDeck && editedDeck.id ? "Edit" : "Create" }}
       </button>

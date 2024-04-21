@@ -64,8 +64,8 @@
             </div>
           </v-list-item>
           <div
-            class="px-3 pb-4"
-            style="d-flex flex-column;border-top: 2px solid black"
+            class="px-3 pb-4 d-flex flex-column"
+            style="border-top: 2px solid black"
             v-if="cartHasItems"
           >
             <div class="discount-voucher">

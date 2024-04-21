@@ -8,6 +8,13 @@
           <h3>{{ name }}</h3>
           <p>{{ description }}</p>
         </div>
+
+        <!-- Nút "Delete" được đặt trong card -->
+        <div class="btn-delete" style="text-align: right">
+          <button class="btn1" style="background-color: red" @click.prevent="deleteDeck">
+            Delete
+          </button>
+        </div>
       </div>
     </nuxt-link>
   </li>
@@ -33,7 +40,37 @@ export default {
       require: true,
     },
   },
+  methods: {
+    deleteDeck() {
+      // Gửi yêu cầu xóa deck lên Firebase
+      fetch(
+        `https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks/${this.id}.json`,
+        {
+          method: "DELETE",
+        }
+      )
+        .then((response) => {
+          response.ok;
+          this.$emit("delete", this.id);
+          alert("Bạn đã xóa deck thành công");
+          window.location.reload();
+        })
+        .catch((e) => {
+          context.error(e);
+        });
+    },
+  },
 };
 </script>
 
-<style></style>
+<style>
+.deck-card {
+  position: relative;
+}
+
+.btn-delete {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+</style>
