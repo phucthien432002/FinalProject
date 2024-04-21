@@ -88,7 +88,7 @@ export const mutations = {
 };
 export const actions = {
   nuxtServerInit(vuexContext,context){
-    return axios.get('https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks.json').then((response) => {
+    return axios.get(process.env.baseApiUrl + '/decks.json').then((response) => {
     const decksArr = []
     for (const key in response.data){
       decksArr.push({...response.data[key],id: key})
@@ -101,7 +101,7 @@ export const actions = {
   addDeck(vuexContext,deckData){
     return axios
     .post(
-      "https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks.json",
+      process.env.baseApiUrl + '/decks.json',
       deckData
     )
     .then((result) => {
@@ -116,7 +116,7 @@ export const actions = {
     delete deckData.id;
     axios
       .put(
-        "https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks/" +
+        process.env.baseApiUrl + '/decks/' +
           deckId +
           ".json",
         deckData

@@ -73,6 +73,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '@/plugins/core-component.js',
     '@/plugins/modals/v-modal.js',
     {src:"~/plugins/aos",
     ssr: false},],
@@ -143,19 +144,9 @@ export default {
         })
       }
     },
-    env: {
-      // Your Firebase configuration here
-      firebaseConfig: {
-        apiKey: "AIzaSyAWd5LxoO1qJzHweigzvFxguwh9gE8rocw",
-        authDomain: "shopping-website-62b9c.firebaseapp.com",
-        databaseURL: "https://shopping-website-62b9c-default-rtdb.firebaseio.com",
-        projectId: "shopping-website-62b9c",
-        storageBucket: "shopping-website-62b9c.appspot.com",
-        messagingSenderId: "11927739381",
-        appId: "1:11927739381:web:de91ded02c7b1b4d495ebc",
-        measurementId: "G-11RS3CCPZK"
-      },
-      fbApiKey:'AIzaSyAWd5LxoO1qJzHweigzvFxguwh9gE8rocw'
-    },
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    baseApiUrl: process.env.BASE_API_URL || 'https://shoppingweb-de3d9-default-rtdb.firebaseio.com'
   },
 };

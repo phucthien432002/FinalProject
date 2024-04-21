@@ -80,9 +80,7 @@ export default {
   },
   asyncData(context) {
     return axios
-      .get(
-        `https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks/${context.params.id}.json`
-      )
+      .get(`${process.env.baseApiUrl}/decks/${context.params.id}.json`)
       .then((response) => {
         return {
           deck: response.data,
