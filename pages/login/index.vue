@@ -47,21 +47,23 @@ export default {
     return {
       email: "",
       password: "",
+      isLogin: true,
     };
   },
   methods: {
     onSubmit() {
-      this.$axios
-        .$post(
-          `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.fbApiKey}`,
-          {
-            email: this.email,
-            password: this.password,
-            returnSecureToken: true,
-          }
-        )
-        .then((result) => console.log(result))
-        .catch((e) => console.log(e));
+      this.$store
+        .dispatch("authenticateUser", {
+          email: this.email,
+          password: this.password,
+          isLogin: this.isLogin,
+        })
+        .then((result) => {
+          if (result.success) this.$router.push("/decks");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

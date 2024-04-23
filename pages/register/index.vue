@@ -50,7 +50,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   layout: "auth",
   data() {
@@ -68,18 +67,14 @@ export default {
       const validPassword = this.checkValidPassword();
 
       if (validPassword) {
-        this.$axios
-          .$post(
-            `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.fbApiKey}`,
-            {
-              email: this.email,
-              password: this.password,
-              returnSecureToken: true,
-            }
-          )
-          .then((result) => console.log(result))
-          .catch((e) => console.log(e));
-        this.$router.push("/signIn");
+        this.$store
+          .dispatch("authenticateUser", {
+            email: this.email,
+            password: this.password,
+          })
+          .then((result) => {
+            if (result.success) this.$router.push("/decks");
+          });
       } else {
         console.log("Password is not valid");
       }

@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 export const state = () => ({
   decks:[],
+  token: null,
   products: [],
   shoppingCart: [],
   locales: [
@@ -26,6 +27,9 @@ export const getters = {
   locales: state => state.locales
 };
 export const mutations = {
+  setToken(state,token){
+    state.token = token
+  },
   setDecks(state, decks){
     state.decks =  decks
   },
@@ -130,5 +134,30 @@ export const actions = {
   },
   setDecks(vuexContext, decks){
     vuexContext.commit('setDecks',decks)
+  },
+  authenticateUser(vuexContext,credentials){
+   return new Promise((resolve,reject) => {
+    let authUrlApi = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.fbApiKey}`
+
+    if (!credentials.isLogin){
+      authUrlApi = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.fbApiKey}`
+    }
+    return (this.$axios
+    .$post(
+      authUrlApi,
+      {
+        email: credentials.email,
+        password: credentials.password,
+        returnSecureToken: true,
+      }
+    )
+    .then((result) => {
+      vuexContext.commit('setToken', result.idToken)
+      resolve({success: true})
+    }).catch((error) => {
+      reject(error.response)
+    })
+  );
+   } )
   }
 };
