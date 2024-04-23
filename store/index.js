@@ -92,7 +92,7 @@ export const mutations = {
 };
 export const actions = {
   nuxtServerInit(vuexContext,context){
-    return axios.get(process.env.baseApiUrl + '/decks.json').then((response) => {
+    return axios.get(process.env.baseApiUrl + '/decks.json' ).then((response) => {
     const decksArr = []
     for (const key in response.data){
       decksArr.push({...response.data[key],id: key})
@@ -105,7 +105,7 @@ export const actions = {
   addDeck(vuexContext,deckData){
     return axios
     .post(
-      process.env.baseApiUrl + '/decks.json',
+      process.env.baseApiUrl + '/decks.json?auth=' + vuexContext.state.token,
       deckData
     )
     .then((result) => {
@@ -122,7 +122,7 @@ export const actions = {
       .put(
         process.env.baseApiUrl + '/decks/' +
           deckId +
-          ".json",
+          ".json?auth=" +vuexContext.state.token,
         deckData
       )
       .then((result) => {
