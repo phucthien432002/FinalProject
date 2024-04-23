@@ -10,7 +10,7 @@
         </div>
 
         <!-- Nút "Delete" được đặt trong card -->
-        <div class="btn-delete" style="text-align: right">
+        <div class="btn-delete" v-if="$store.state.isAdmin" style="text-align: right">
           <button class="btn1" style="background-color: red" @click.prevent="deleteDeck">
             Delete
           </button>

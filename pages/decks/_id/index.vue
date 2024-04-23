@@ -4,8 +4,8 @@
       <div class="container text-center">
         <h3>Deck: {{ deck.name }}</h3>
         <div class="tools">
-          <button class="btn1">Start Now</button>
           <button
+            v-if="$store.state.isAdmin"
             style="background-color: green !important"
             class="btn1"
             @click.prevent="openModal('CreateCardModal')"
@@ -13,6 +13,7 @@
             Create a card
           </button>
           <button
+            v-if="$store.state.isAdmin"
             class="btn1"
             style="background-color: orange !important"
             @click.prevent="openModal('DeckFormModal')"

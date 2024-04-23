@@ -31,6 +31,9 @@ export const getters = {
   locales: state => state.locales
 };
 export const mutations = {
+  setIsAdmin(state, isAdmin) {
+    state.isAdmin = isAdmin;
+  },  
   clearToken(state){
     state.token = null
   },
@@ -163,61 +166,75 @@ export const actions = {
   setDecks(vuexContext, decks){
     vuexContext.commit('setDecks',decks)
   },
-  authenticateUser(vuexContext,credentials){
-   return new Promise((resolve,reject) => {
-    let authUrlApi = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.fbApiKey}`
+ // Trong actions authenticateUser
+ authenticateUser(vuexContext, credentials) {
+  return new Promise((resolve, reject) => {
+    let authUrlApi = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.fbApiKey}`;
 
-    if (!credentials.isLogin){
-      authUrlApi = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.fbApiKey}`
+    if (!credentials.isLogin) {
+      authUrlApi = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.fbApiKey}`;
     }
     return (this.$axios
-    .$post(
-      authUrlApi,
-      {
+      .$post(authUrlApi, {
         email: credentials.email,
         password: credentials.password,
         returnSecureToken: true,
-      }
-    )
-    .then((result) => {
-      vuexContext.commit('setToken', result.idToken)
-      localStorage.setItem('token', result.idToken)
-      localStorage.setItem('tokenExpiration', new Date().getTime() + result.expiresIn * 1000)
-      Cookies.set('token', result.idToken)
-      Cookies.set('tokenExpiration', new Date().getTime() + result.expiresIn * 1000)
-      vuexContext.dispatch('setLogoutTimer', result.expiresIn * 1000)
-      resolve({success: true})
-    }).catch((error) => {
-      reject(error.response)
-    })
-  );
-   } )
-  },
+      })
+      .then((result) => {
+        vuexContext.commit('setToken', result.idToken);
+        localStorage.setItem('token', result.idToken);
+        localStorage.setItem('tokenExpiration', new Date().getTime() + result.expiresIn * 1000);
+        Cookies.set('token', result.idToken);
+        Cookies.set('tokenExpiration', new Date().getTime() + result.expiresIn * 1000);
+
+        // Lưu trữ thông tin vai trò của người dùng vào localStorage
+        localStorage.setItem('isAdmin', result.email === 'admin@gmail.com');
+
+        // Lưu trữ thông tin vai trò của người dùng vào cookie
+        Cookies.set('isAdmin', result.email === 'admin@gmail.com');
+
+        vuexContext.dispatch('setLogoutTimer', result.expiresIn * 1000);
+
+        resolve({ success: true });
+      })
+      .catch((error) => {
+        reject(error.response);
+      })
+    );
+  });
+},
+
   setLogoutTimer(vuexContext,duration){
     setTimeout(() => {
       vuexContext.commit('clearToken')
     },duration)
   },
   // Trong action initAuth
-initAuth(vuexContext, req){
-  let token , tokenExpiration
-  if(req){
-    if(!req.headers.cookie) return false
-    const tokenKey = req.headers.cookie.split(';').find((c) => c.trim().startsWith('token='))
-    const tokenExpirationKey = req.headers.cookie.split(';').find((c) => c.trim().startsWith('tokenExpiration='))
-    if(!tokenKey || !tokenExpirationKey) return false
-
-    token = tokenKey.split('=')[1]
-    tokenExpiration = tokenExpirationKey.split('=')[1]
-  }else{
+  initAuth(vuexContext, req) {
+    let token, tokenExpiration, isAdmin;
+    if (req) {
+      if (!req.headers.cookie) return false;
+      const tokenKey = req.headers.cookie.split(';').find((c) => c.trim().startsWith('token='));
+      const tokenExpirationKey = req.headers.cookie.split(';').find((c) => c.trim().startsWith('tokenExpiration='));
+      const isAdminKey = req.headers.cookie.split(';').find((c) => c.trim().startsWith('isAdmin='));
+      if (!tokenKey || !tokenExpirationKey || !isAdminKey) return false;
+  
+      token = tokenKey.split('=')[1];
+      tokenExpiration = tokenExpirationKey.split('=')[1];
+      isAdmin = isAdminKey.split('=')[1];
+    } else {
       // Xử lý khi không có req (ở môi trường client)
-      token = localStorage.getItem('token')
-      tokenExpiration = localStorage.getItem('tokenExpiration')
-
-      if(new Date().getTime() > tokenExpiration || !token) return false
-  }
-  vuexContext.dispatch('setLogoutTimer', tokenExpiration - new Date().getTime())
-  vuexContext.commit('setToken', token)
-}
+      token = localStorage.getItem('token');
+      tokenExpiration = localStorage.getItem('tokenExpiration');
+      isAdmin = localStorage.getItem('isAdmin');
+      if (!token || !tokenExpiration || !isAdmin) return false;
+    }
+    vuexContext.dispatch('setLogoutTimer', tokenExpiration - new Date().getTime());
+    vuexContext.commit('setToken', token);
+    vuexContext.commit('setIsAdmin', isAdmin === 'true');
+  },
+  
+  
+  
 
 };

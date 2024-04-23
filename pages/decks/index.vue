@@ -3,7 +3,9 @@
     <div class="container">
       <div class="d-flex justify-space-between my-3">
         <h3>List of your decks:</h3>
-        <button class="btn1" @click.prevent="openModal">Create a Deck</button>
+        <button v-if="$store.state.isAdmin" class="btn1" @click.prevent="openModal">
+          Create a Deck
+        </button>
       </div>
       <ul class="decks-list">
         <deck-list
