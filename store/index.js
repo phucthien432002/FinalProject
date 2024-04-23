@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import axios from 'axios'
+import Cookies from 'js-cookie';
 export const state = () => ({
   decks:[],
   token: null,
@@ -182,6 +183,8 @@ export const actions = {
       vuexContext.commit('setToken', result.idToken)
       localStorage.setItem('token', result.idToken)
       localStorage.setItem('tokenExpiration', new Date().getTime() + result.expiresIn * 1000)
+      Cookies.set('token', result.idToken)
+      Cookies.set('tokenExpiration', new Date().getTime() + result.expiresIn * 1000)
       vuexContext.dispatch('setLogoutTimer', result.expiresIn * 1000)
       resolve({success: true})
     }).catch((error) => {
@@ -195,12 +198,26 @@ export const actions = {
       vuexContext.commit('clearToken')
     },duration)
   },
-  initAuth(vuexContext){
-    const token = localStorage.getItem('token')
-    const tokenExpiration = localStorage.getItem('tokenExpiration')
+  // Trong action initAuth
+initAuth(vuexContext, req){
+  let token , tokenExpiration
+  if(req){
+    if(!req.headers.cookie) return false
+    const tokenKey = req.headers.cookie.split(';').find((c) => c.trim().startsWith('token='))
+    const tokenExpirationKey = req.headers.cookie.split(';').find((c) => c.trim().startsWith('tokenExpiration='))
+    if(!tokenKey || !tokenExpirationKey) return false
 
-    if(new Date().getTime() > tokenExpiration || !token) return false
+    token = tokenKey.split('=')[1]
+    tokenExpiration = tokenExpirationKey.split('=')[1]
+  }else{
+      // Xử lý khi không có req (ở môi trường client)
+      token = localStorage.getItem('token')
+      tokenExpiration = localStorage.getItem('tokenExpiration')
 
-    vuexContext.commit('setToken', token)
+      if(new Date().getTime() > tokenExpiration || !token) return false
   }
+  vuexContext.dispatch('setLogoutTimer', tokenExpiration - new Date().getTime())
+  vuexContext.commit('setToken', token)
+}
+
 };
