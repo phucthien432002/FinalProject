@@ -42,21 +42,17 @@ export default {
   },
   methods: {
     deleteDeck() {
-      // Gửi yêu cầu xóa deck lên Firebase
-      fetch(
-        `https://shoppingweb-de3d9-default-rtdb.firebaseio.com/decks/${this.id}.json`,
-        {
-          method: "DELETE",
-        }
-      )
-        .then((response) => {
-          response.ok;
-          this.$emit("delete", this.id);
+      // Gọi action deleteDeck từ Vuex Store và truyền id của deck cần xóa
+      this.$store
+        .dispatch("deleteDeck", this.id)
+        .then(() => {
+          // Xóa thành công, thông báo và làm mới trang
           alert("Bạn đã xóa deck thành công");
           window.location.reload();
         })
-        .catch((e) => {
-          context.error(e);
+        .catch((error) => {
+          // Xử lý lỗi khi xóa deck
+          console.error(error);
         });
     },
   },

@@ -20,6 +20,9 @@ export const state = () => ({
   locale: "en"
 });
 export const getters = {
+  isAuthenticated(state){
+    return state.token != null
+  },
   decks(state){
     return state.decks
   },
@@ -113,6 +116,27 @@ export const actions = {
     })
     .catch((e) => {
       console.log(e);
+    });
+  },
+  deleteDeck(vuexContext, deckId) {
+    // Kiểm tra xem người dùng đã đăng nhập chưa
+    if (!vuexContext.state.token) {
+      // Xử lý trường hợp người dùng chưa đăng nhập
+      return Promise.reject(new Error('Bạn cần đăng nhập trước khi xóa deck.'));
+    }
+    
+    // Gửi yêu cầu xóa deck lên Firebase
+    return axios.delete(
+      `${process.env.baseApiUrl}/decks/${deckId}.json?auth=${vuexContext.state.token}`
+    )
+    .then(() => {
+      // Xóa deck thành công
+      vuexContext.commit('deleteDeck', deckId);
+      return Promise.resolve();
+    })
+    .catch((error) => {
+      // Xử lý lỗi khi xóa deck
+      return Promise.reject(error);
     });
   },
   editDeck(vuexContext, deckData){
