@@ -2,7 +2,7 @@
   <section class="page">
     <div class="card card_form">
       <div class="card_body">
-        <h3 class="text-h3">Sign Up</h3>
+        <h3 class="text-h3">Login</h3>
         <form @submit.prevent="onSubmit">
           <div class="form_group">
             <label for="email">Email</label>
@@ -24,24 +24,15 @@
               placeholder="Please enter password"
             />
           </div>
-          <div class="form_group">
-            <label for="re-password">Re-password</label>
-            <input
-              class="form_control"
-              id="re-password"
-              v-model="rePassword"
-              type="password"
-              placeholder="Please enter re-password"
-            />
-          </div>
+
           <div class="from_group">
-            <button type="submit" class="btn1 signUp">Sign Up</button>
+            <button type="submit" class="btn1 signIn">Login</button>
           </div>
         </form>
         <div class="other">
           <span
-            >Have your account?
-            <nuxt-link to="/login" tag="a">Login here</nuxt-link></span
+            >Have not your account?
+            <nuxt-link to="/register" tag="a">Register here</nuxt-link></span
           >
         </div>
       </div>
@@ -50,39 +41,27 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   layout: "auth",
   data() {
     return {
       email: "",
       password: "",
-      rePassword: "",
     };
   },
   methods: {
-    checkValidPassword() {
-      return this.password === this.rePassword;
-    },
     onSubmit() {
-      const validPassword = this.checkValidPassword();
-
-      if (validPassword) {
-        this.$axios
-          .$post(
-            `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.fbApiKey}`,
-            {
-              email: this.email,
-              password: this.password,
-              returnSecureToken: true,
-            }
-          )
-          .then((result) => console.log(result))
-          .catch((e) => console.log(e));
-        this.$router.push("/signIn");
-      } else {
-        console.log("Password is not valid");
-      }
+      this.$axios
+        .$post(
+          `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.fbApiKey}`,
+          {
+            email: this.email,
+            password: this.password,
+            returnSecureToken: true,
+          }
+        )
+        .then((result) => console.log(result))
+        .catch((e) => console.log(e));
     },
   },
 };
@@ -121,7 +100,7 @@ input {
   border: 2px solid grey;
   border-radius: 8px;
 }
-.signUp {
+.signIn {
   width: 100%;
 }
 </style>
