@@ -35,7 +35,7 @@
             />
           </div>
           <div class="from_group">
-            <button type="submit" class="btn btn_submit">Sign Up</button>
+            <button type="submit" class="btn1 signUp">Sign Up</button>
           </div>
         </form>
       </div>
@@ -64,7 +64,7 @@ export default {
       if (validPassword) {
         this.$axios
           .$post(
-            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAWd5LxoO1qJzHweigzvFxguwh9gE8rocw",
+            `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.fbApiKey}`,
             {
               email: this.email,
               password: this.password,
@@ -114,5 +114,8 @@ export default {
 input {
   border: 2px solid grey;
   border-radius: 8px;
+}
+.signUp {
+  width: 100%;
 }
 </style>

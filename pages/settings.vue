@@ -18,7 +18,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  middleware: "router-log",
+};
 </script>
 
 <style lang="scss">

@@ -147,6 +147,10 @@ export default {
   },
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    baseApiUrl: process.env.BASE_API_URL || 'https://shoppingweb-de3d9-default-rtdb.firebaseio.com'
+    baseApiUrl: process.env.BASE_API_URL || 'https://shoppingweb-de3d9-default-rtdb.firebaseio.com',
+    fbApiKey: 'AIzaSyCTwDItwhKCDRxD5S2Ey-2yIKM7gkn_3Fw'
   },
+  router:{
+    middleware: 'router-log'
+  }
 };
