@@ -30,6 +30,9 @@ export const getters = {
   locales: state => state.locales
 };
 export const mutations = {
+  clearToken(state){
+    state.token = null
+  },
   setToken(state,token){
     state.token = token
   },
@@ -177,11 +180,27 @@ export const actions = {
     )
     .then((result) => {
       vuexContext.commit('setToken', result.idToken)
+      localStorage.setItem('token', result.idToken)
+      localStorage.setItem('tokenExpiration', new Date().getTime() + result.expiresIn * 1000)
+      vuexContext.dispatch('setLogoutTimer', result.expiresIn * 1000)
       resolve({success: true})
     }).catch((error) => {
       reject(error.response)
     })
   );
    } )
+  },
+  setLogoutTimer(vuexContext,duration){
+    setTimeout(() => {
+      vuexContext.commit('clearToken')
+    },duration)
+  },
+  initAuth(vuexContext){
+    const token = localStorage.getItem('token')
+    const tokenExpiration = localStorage.getItem('tokenExpiration')
+
+    if(new Date().getTime() > tokenExpiration || !token) return false
+
+    vuexContext.commit('setToken', token)
   }
 };
