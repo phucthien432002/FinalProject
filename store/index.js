@@ -217,7 +217,10 @@ export const actions = {
       const tokenKey = req.headers.cookie.split(';').find((c) => c.trim().startsWith('token='));
       const tokenExpirationKey = req.headers.cookie.split(';').find((c) => c.trim().startsWith('tokenExpiration='));
       const isAdminKey = req.headers.cookie.split(';').find((c) => c.trim().startsWith('isAdmin='));
-      if (!tokenKey || !tokenExpirationKey || !isAdminKey) return false;
+      if (!tokenKey || !tokenExpirationKey || !isAdminKey) {
+        vuexContext.dispatch('logout')
+        return false
+      };
   
       token = tokenKey.split('=')[1];
       tokenExpiration = tokenExpirationKey.split('=')[1];
@@ -226,6 +229,10 @@ export const actions = {
       // Xử lý khi không có req (ở môi trường client)
       token = localStorage.getItem('token');
       tokenExpiration = localStorage.getItem('tokenExpiration');
+      if(new Date().getTime() > tokenExpiration || !token) {
+        vuexContext.dispatch('logout')
+        return false
+      }
       isAdmin = localStorage.getItem('isAdmin');
       if (!token || !tokenExpiration || !isAdmin) return false;
     }
@@ -233,7 +240,13 @@ export const actions = {
     vuexContext.commit('setToken', token);
     vuexContext.commit('setIsAdmin', isAdmin === 'true');
   },
-  
+  logout(vuexContext){
+    vuexContext.commit('clearToken')
+    Cookies.remove('token')
+    Cookies.remove('tokenExpiration')
+    localStorage.removeItem('token')
+    localStorage.removeItem('tokenExpiration')
+  }
   
   
 

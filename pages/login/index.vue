@@ -59,7 +59,7 @@ export default {
           isLogin: this.isLogin,
         })
         .then((result) => {
-          if (result.success) this.$router.push("/decks");
+          if (result.success) this.$router.push("/my-deck");
         })
         .catch((error) => {
           console.log(error);
