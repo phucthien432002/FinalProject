@@ -14,7 +14,7 @@
             :id="deck.id"
             :key="deck.id"
             :name="deck.name"
-            :description="deck.description"
+            :price="parseInt(deck.price)"
             :thumbnail="deck.thumbnail"
           />
         </ul>

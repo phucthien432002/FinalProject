@@ -6,7 +6,7 @@
 
         <div class="card_body">
           <h3>{{ name }}</h3>
-          <p>{{ description }}</p>
+          <p>Price: {{ price }}</p>
         </div>
         <div class="btn-add">
           <button class="btn1" style="background-color: green" @click.prevent="addToCart">
@@ -35,15 +35,17 @@ export default {
       type: String,
       require: true,
     },
-    description: {
-      type: String,
-      default: "",
+    price: {
+      type: Number, // This expects a number
+      require: true,
+      validator: (value) => Number.isInteger(value) && value >= 0,
     },
     thumbnail: {
       type: String,
       require: true,
     },
   },
+
   methods: {
     deleteDeck() {
       // Gọi action deleteDeck từ Vuex Store và truyền id của deck cần xóa
@@ -58,6 +60,17 @@ export default {
           // Xử lý lỗi khi xóa deck
           console.error(error);
         });
+    },
+    addToCart() {
+      // Gọi mutation hoặc action addToCart từ Vuex Store và truyền thông tin deck cần thêm vào giỏ hàng
+      this.$store.commit("addToCart", {
+        id: this.id,
+        name: this.name,
+        price: this.price,
+        quantity: this.quantity,
+      });
+      // Thông báo thành công
+      alert("Đã thêm vào giỏ hàng");
     },
   },
 };

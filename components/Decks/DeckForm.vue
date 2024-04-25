@@ -10,12 +10,13 @@
       />
     </div>
     <div class="from_group">
-      <label for="">Description:</label>
-      <textarea
-        v-model="editedDeck.description"
+      <label for="">Price:</label>
+      <input
+        type="number"
+        v-model="editedDeck.price"
         class="form_control form_input"
-        placeholder="Please enter description"
-      ></textarea>
+        placeholder="Please enter price"
+      />
     </div>
     <div class="from_group">
       <label for="">Thumbnail:</label>
@@ -44,14 +45,16 @@ export default {
   props: {
     deck: {
       type: Object,
-      default: () => ({ name: "", description: "", thumbnail: "" }),
+      default: () => ({ name: "", price: "", thumbnail: "" }),
     },
   },
   data() {
     return {
-      editedDeck: this.deck
-        ? { ...this.deck }
-        : { name: "", description: "", thumbnail: "" },
+      editedDeck: {
+        name: this.deck.name || "",
+        price: this.deck.price ? parseInt(this.deck.price) : null, // Chuyển đổi kiểu dữ liệu thành number
+        thumbnail: this.deck.thumbnail || "",
+      },
     };
   },
   methods: {
