@@ -44,6 +44,10 @@ export default {
       type: String,
       require: true,
     },
+    quantity: {
+      type: Number,
+      default: 1, // Số lượng mặc định là 1
+    },
   },
 
   methods: {
@@ -68,9 +72,9 @@ export default {
         name: this.name,
         price: this.price,
         quantity: this.quantity,
+        thumbnail: this.thumbnail,
       });
-      // Thông báo thành công
-      alert("Đã thêm vào giỏ hàng");
+      console.log("hehe");
     },
   },
 };

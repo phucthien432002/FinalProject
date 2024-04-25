@@ -96,10 +96,10 @@
       >
       <ul class="ul-nav">
         <li>
-          <a href="/promo-listing">{{ $t("salenav") }}</a>
+          <a href="/my-deck">{{ $t("salenav") }}</a>
         </li>
         <li>
-          <a href="/product-listing">{{ $t("menunav") }}</a>
+          <a href="/my-deck">{{ $t("menunav") }}</a>
         </li>
         <li>
           <a href="/blog">{{ $t("blog") }}</a>
@@ -277,9 +277,8 @@ export default {
   computed: {
     ...mapGetters(["locales", "locale"]),
   },
-  created() {
-    // Khởi tạo giỏ hàng cho toàn bộ trang
-    this.$store.commit("initializeCartFromLocalStorage");
+  mounted() {
+    this.$store.dispatch("initializeCartFromLocalStorage");
   },
   methods: {
     ...mapMutations(["SET_LANG"]),
@@ -352,16 +351,6 @@ export default {
           this.$router.push("/decks");
         });
       }
-    },
-    removeFromCart(product) {
-      const shoppingCart = this.modelValue;
-      const productIndex = shoppingCart.findIndex((item) => item.uuid === product.uuid);
-      shoppingCart[productIndex].amount -= 1;
-
-      if (shoppingCart[productIndex].amount < 1) {
-        shoppingCart.splice(productIndex, 1);
-      }
-      this.$emit("update:modelValue", shoppingCart);
     },
   },
 };
@@ -639,6 +628,23 @@ footer a:hover {
   color: white;
   text-decoration: underline;
   font-weight: bold;
+}
+.btn1 {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 12px 24px;
+  border: 0;
+  color: #fff;
+  background: #1976d2;
+  line-height: 1.15;
+  font-size: 16px;
+}
+.btn1:hover {
+  transition: all 0.1s ease;
+  box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
 }
 </style>
 <i18n>
