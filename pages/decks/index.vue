@@ -7,16 +7,18 @@
           Create a Deck
         </button>
       </div>
-      <ul class="decks-list">
-        <deck-list
-          v-for="deck in decks"
-          :id="deck.id"
-          :key="deck.id"
-          :name="deck.name"
-          :description="deck.description"
-          :thumbnail="deck.thumbnail"
-        />
-      </ul>
+      <div class="deck-modal">
+        <ul class="decks-list">
+          <deck-list
+            v-for="deck in decks"
+            :id="deck.id"
+            :key="deck.id"
+            :name="deck.name"
+            :description="deck.description"
+            :thumbnail="deck.thumbnail"
+          />
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -60,15 +62,20 @@ li {
 .decks-list {
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 .deck-card {
+  flex: 1 0 24%;
   padding: 2px;
   display: flex;
-  flex-direction: row;
-  height: 250px;
+  flex-direction: column;
+  min-height: 250px;
   img {
-    width: 250px;
-    height: auto;
+    width: 220px;
+    height: 220px;
   }
 }
 .modal_body {
@@ -78,5 +85,9 @@ li {
 .form_control {
   display: flex;
   flex-direction: column;
+}
+.deck-modal {
+  display: flex;
+  flex-direction: wrap;
 }
 </style>

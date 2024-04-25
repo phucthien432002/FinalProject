@@ -8,9 +8,13 @@
           <h3>{{ name }}</h3>
           <p>{{ description }}</p>
         </div>
-
+        <div class="btn-add">
+          <button class="btn1" style="background-color: green" @click.prevent="addToCart">
+            Add to Cart
+          </button>
+        </div>
         <!-- Nút "Delete" được đặt trong card -->
-        <div class="btn-delete" v-if="$store.state.isAdmin" style="text-align: right">
+        <div class="btn-delete" v-if="$store.state.isAdmin">
           <button class="btn1" style="background-color: red" @click.prevent="deleteDeck">
             Delete
           </button>
@@ -60,13 +64,13 @@ export default {
 </script>
 
 <style>
-.deck-card {
-  position: relative;
+.card_body {
+  text-align: center;
 }
-
 .btn-delete {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  text-align: center;
+}
+.btn-add {
+  text-align: center;
 }
 </style>
