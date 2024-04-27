@@ -96,10 +96,10 @@
       >
       <ul class="ul-nav">
         <li>
-          <a href="/my-deck">{{ $t("salenav") }}</a>
+          <a href="/promo-listing">{{ $t("salenav") }}</a>
         </li>
         <li>
-          <a href="/my-deck">{{ $t("menunav") }}</a>
+          <a href="/decks">{{ $t("menunav") }}</a>
         </li>
         <li>
           <a href="/blog">{{ $t("blog") }}</a>

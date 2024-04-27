@@ -57,8 +57,10 @@ export default {
         .then((response) => {
           console.log("Order placed successfully:", response.data);
           localStorage.removeItem("cartItems");
-          this.$router.push("/decks");
-          window.location.reload();
+          this.$router.replace("/decks");
+          setTimeout(() => {
+            window.location.reload();
+          }, 500);
         })
         .catch((error) => {
           console.error("Error placing order:", error);

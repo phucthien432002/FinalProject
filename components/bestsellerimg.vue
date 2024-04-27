@@ -43,7 +43,7 @@ import "aos/dist/aos.css";
 export default {
   methods: {
     menu() {
-      this.$nuxt.$options.router.push("/product-listing");
+      this.$nuxt.$options.router.push("/decks");
     },
   },
   computed: {

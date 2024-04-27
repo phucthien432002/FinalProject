@@ -15,6 +15,9 @@
           <li>
             <nuxt-link to="/settings">Settings</nuxt-link>
           </li>
+          <li>
+            <nuxt-link to="/OrderHistory">History</nuxt-link>
+          </li>
         </ul>
       </nav>
     </header>

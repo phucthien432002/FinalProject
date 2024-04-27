@@ -50,11 +50,13 @@ export default {
   },
   data() {
     return {
-      editedDeck: {
-        name: this.deck.name || "",
-        price: this.deck.price ? parseInt(this.deck.price) : null, // Chuyển đổi kiểu dữ liệu thành number
-        thumbnail: this.deck.thumbnail || "",
-      },
+      editedDeck: this.deck
+        ? { ...this.deck }
+        : {
+            name: this.deck.name || "",
+            price: this.deck.price ? parseInt(this.deck.price) : null,
+            thumbnail: this.deck.thumbnail || "",
+          },
     };
   },
   methods: {
