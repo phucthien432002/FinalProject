@@ -40,6 +40,8 @@ export default {
   },
   methods: {
     confirmOrder() {
+      const currentTime = new Date(); // Lấy thời gian hiện tại
+      const isoTime = currentTime.toISOString(); // Chuyển đổi thành chuỗi ISO 8601
       const order = {
         email: this.userEmail,
         name: this.name,
@@ -47,6 +49,7 @@ export default {
         paymentMethod: this.paymentMethod,
         items: this.cartItems,
         total: this.total,
+        createdAt: isoTime, // Thêm trường createdAt vào đơn hàng
       };
 
       axios
@@ -55,6 +58,7 @@ export default {
           console.log("Order placed successfully:", response.data);
           localStorage.removeItem("cartItems");
           this.$router.push("/decks");
+          window.location.reload();
         })
         .catch((error) => {
           console.error("Error placing order:", error);
@@ -62,6 +66,7 @@ export default {
         });
     },
   },
+
   computed: {
     ...mapState(["userEmail"]),
     total() {
