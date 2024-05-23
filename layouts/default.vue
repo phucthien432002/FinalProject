@@ -105,6 +105,9 @@
           <a href="/blog">{{ $t("blog") }}</a>
         </li>
         <li>
+          <a href="/profile">Profile</a>
+        </li>
+        <li>
           <shoppingCart style="position: relative !important" />
         </li>
         <li>

@@ -52,6 +52,9 @@ export const mutations = {
   setDecks(state, decks){
     state.decks =  decks
   },
+  sortDecks(state, sortedDecks) {
+    state.decks = sortedDecks;
+  },
   addDeck(state, newDeck){
     state.decks.push(newDeck)
   },
