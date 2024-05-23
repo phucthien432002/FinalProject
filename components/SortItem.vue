@@ -1,7 +1,7 @@
 <template>
   <div>
     <input type="text" v-model="inputText" placeholder="Enter text to sort" />
-    <button @click="sortList">Sort</button>
+    <button class="btn1" style="background-color: green" @click="sortList">Sort</button>
   </div>
 </template>
 

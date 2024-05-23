@@ -113,5 +113,6 @@ li {
 .deck-modal {
   display: flex;
   flex-direction: wrap;
+  justify-content: center;
 }
 </style>
