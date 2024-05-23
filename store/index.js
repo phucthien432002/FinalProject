@@ -238,6 +238,7 @@ export const actions = {
     Cookies.remove('token')
     Cookies.remove('tokenExpiration')
     localStorage.removeItem('token')
+    localStorage.removeItem('userEmail')
     localStorage.removeItem('tokenExpiration')
   },
   addToCart({ commit, state }, payload) {

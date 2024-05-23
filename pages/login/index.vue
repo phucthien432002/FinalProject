@@ -59,7 +59,8 @@ export default {
           isLogin: this.isLogin,
         })
         .then((result) => {
-          if (result.success) this.$router.push("/");
+          if (result.success) localStorage.setItem("userEmail", this.email);
+          this.$router.push("/");
         })
         .catch((error) => {
           console.log(error);
