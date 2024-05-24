@@ -6,7 +6,7 @@
       <div class="order-date">Date: {{ order.createdAt }}</div>
       <div class="order-total">Total: {{ order.total }}</div>
       <div class="order-payment-method">Payment Method: {{ order.paymentMethod }}</div>
-      <div v-if="$store.state.isAdmin" class="delete-button-container">
+      <div class="delete-button-container">
         <button class="btn1" @click.prevent="deleteOrder(order.id)">Delete</button>
       </div>
     </div>
